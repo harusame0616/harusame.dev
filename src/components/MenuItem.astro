@@ -1,0 +1,34 @@
+---
+type Props = {
+  href: string;
+  active?: boolean;
+};
+const { href, active = false } = Astro.props;
+---
+
+<li class="">
+  <a
+    href={href}
+    class=`relative hover:opacity-100 focus:opacity-100 transition-all font-bold ${active ? 'active opacity-100' : 'opacity-50'}`
+    ><div class=`px-4 h-10 flex justify-center items-center`>
+      <slot />
+    </div>
+  </a>
+
+  <style>
+    a {
+      position: relative; /*アンダーラインの位置を決めるための基準 */
+    }
+
+    a::after {
+      @apply absolute left-0 bottom-2 w-full h-[2px] bg-primary invisible opacity-0 transition-all;
+      content: "";
+    }
+
+    a:focus::after,
+    a:hover::after,
+    a.active::after {
+      @apply visible bottom-0 opacity-100;
+    }
+  </style>
+</li>

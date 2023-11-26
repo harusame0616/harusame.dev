@@ -1,0 +1,24 @@
+---
+type Props = {
+  current: "top" | "posts" | "profile";
+};
+
+import MenuItem from "./MenuItem.astro";
+
+const menus = [
+  { href: "/", label: "トップ", id: "top" },
+  { href: "/posts", label: "記事", id: "posts" },
+  { href: "/profile", label: "プロフィール", id: "profile" },
+];
+const { current } = Astro.props;
+---
+
+<ul class="flex gap-2">
+  {
+    menus.map((menu) => (
+      <MenuItem href={menu.href} active={menu.id === current}>
+        {menu.label}
+      </MenuItem>
+    ))
+  }
+</ul>

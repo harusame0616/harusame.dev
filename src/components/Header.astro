@@ -1,0 +1,34 @@
+---
+import { Image } from "astro:assets";
+import Button from "./Button.astro";
+import Input from "./Input.astro";
+import Menu from "./Menu.astro";
+import logo from "./logo.svg";
+
+const pathname = new URL(Astro.request.url).pathname;
+const [_, currentMenu] = pathname.split("/");
+
+if (
+  currentMenu !== "posts" &&
+  currentMenu !== "profile" &&
+  currentMenu !== ""
+) {
+  throw new Error("invalid current menu");
+}
+---
+
+<header class="grid grid-cols-[auto_1fr]">
+  <a href="/">
+    <Image src={logo} height={64} alt="はるさめ Tec Party" />
+  </a>
+  <nav aria-label="メインメニュー" class="grid grid-cols-[1fr_auto]">
+    <div class="flex justify-end">
+      <Menu current={currentMenu || "top"} />
+    </div>
+    <form method="GET" action="/posts" class="ml-4">
+      <span class="sr-only" id="search-keyword">検索キーワード</span>
+      <Input name="q" aria-labelledby="search-keyword" />
+      <Button>検索</Button>
+    </form>
+  </nav>
+</header>
