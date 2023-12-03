@@ -7,13 +7,22 @@ import logo from "./logo.svg";
 
 const pathname = new URL(Astro.request.url).pathname;
 const [_, currentMenu] = pathname.split("/");
+class InvalidMenuError extends Error {
+  static {
+    this.prototype.name = InvalidMenuError.name;
+  }
 
-if (
-  currentMenu !== "posts" &&
-  currentMenu !== "profile" &&
-  currentMenu !== ""
-) {
-  throw new Error("invalid current menu");
+  constructor(menu: string) {
+    super("現在のメニューが不正です", {
+      cause: {
+        selectedMenu: menu,
+      },
+    });
+  }
+}
+
+if (currentMenu !== "blog" && currentMenu !== "profile" && currentMenu !== "") {
+  throw new InvalidMenuError(currentMenu);
 }
 ---
 

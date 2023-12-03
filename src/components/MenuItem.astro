@@ -6,7 +6,7 @@ type Props = {
 const { href, active = false } = Astro.props;
 ---
 
-<li class="">
+<li aria-current={active}>
   <a
     href={href}
     class=`relative hover:opacity-100 focus:opacity-100 transition-all font-bold ${active ? 'active opacity-100' : 'opacity-50'}`

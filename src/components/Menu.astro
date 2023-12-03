@@ -1,13 +1,13 @@
 ---
 type Props = {
-  current: "top" | "posts" | "profile";
+  current: "top" | "blog" | "profile";
 };
 
 import MenuItem from "./MenuItem.astro";
 
 const menus = [
   { href: "/", label: "トップ", id: "top" },
-  { href: "/posts", label: "記事", id: "posts" },
+  { href: "/blog/pages/1", label: "記事", id: "posts" },
   { href: "/profile", label: "プロフィール", id: "profile" },
 ];
 const { current } = Astro.props;
