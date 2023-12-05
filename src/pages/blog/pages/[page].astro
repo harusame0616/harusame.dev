@@ -23,11 +23,11 @@ function format(date: Date) {
 
 <Layout title={`記事一覧 ${page.currentPage} ページ - はるさめ Tec Party`}>
   <h1 class="font-bold text-xl mb-8">記事一覧</h1>
-  <div class="grid grid-cols-[repeat(2,1fr)] gap-x-10">
+  <div class="grid grid-cols-1 md:grid-cols-[repeat(2,1fr)] gap-x-10">
     {
       page.data.map((post) => (
         <article
-          class="grid grid-rows-[subgrid] row-span-5 mb-10 hover:shadow-lg group shadow-sm p-4 transition-all border-border border-solid border"
+          class="grid grid-rows-[subgrid] row-span-5 mb-4 md:mb-10 hover:shadow-lg group shadow-sm p-4 transition-all border-border border-solid border"
           aria-labelledby={`title-${post.id}`}
         >
           <div class="text-muted-foreground text-xs">
