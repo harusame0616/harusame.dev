@@ -22,10 +22,10 @@ const { title = "はるさめ Tec Party" } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="flex flex-col items-center p-4">
-    <div class="w-full max-w-5xl grid">
+  <body class="flex flex-col items-center p-2 md:p-4">
+    <div class="max-w-5xl w-full">
       <Header />
-      <main class="border mt-8 p-4 rounded-sm">
+      <main class="border mt-2 p-4 rounded-sm">
         <slot />
       </main>
     </div>

@@ -1,15 +1,12 @@
 ---
+import menus from "./menus.json";
+import MenuItem from "./MenuItem.astro";
+import BlogSearchForm from "./BlogSearchForm.astro";
+
 type Props = {
   current: "top" | "blog" | "profile";
 };
 
-import MenuItem from "./MenuItem.astro";
-
-const menus = [
-  { href: "/", label: "トップ", id: "top" },
-  { href: "/blog/pages/1", label: "記事", id: "posts" },
-  { href: "/profile", label: "プロフィール", id: "profile" },
-];
 const { current } = Astro.props;
 ---
 
@@ -21,4 +18,7 @@ const { current } = Astro.props;
       </MenuItem>
     ))
   }
+  <li>
+    <BlogSearchForm />
+  </li>
 </ul>

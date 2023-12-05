@@ -1,0 +1,18 @@
+---
+import menuStyle from "./menu.module.css";
+
+type Props = {
+  href: string;
+  active?: boolean;
+};
+
+const { href, active = false } = Astro.props;
+---
+
+<li aria-current={active}>
+  <a href={href} class=`${menuStyle['menu-item']}`
+    ><div class=`px-4 h-10 flex justify-center items-center`>
+      <slot />
+    </div>
+  </a>
+</li>

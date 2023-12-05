@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
-import Button from "./Button.astro";
-import Input from "./Input.astro";
-import Menu from "./Menu.astro";
+import { HamburgerMenu } from "./menu/HamburgerMenu.tsx";
+import SPMenu from "./menu/SPMenu.astro";
+import Menu from "./menu/Menu.astro";
 import logo from "./logo.svg";
 
 const pathname = new URL(Astro.request.url).pathname;
@@ -26,18 +26,18 @@ if (currentMenu !== "blog" && currentMenu !== "profile" && currentMenu !== "") {
 }
 ---
 
-<header class="grid grid-cols-[auto_1fr]">
+<header class="grid grid-cols-[auto_1fr] h-16">
   <a href="/">
     <Image src={logo} height={64} alt="はるさめ Tec Party" />
   </a>
   <nav aria-label="メインメニュー" class="grid grid-cols-[1fr_auto]">
-    <div class="flex justify-end">
+    <div class="hidden md:flex justify-end">
       <Menu current={currentMenu || "top"} />
     </div>
-    <form method="GET" action="/posts" class="ml-4">
-      <span class="sr-only" id="search-keyword">検索キーワード</span>
-      <Input name="q" aria-labelledby="search-keyword" />
-      <Button>検索</Button>
-    </form>
+    <div class="flex justify-end md:hidden">
+      <HamburgerMenu client:only>
+        <SPMenu />
+      </HamburgerMenu>
+    </div>
   </nav>
 </header>

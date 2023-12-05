@@ -1,11 +1,8 @@
 ---
 import { type HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"input">;
+type Props = HTMLAttributes<"input"> & {};
 const props = Astro.props;
 ---
 
-<input
-  class="bg-input px-2 h-10 border-b-primary border-b rounded-sm"
-  {...props}
-/>
+<input class="px-2 h-10 border-primary border rounded-sm w-full" {...props} />

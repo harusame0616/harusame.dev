@@ -1,0 +1,14 @@
+.menu-item {
+  position: relative; /*アンダーラインの位置を決めるための基準 */
+}
+
+.menu-item::after {
+  @apply absolute left-0 bottom-2 w-full h-[2px] bg-primary invisible opacity-0 transition-all;
+  content: "";
+}
+
+.menu-item:focus::after,
+.menu-item:hover::after,
+.menu-item.active::after {
+  @apply visible bottom-0 opacity-100;
+}

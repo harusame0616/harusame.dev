@@ -1,0 +1,5 @@
+[
+  { "href": "/", "label": "トップ", "id": "top" },
+  { "href": "/blog/pages/1", "label": "ブログ", "id": "posts" },
+  { "href": "/profile", "label": "プロフィール", "id": "profile" }
+]
