@@ -36,7 +36,8 @@ function format(date: Date) {
           </div>
           <div class="text-xs" />
           <h2 class="font-bold text-lg" id={`title-${post.id}`}>
-            {post.category?.name}：<a href="test">{post.title}</a>
+            {post.category?.name}：
+            <a href={`/blog/posts/${post.id}`}>{post.title}</a>
           </h2>
           <div class="line-clamp-3 text-sm tracking-wider text-muted-foreground mt-4">
             {stripTag(post.content).slice(0, 120)}
