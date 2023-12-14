@@ -3,9 +3,7 @@
   "compilerOptions": {
     "baseUrl": "/Users/haru/ghq/github.com/harusame0616/harusame-tec-soup",
     "paths": {
-      "@/*": [
-        "src/*"
-      ]
+      "@/*": ["src/*"]
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react"
