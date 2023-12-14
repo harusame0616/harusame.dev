@@ -1,14 +1,14 @@
-type Category = {
+export type Category = {
   id: string;
   name: string;
 };
 
-type Tag = {
+export type Tag = {
   id: string;
   name: string;
 };
 
-type Post = {
+export type Post = {
   id: string;
   publishedAt: Date;
   title: string;
@@ -17,38 +17,36 @@ type Post = {
   tags: Tag[];
 };
 
-const postListFields: (keyof Post)[] = [
-  "id",
-  "title",
-  "publishedAt",
-  "content",
-  "category",
-  "tags",
-];
-type PostListField = (typeof postListFields)[number];
-
-export type PostListItem = Pick<Post, PostListField>;
+export type PostField = keyof Post;
 
 export type GetPostProps = {
   id: string;
 };
 
-export type GetPostsProps = {
+export type GetPostsProps<U extends PostField> = {
   count: number;
   page: number;
+  fields: U[];
 };
+
+export type GetAllPostsProps<U extends PostField> = Omit<
+  GetPostsProps<U>,
+  "count" | "page"
+>;
 
 export type GetPostResponse = Promise<Post>;
 
-export type GetPostsResponse = Promise<{
-  posts: PostListItem[];
+export type GetPostsResponse<U extends PostField> = Promise<{
+  posts: Pick<Post, U>[];
   totalCount: number;
 }>;
 
-export type GetAllPostResponse = GetPostsResponse;
+export type GetAllPostResponse<U extends PostField> = GetPostsResponse<U>;
 
 export interface BlogClient {
   getPost(props: GetPostProps): GetPostResponse;
-  getPosts(props: GetPostsProps): GetPostsResponse;
-  getAllPost(): GetAllPostResponse;
+  getPosts<U extends PostField>(props: GetPostsProps<U>): GetPostsResponse<U>;
+  getAllPost<U extends PostField>(
+    props: GetAllPostsProps<U>
+  ): GetAllPostResponse<U>;
 }

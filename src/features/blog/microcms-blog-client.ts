@@ -3,11 +3,13 @@ import { createClient } from "microcms-js-sdk";
 import type {
   BlogClient,
   GetAllPostResponse,
+  GetAllPostsProps,
   GetPostProps,
   GetPostResponse,
   GetPostsProps,
   GetPostsResponse,
-  PostListItem,
+  Post,
+  PostField,
 } from "./blog-client";
 
 type MicroCMSCategory = {
@@ -40,36 +42,59 @@ type MicroCMSPost = {
   tags: MicroCMSTag[];
 };
 
-const postListItemFields: (keyof MicroCMSPost)[] = [
-  "id",
-  "title",
-  "content",
-  "publishedAt",
-  "category",
-  "tags",
-];
-type MicroCMSPostListItem = Pick<
-  MicroCMSPost,
-  (typeof postListItemFields)[number]
->;
-
 type ConstructorProps = {
   serviceDomain: string;
   apiKey: string;
 };
 
-function toPostListItem(post: MicroCMSPostListItem): PostListItem {
-  return {
-    category: post.category ?? {
-      id: "",
-      name: "",
-    },
-    content: post.content,
-    id: post.id,
-    tags: post.tags ?? [],
-    title: post.title,
-    publishedAt: new Date(post.publishedAt),
-  };
+function toFieldPickedPost<U extends PostField>(
+  post: Partial<MicroCMSPost>,
+  fields: PostField[]
+): Pick<Post, U> {
+  const translatedPost: Partial<Post> = {};
+
+  if (fields.includes("category") && "category" in post) {
+    translatedPost.category = post.category
+      ? {
+          id: post.category.id,
+          name: post.category.name,
+        }
+      : {
+          id: "",
+          name: "",
+        };
+  }
+
+  if (fields.includes("content") && "content" in post) {
+    translatedPost.content = post.content;
+  }
+
+  if (fields.includes("id") && "id" in post) {
+    translatedPost.id = post.id;
+  }
+
+  if (fields.includes("tags") && "tags" in post) {
+    translatedPost.tags = post.tags
+      ? post.tags.map((tag) => ({
+          id: tag.id,
+          name: tag.name,
+        }))
+      : [];
+  }
+
+  if (fields.includes("title") && "title" in post) {
+    translatedPost.title = post.title;
+  }
+
+  if (fields.includes("publishedAt")) {
+    if (!post.publishedAt) {
+      throw new Error("publishedAt is not defined");
+    }
+
+    translatedPost.publishedAt = new Date(post.publishedAt);
+  }
+
+  return translatedPost as Pick<Post, U>;
 }
 
 export class MicroCMSBlogClient implements BlogClient {
@@ -81,16 +106,18 @@ export class MicroCMSBlogClient implements BlogClient {
       apiKey: props.apiKey,
     });
   }
-  async getAllPost(): GetAllPostResponse {
-    const posts = await this.client.getAllContents<MicroCMSPostListItem>({
+  async getAllPost<U extends PostField>({
+    fields,
+  }: GetAllPostsProps<U>): GetAllPostResponse<U> {
+    const posts = await this.client.getAllContents<Pick<MicroCMSPost, U>>({
       endpoint: "blogs",
       queries: {
-        fields: postListItemFields.join(","),
+        fields: fields?.join(","),
       },
     });
 
     return {
-      posts: posts.map(toPostListItem),
+      posts: posts.map((post) => toFieldPickedPost(post, fields)),
       totalCount: posts.length,
     };
   }
@@ -111,19 +138,24 @@ export class MicroCMSBlogClient implements BlogClient {
     };
   }
 
-  async getPosts({ count, page }: GetPostsProps): GetPostsResponse {
-    const { contents, totalCount } =
-      await this.client.getList<MicroCMSPostListItem>({
-        endpoint: "blogs",
-        queries: {
-          fields: postListItemFields.join(","),
-          limit: count,
-          offset: count * (page - 1),
-        },
-      });
+  async getPosts<U extends PostField>({
+    count,
+    page,
+    fields,
+  }: GetPostsProps<U>): GetPostsResponse<U> {
+    const { contents, totalCount } = await this.client.getList<
+      Pick<MicroCMSPost, PostField>
+    >({
+      endpoint: "blogs",
+      queries: {
+        fields: fields?.join(","),
+        limit: count,
+        offset: count * (page - 1),
+      },
+    });
 
     return {
-      posts: contents.map(toPostListItem),
+      posts: contents.map((post) => toFieldPickedPost(post, fields)),
       totalCount: totalCount,
     };
   }
