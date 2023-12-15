@@ -1,0 +1,40 @@
+---
+import { Separator } from "@/components/ui/separator";
+import type { Post } from "@/features/blog/blog-client";
+import type { GetStaticPaths } from "astro";
+import { createBlogClient } from "../../../features/blog/create-blog-client";
+import Layout from "../../../layouts/Layout.astro";
+
+export type Props = {
+  post: Post;
+};
+
+export const getStaticPaths: GetStaticPaths = async () => {
+  const blog = createBlogClient();
+  const { posts } = await blog.getAllPost({
+    fields: ["tags", "category", "id", "publishedAt", "title", "content"],
+  });
+  return posts.map((post) => ({
+    params: {
+      postId: post.id,
+    },
+    props: {
+      post,
+    },
+  }));
+};
+
+const { post } = Astro.props;
+---
+
+<Layout title={`${post.title} - はるさめ Tec Party`}>
+  <h1 class="font-bold text-3xl mb-1">{post.title}</h1>
+  <div class="text-muted-foreground text-xs">
+    投稿日：{post.publishedAt}
+  </div>
+  <div class="my-4">
+    <Separator />
+  </div>
+
+  <div class="prose max-w-none" set:html={post.content} />
+</Layout>
