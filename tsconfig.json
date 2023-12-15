@@ -1,7 +1,7 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "baseUrl": "/Users/haru/ghq/github.com/harusame0616/harusame-tec-soup",
+    "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
     },
