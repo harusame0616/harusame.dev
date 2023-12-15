@@ -1,8 +1,6 @@
-import menus from "./menus.json";
 import { cn } from "@/lib/utils";
 import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
-import react, { useState, type PropsWithChildren } from "react";
-import menuStyle from "./menu.module.css";
+import { useState, type PropsWithChildren } from "react";
 
 export function HamburgerMenu({ children }: PropsWithChildren) {
   const [open, setOpen] = useState(false);

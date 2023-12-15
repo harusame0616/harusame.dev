@@ -25,7 +25,7 @@
     "microcms-js-sdk": "^2.7.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "sharp": "^0.33.0",
+    "sharp": "^0.32.0",
     "tailwind-merge": "^2.1.0",
     "tailwindcss": "^3.0.24",
     "tailwindcss-animate": "^1.0.7",

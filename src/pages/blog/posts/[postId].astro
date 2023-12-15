@@ -1,10 +1,9 @@
 ---
-import type { GetStaticPaths } from "astro";
-import { Code } from "astro/components";
-import Layout from "../../../layouts/Layout.astro";
-import { createBlogClient } from "../../../features/blog/create-blog-client";
-import type { Post } from "@/features/blog/blog-client";
 import { Separator } from "@/components/ui/separator";
+import type { Post } from "@/features/blog/blog-client";
+import type { GetStaticPaths } from "astro";
+import { createBlogClient } from "../../../features/blog/create-blog-client";
+import Layout from "../../../layouts/Layout.astro";
 
 export type Props = {
   post: Post;
