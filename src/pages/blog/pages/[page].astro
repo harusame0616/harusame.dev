@@ -43,12 +43,12 @@ function format(date: Date) {
             {stripTag(post.content).slice(0, 120)}
           </div>
           <div class="mt-4">
-            <ul aria-label="タグ">
+            <ul aria-label="タグ" class="flex flex-wrap gap-2">
               {post.tags.map((tag) => (
                 <li>
                   <a
                     href={`/posts?tag=${tag.name}`}
-                    class="border-secondary border rounded-full px-2 min-w-[4rem] inline-block text-center hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground transition-all"
+                    class="border-secondary border rounded-full px-2 min-w-[4rem] inline-block text-center hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground transition-all text-ellipsis overflow-hidden whitespace-nowrap max-w-[180px]"
                   >
                     {tag.name}
                   </a>
