@@ -8,8 +8,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "lint:check": "eslint src --check",
-    "lint:write": "eslint src --fix"
+    "lint:check": "eslint .",
+    "lint:write": "eslint --fix ."
   },
   "dependencies": {
     "@astrojs/check": "^0.3.1",

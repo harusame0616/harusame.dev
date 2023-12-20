@@ -1,5 +1,6 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { FlatCompat } from "@eslint/eslintrc";
-import { default as tsPlugin } from "@typescript-eslint/eslint-plugin";
+import tsPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import prettier from "eslint-config-prettier";
 import jsxA11y from "eslint-plugin-jsx-a11y";
@@ -11,6 +12,9 @@ const compat = new FlatCompat();
 // TODO: ASTRO
 
 export default [
+  {
+    ignores: ["node_modules/**/*", "dist/**/*"],
+  },
   ...compat.config({
     extends: ["airbnb", "airbnb-typescript"],
   }),
@@ -20,7 +24,7 @@ export default [
   ),
   playwright.configs["flat/recommended"],
   {
-    files: ["**/*.js", "**/*.ts", "**/*.tsx"],
+    files: ["**/*.mjs", "**/*.js", "**/*.ts", "**/*.tsx"],
     plugins: {
       "@typescript-eslint": tsPlugin,
       "jsx-a11y": jsxA11y,
