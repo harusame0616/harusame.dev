@@ -4,16 +4,16 @@ import MenuItem from "./MenuItem.astro";
 import menus from "./menus.json";
 ---
 
-<div class="fixed top-0 left-0 bottom-0 right-0 pt-20">
-  <ul class="bg-background h-full">
+<div class="fixed inset-0 pt-20">
+  <ul class="h-full bg-background">
     {
       menus.map((menu) => (
-        <div class="border-b border-border border-solid">
+        <div class="border-b border-solid border-border">
           <MenuItem href={menu.href}>{menu.label}</MenuItem>
         </div>
       ))
     }
-    <div class="border-b border-border border-solid p-2">
+    <div class="border-b border-solid border-border p-2">
       <BlogSearchForm />
     </div>
   </ul>

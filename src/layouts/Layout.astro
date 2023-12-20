@@ -23,9 +23,9 @@ const { title = "はるさめ Tec Party" } = Astro.props;
     <title>{title}</title>
   </head>
   <body class="flex flex-col items-center p-2 md:p-4">
-    <div class="max-w-5xl w-full">
+    <div class="w-full max-w-5xl">
       <Header />
-      <main class="border mt-2 p-4 rounded-sm">
+      <main class="mt-2 rounded-sm border p-4">
         <slot />
       </main>
     </div>
