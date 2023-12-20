@@ -1,4 +1,4 @@
-//SDK利用準備
+// SDK利用準備
 import { createClient } from "microcms-js-sdk";
 import type {
   BlogClient,
@@ -106,6 +106,7 @@ export class MicroCMSBlogClient implements BlogClient {
       apiKey: props.apiKey,
     });
   }
+
   async getAllPost<U extends PostField>({
     fields,
   }: GetAllPostsProps<U>): GetAllPostResponse<U> {
@@ -156,7 +157,7 @@ export class MicroCMSBlogClient implements BlogClient {
 
     return {
       posts: contents.map((post) => toFieldPickedPost(post, fields)),
-      totalCount: totalCount,
+      totalCount,
     };
   }
 }

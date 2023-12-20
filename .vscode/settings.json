@@ -1,3 +1,4 @@
 {
-  "cSpell.words": ["MICROCMS"]
+  "cSpell.words": ["MICROCMS"],
+  "eslint.experimental.useFlatConfig": true
 }

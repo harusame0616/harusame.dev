@@ -28,8 +28,8 @@ const { post } = Astro.props;
 ---
 
 <Layout title={`${post.title} - はるさめ Tec Party`}>
-  <h1 class="font-bold text-3xl mb-1">{post.title}</h1>
-  <div class="text-muted-foreground text-xs">
+  <h1 class="mb-1 text-3xl font-bold">{post.title}</h1>
+  <div class="text-xs text-muted-foreground">
     投稿日：{post.publishedAt}
   </div>
   <div class="my-4">
