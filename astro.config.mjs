@@ -23,7 +23,7 @@ export default defineConfig({
       },
     }),
   ],
-  site: "https://tecparty.harusame.dev",
+  site: "https://harusame.dev",
   vite: {
     resolve: {
       alias: {

@@ -27,7 +27,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 const { post } = Astro.props;
 ---
 
-<Layout title={`${post.title} - はるさめ Tec Party`}>
+<Layout title={`${post.title} - はるさめ.dev`}>
   <h1 class="mb-1 text-3xl font-bold">{post.title}</h1>
   <div class="text-xs text-muted-foreground">
     投稿日：{post.publishedAt}
