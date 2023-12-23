@@ -8,9 +8,21 @@ import prefetch from "@astrojs/prefetch";
 // eslint-disable-next-line import/no-extraneous-dependencies
 import sitemap from "@astrojs/sitemap";
 
+import partytown from "@astrojs/partytown";
+
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), react(), prefetch(), sitemap()],
+  integrations: [
+    tailwind(),
+    react(),
+    prefetch(),
+    sitemap(),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"],
+      },
+    }),
+  ],
   site: "https://tecparty.harusame.dev",
   vite: {
     resolve: {
