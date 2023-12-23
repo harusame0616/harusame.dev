@@ -12,6 +12,21 @@ const { title = "はるさめ Tec Party" } = Astro.props;
 <!doctype html>
 <html lang="ja">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-DV9Z5XM82F"
+      type="text/partytown"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-DV9Z5XM82F");
+    </script>
+    <!-- Google tag (gtag.js) -->
     <meta charset="UTF-8" />
     <meta
       name="description"
