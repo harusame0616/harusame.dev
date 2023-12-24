@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tecparty.harusame.dev/sitemap-index.xml
+Sitemap: https://harusame.dev/sitemap-index.xml
