@@ -2,6 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import Layout from "../../../layouts/Layout.astro";
 import { createBlogClient } from "../../../features/blog/create-blog-client";
+import Posts from "@/features/blog/PostsLayout.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const blog = createBlogClient();
@@ -12,76 +13,9 @@ export const getStaticPaths = (async ({ paginate }) => {
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
-
-function stripTag(htmlString: string) {
-  return htmlString.replace(/<\/?[^>]+>/gi, "");
-}
-
-function format(date: Date) {
-  return date.toLocaleDateString();
-}
+const title = `記事一覧 ${page.currentPage} ページ`;
 ---
 
-<Layout title={`記事一覧 ${page.currentPage} ページ - はるさめ.dev`}>
-  <h1 class="mb-8 text-xl font-bold">記事一覧</h1>
-  <div class="grid grid-cols-1 gap-x-10 md:grid-cols-[repeat(2,1fr)]">
-    {
-      page.data.map((post) => (
-        <article
-          class="group row-span-5 mb-4 grid grid-rows-[subgrid] border border-solid border-border p-4 shadow-sm transition-all hover:shadow-lg md:mb-10"
-          aria-labelledby={`title-${post.id}`}
-        >
-          <div class="text-xs text-muted-foreground">
-            <div>投稿日： {format(post.publishedAt)}</div>
-          </div>
-          <div class="text-xs" />
-          <h2 class="text-lg font-bold" id={`title-${post.id}`}>
-            {post.category?.name}：
-            <a href={`/blog/posts/${post.id}`} rel="prefetch">
-              {post.title}
-            </a>
-          </h2>
-          <div class="mt-4 line-clamp-3 text-sm tracking-wider text-muted-foreground">
-            {stripTag(post.content).slice(0, 120)}
-          </div>
-          <div class="mt-4">
-            <ul aria-label="タグ" class="flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <li>
-                  <a
-                    href={`/posts?tag=${tag.name}`}
-                    class="inline-block min-w-[4rem] max-w-[180px] truncate rounded-full border border-secondary px-2 text-center transition-all hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
-                    rel="prefetch"
-                  >
-                    {tag.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </article>
-      ))
-    }
-  </div>
-  <nav class="text-center">
-    {
-      page.currentPage !== 1 && (
-        <a href={`/blog/pages/${page.currentPage - 1}`} rel="prefetch">
-          戻る
-        </a>
-      )
-    }
-    {
-      page.currentPage !== 1 && page.currentPage !== page.lastPage && (
-        <span class="mx-4">|</span>
-      )
-    }
-    {
-      page.currentPage !== page.lastPage && (
-        <a href={`/blog/pages/${page.currentPage + 1}`} rel="prefetch">
-          進む
-        </a>
-      )
-    }
-  </nav>
+<Layout title={title}>
+  <Posts page={page} title={title} />
 </Layout>
