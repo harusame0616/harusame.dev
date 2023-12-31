@@ -2,7 +2,7 @@
 import type { GetStaticPaths } from "astro";
 import Layout from "../../../../../layouts/Layout.astro";
 import { createBlogClient } from "../../../../../features/blog/create-blog-client";
-import PostsLayout from "@/features/blog/PostsLayout.astro";
+import PostsContent from "@/features/blog/PostsContent.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const blog = createBlogClient();
@@ -37,5 +37,5 @@ const title = `記事一覧 (タグ: ${tag} の ${page.currentPage} ページ目
 ---
 
 <Layout title={title}>
-  <PostsLayout page={page} title={title} />
+  <PostsContent page={page} title={title} />
 </Layout>
