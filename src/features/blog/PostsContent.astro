@@ -25,7 +25,7 @@ function format(date: Date) {
     {
       page.data.map((post) => (
         <article
-          class="group row-span-5 mb-4 grid grid-rows-[subgrid] border border-solid border-border p-4 shadow-sm transition-all hover:shadow-lg md:mb-10"
+          class="group row-span-5 mb-4 grid grid-rows-[subgrid] border border-solid border-border p-4 shadow-sm transition-all hover:shadow-lg md:mb-10 relative"
           aria-labelledby={`title-${post.id}`}
         >
           <div class="text-xs text-muted-foreground">
@@ -34,7 +34,11 @@ function format(date: Date) {
           <div class="text-xs" />
           <h2 class="text-lg font-bold" id={`title-${post.id}`}>
             {post.category?.name}：
-            <a href={`/blog/posts/${post.id}/`} rel="prefetch">
+            <a
+              href={`/blog/posts/${post.id}/`}
+              rel="prefetch"
+              class="before:absolute before:top-0 before:bottom-0 before:left-0 before:right-0"
+            >
               {post.title}
             </a>
           </h2>
@@ -47,7 +51,7 @@ function format(date: Date) {
                 <li>
                   <a
                     href={`/blog/tags/${tag.id}/pages/1/`}
-                    class="inline-block min-w-[4rem] max-w-[180px] truncate rounded-full border border-secondary px-2 text-center transition-all hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
+                    class="inline-block min-w-[4rem] max-w-[180px] truncate rounded-full border border-secondary px-2 text-center transition-all hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground z-10 relative"
                     rel="prefetch"
                   >
                     {tag.name}
