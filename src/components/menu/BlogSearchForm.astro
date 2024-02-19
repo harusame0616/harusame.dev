@@ -2,10 +2,14 @@
 import Input from "../Input.astro";
 ---
 
-<form method="GET" action="/blog/pages" class="w-full">
-  <Input
-    name="q"
-    aria-labelledby="ブログ内検索キーワード"
-    placeholder="ブログ内検索キーワード"
-  />
-</form>
+<search aria-label="ブログ内検索" role="search">
+  <form method="GET" action="https://google.com/search" class="w-full">
+    <input type="hidden" name="q" value="site:https://harusame.dev/" />
+    <Input
+      name="q"
+      type="search"
+      aria-label="ブログ内検索"
+      placeholder="ブログ内検索"
+    />
+  </form>
+</search>
