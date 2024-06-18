@@ -1,7 +1,9 @@
 ---
 import { Separator } from "@/components/ui/separator";
 import type { Post } from "@/features/blog/blog-client";
+import { highLight } from "@/lib/code-highlight";
 import type { GetStaticPaths } from "astro";
+import "highlight.js/styles/atom-one-dark.css";
 import { createBlogClient } from "../../../features/blog/create-blog-client";
 import Layout from "../../../layouts/Layout.astro";
 
@@ -25,6 +27,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 const { post } = Astro.props;
+const content = highLight(post.content);
 ---
 
 <Layout title={`${post.title} - はるさめ.dev`}>
@@ -51,5 +54,5 @@ const { post } = Astro.props;
     <Separator />
   </div>
 
-  <div class="prose max-w-none" set:html={post.content} />
+  <div class="prose max-w-none" set:html={content} />
 </Layout>
