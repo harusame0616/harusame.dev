@@ -56,6 +56,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-tailwind": "^0.2.1",
     "eslint-plugin-tailwindcss": "^3.13.0",
-    "eslint-plugin-vitest": "^0.3.17"
+    "eslint-plugin-vitest": "^0.3.17",
+    "supabase": "^1.178.2"
   }
 }
