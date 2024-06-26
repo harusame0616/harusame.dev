@@ -13,7 +13,7 @@ const compat = new FlatCompat();
 
 export default [
   {
-    ignores: ["node_modules/**/*", "dist/**/*"],
+    ignores: ["node_modules/**/*", "dist/**/*", "supabase/functions/**/*"],
   },
   ...compat.config({
     extends: ["airbnb", "airbnb-typescript"],
