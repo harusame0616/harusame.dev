@@ -1,0 +1,14 @@
+{
+  "imports": {
+    "article": "../../src/features/article/index.ts",
+    "@features": "../../src/features",
+    "@features/article/infrastructures/microcms-article-gateway": "../../src/features/article/infrastructures/microcms-article-gateway.ts",
+    "@features/article/infrastructures/supabase-article-repository": "../../src/features/article/infrastructures/supabase-article-repository.ts",
+    "@features/article/models/article": "../../src/features/article/models/article.ts",
+    "@features/article/usecases/article-sync-usecase": "../../src/features/article/usecases/article-sync-usecase.ts",
+    "uuid": "npm:uuid",
+    "@/lib/result": "../../src/lib/result.ts",
+    "@/lib/logger/get-logger": "../../src/lib/logger/get-logger.ts",
+    "@/lib/logger/console-logger": "../../src/lib/logger/console-logger.ts"
+  }
+}
