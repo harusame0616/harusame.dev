@@ -3,11 +3,11 @@ name: Edge functions デプロイ
 on:
   push:
     # branches: [main]
-    paths:
-      - supabase
-      - src/features
-      - src/lib
-  workflow_dispatch:
+  #   paths:
+  #     - supabase
+  #     - src/features
+  #     - src/lib
+  # workflow_dispatch:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
