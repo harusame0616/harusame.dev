@@ -1,0 +1,37 @@
+name: Edge functions デプロイ
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - supabase
+      - src/features
+      - src/lib
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  db-migration:
+    timeout-minutes: 2
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      SUPABASE_PROJECT_ID: ${{ secrets.SUPABASE_PROJECT_ID }}
+      SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_PASSWORD }}
+      SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+
+    steps:
+      - name: チェックアウト
+        uses: actions/checkout@v4
+
+      - name: Supabase CLI セットアップ
+        uses: supabase/setup-cli@v1
+
+      - name: Supabase Link
+        run: supabase link --project-ref $SUPABASE_PROJECT_ID
+
+      - name: Edge Functions Deploy
+        run: supabase functions deploy
