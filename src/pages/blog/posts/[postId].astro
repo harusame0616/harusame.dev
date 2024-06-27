@@ -6,6 +6,7 @@ import type { GetStaticPaths } from "astro";
 import "highlight.js/styles/atom-one-dark.css";
 import { createBlogClient } from "../../../features/blog/create-blog-client";
 import Layout from "../../../layouts/Layout.astro";
+import { CommentListContainer } from "@/features/comment/components/comment-list-container";
 
 export type Props = {
   post: Post;
@@ -55,4 +56,8 @@ const content = highLight(post.content);
   </div>
 
   <div class="prose max-w-none" set:html={content} />
+  <div slot="footer">
+    <h2 class="text-xl mb-4">コメント</h2>
+    <CommentListContainer articleSlug={post.id} client:only />
+  </>
 </Layout>

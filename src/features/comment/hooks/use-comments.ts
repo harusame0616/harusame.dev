@@ -2,27 +2,39 @@ import { type CommentDto } from "@/features/comment/models/comment";
 import useSWR from "swr";
 import { queryComments } from "../infrastractures/get-comments";
 
-export function useComments(articleSlug: string):
-  | {
-      comments: CommentDto[];
-      error: null;
-      isLoading: false;
-    }
-  | { comments: null; error: Error; isLoading: false }
-  | { comments: null; error: null; isLoading: true } {
+export function useQueryComments(
+  articleSlug: string,
+):
+  | { data: null; success: false; message: string; isLoading: false }
+  | { data: CommentDto[]; success: true; isLoading: false }
+  | { data: null; isLoading: true } {
   const result = useSWR(`${articleSlug}`, queryComments);
 
   if (result.isLoading) {
-    return { comments: null, error: null, isLoading: true };
+    return { data: null, isLoading: true };
   }
 
   if (result.error || !result.data) {
-    return { comments: null, error: result.error, isLoading: false };
+    return {
+      data: null,
+      success: false,
+      message: "データの取得に失敗しました",
+      isLoading: false,
+    };
+  }
+
+  if (!result.data.success) {
+    return {
+      data: null,
+      success: false,
+      message: result.data.message,
+      isLoading: false,
+    };
   }
 
   return {
-    comments: result.data,
-    error: null,
+    data: result.data.data,
+    success: true,
     isLoading: false,
   };
 }
