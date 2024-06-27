@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  db-migration:
+  edge-functions-deploy:
     timeout-minutes: 2
     runs-on: ubuntu-latest
     environment: production
