@@ -65,6 +65,7 @@
     "eslint-plugin-tailwind": "^0.2.1",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "eslint-plugin-vitest": "^0.3.17",
+    "jsdom": "^24.1.0",
     "msw": "^2.3.1",
     "supabase": "^1.178.2",
     "vitest": "^1.6.0"
