@@ -19,7 +19,7 @@ export async function queryComments(
 
   const [article] = result.data;
   if (!article) {
-    return fail("記事が見つかりませんでした");
+    return fail("記事が見つかりません");
   }
 
   return succeed(
