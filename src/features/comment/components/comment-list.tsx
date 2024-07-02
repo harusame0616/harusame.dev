@@ -7,17 +7,21 @@ type Props =
 
 export function CommentList({ skeleton, comments }: Props) {
   return (
-    <ul className="flex flex-col gap-8">
+    <ul className="flex flex-col gap-8" aria-label="コメント">
       {skeleton
         ? Array.from({ length: 3 }).map((_, i) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <li className="border-b  pb-4 last:border-b-0" key={i}>
+            <li
+              className="border-b  pb-4 last:border-b-0"
+              aria-busy={skeleton}
+              aria-label="読込中"
+              aria-hidden={i !== 0}
+            >
               <CommentListItem skeleton />
             </li>
           ))
         : comments.map((comment) => (
             <li
-              className="border-b  pb-4 last:border-b-0"
+              className="border-b pb-4 last:border-b-0"
               key={comment.commentId}
             >
               <CommentListItem comment={comment} />
