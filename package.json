@@ -65,6 +65,7 @@
     "jsdom": "^24.1.0",
     "msw": "^2.3.1",
     "supabase": "^1.178.2",
+    "vite-tsconfig-paths": "^4.3.2",
     "vitest": "^1.6.0"
   }
 }
