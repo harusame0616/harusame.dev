@@ -59,7 +59,7 @@ export default [
           tsx: "never",
         },
       ],
-      "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.*", "vitest.config.ts", "vitest/**/*.*"]}],
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.*", "vitest.config.ts", "vitest/**/*.*", "src/mocks/server.ts"]}],
       "import/prefer-default-export": "off",
       "react/require-default-props": "off",
       "react/jsx-props-no-spreading": "off",
