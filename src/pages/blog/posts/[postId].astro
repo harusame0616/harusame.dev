@@ -56,8 +56,8 @@ const content = highLight(post.content);
   </div>
 
   <div class="prose max-w-none" set:html={content} />
-  <div slot="footer">
+  <div slot="append" class="mt-8 rounded-sm border p-4">
     <h2 class="text-xl mb-4">コメント</h2>
     <CommentListContainer articleSlug={post.id} client:only />
-  </>
+  </div>
 </Layout>
