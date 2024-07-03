@@ -22,7 +22,10 @@ export default [
     "plugin:eslint-plugin-tailwindcss/recommended",
     "plugin:eslint-plugin-vitest/recommended"
   ),
-  playwright.configs["flat/recommended"],
+  {
+    ...playwright.configs["flat/recommended"],
+    files: ["e2e/**/*.test.{ts,tsx}"],
+  },
   {
     files: ["**/*.mjs", "**/*.js", "**/*.ts", "**/*.tsx"],
     plugins: {
@@ -56,6 +59,7 @@ export default [
           tsx: "never",
         },
       ],
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.*", "vitest.config.ts", "vitest/**/*.*", "src/mocks/server.ts"]}],
       "import/prefer-default-export": "off",
       "react/require-default-props": "off",
       "react/jsx-props-no-spreading": "off",
