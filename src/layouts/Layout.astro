@@ -46,6 +46,7 @@ const titleInHead = title ? `${title} - ${TITLE}` : TITLE;
       <main class="mt-2 rounded-sm border p-4">
         <slot />
       </main>
+      <slot name="append" />
     </div>
   </body>
 </html>
