@@ -26,6 +26,7 @@ export default defineConfig({
   site: "https://harusame.dev",
   vite: {
     resolve: {
+      conditions: ["browser", "node"], // msw/node のインポートでエラーが出るため
       alias: {
         "@": path.resolve(path.dirname(fileURLToPath(import.meta.url)), "src"),
       },
