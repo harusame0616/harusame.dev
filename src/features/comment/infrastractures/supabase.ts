@@ -31,3 +31,27 @@ export async function queryComments(
     })) || [],
   );
 }
+
+export async function postComment(
+  slug: string,
+  name: string,
+  text: string,
+) {
+  const supabase = getSupabaseClient();
+
+  const articleSelectResult = await supabase.from("article").select("id").eq(
+    "slug",
+    slug,
+  )
+    .single();
+
+  if (articleSelectResult.error) {
+    throw new Error("記事の取得に失敗しました");
+  }
+
+  await supabase.from("article_comment").insert({
+    article_id: articleSelectResult.data.id,
+    name,
+    text,
+  });
+}

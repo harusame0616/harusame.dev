@@ -23,7 +23,7 @@ export function CommentListItem({ skeleton, comment }: Props) {
               {skeleton ? (
                 <Skeleton className="h-6 w-24" />
               ) : (
-                format(comment.commentedAt, "yyyy-MM-dd hh:mm")
+                format(comment.commentedAt, "yyyy-MM-dd HH:mm")
               )}
             </dl>
           </div>

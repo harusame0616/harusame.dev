@@ -7,6 +7,7 @@ import "highlight.js/styles/atom-one-dark.css";
 import { createBlogClient } from "../../../features/blog/create-blog-client";
 import Layout from "../../../layouts/Layout.astro";
 import { CommentListContainer } from "@/features/comment/components/comment-list-container";
+import { CommentForm } from "@/features/comment/components/comment-form";
 
 export type Props = {
   post: Post;
@@ -56,8 +57,10 @@ const content = highLight(post.content);
   </div>
 
   <div class="prose max-w-none" set:html={content} />
-  <div slot="append" class="mt-8 rounded-sm border p-4">
-    <h2 class="text-xl mb-4">コメント</h2>
+  <section slot="append" class="mt-8 rounded-sm border p-4">
+    <h2 class="text-xl mb-4 font-bold">コメント</h2>
     <CommentListContainer articleSlug={post.id} client:only />
-  </div>
+    <Separator className="my-8" />
+    <CommentForm slug={post.id} client:only />
+  </section>
 </Layout>
