@@ -1,6 +1,6 @@
 import { type CommentDto } from "@/features/comment/models/comment";
 import useSWR from "swr";
-import { queryComments } from "../infrastractures/get-comments";
+import { queryComments } from "../infrastractures/supabase";
 
 export function useQueryComments(
   articleSlug: string,
