@@ -10,25 +10,18 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: チェックアウト
+        uses: actions/checkout@v4
+      - name: pnpm のセットアップ
+        uses: pnpm/action-setup@v4
         with:
-          node-version: 16
-      - uses: pnpm/action-setup@v2
-        with:
-          version: 8
-          run_install: false
-      - shell: bash
-        run: |
-          echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-      - uses: actions/cache@v3
-        name: Setup pnpm cache
-        with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-      - name: Install dependencies
+          version: 9
+      - name: パッケージインストール
         run: pnpm install
+      - name: Node.js のセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: "./.node-version"
+          cache: "pnpm"
       - name: Lint
         run: pnpm run lint:check
