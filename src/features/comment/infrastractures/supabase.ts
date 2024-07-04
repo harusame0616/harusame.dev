@@ -42,8 +42,7 @@ export async function postComment(
   const articleSelectResult = await supabase.from("article").select("id").eq(
     "slug",
     slug,
-  )
-    .single();
+  ).single();
 
   if (articleSelectResult.error) {
     throw new Error("記事の取得に失敗しました");

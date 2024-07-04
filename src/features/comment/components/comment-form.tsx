@@ -24,8 +24,8 @@ const FormSchema = z.object({
     .max(20, "名前は20文字以内にしてください。"),
   text: z
     .string()
-    .min(1, "コメントは必須です。")
-    .max(1024, "コメントは1024文字以内にしてください。"),
+    .min(1, "本文は必須です。")
+    .max(1024, "本文は1024文字以内にしてください。"),
 });
 type FormSchema = z.infer<typeof FormSchema>;
 
@@ -60,12 +60,12 @@ export function CommentForm({ slug }: Props) {
           name="name"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
-                名前
+              <div>
+                <FormLabel>名前</FormLabel>
                 <FormDescription>
                   1文字以上、20文字以内で入力してください。
                 </FormDescription>
-              </FormLabel>
+              </div>
               <FormControl>
                 <Input {...field} />
               </FormControl>
@@ -78,12 +78,12 @@ export function CommentForm({ slug }: Props) {
           name="text"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>
-                本文
+              <div>
+                <FormLabel>本文</FormLabel>
                 <FormDescription>
                   1 文字以上、1024 文字以内で入力してください。
                 </FormDescription>
-              </FormLabel>
+              </div>
               <FormControl>
                 <Textarea rows={8} {...field} />
               </FormControl>

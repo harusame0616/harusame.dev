@@ -8,7 +8,7 @@ const mocks = vi.hoisted(() => ({
   queryComments: vi.fn(),
 }));
 
-vi.mock("../infrastractures/get-comments", () => ({
+vi.mock("../../infrastractures/get-comments", () => ({
   queryComments: mocks.queryComments,
 }));
 
