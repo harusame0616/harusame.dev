@@ -10,7 +10,10 @@ import { getConfig } from "./get-config.ts";
 export async function handler(req: Request) {
     const config = getConfig();
 
-    if (req.headers.get("Authorization") !== `Bearer ${config.auth.secret}`) {
+    if (
+        req.headers.get("Authorization") !== `Bearer ${config.auth.secret}` &&
+        req.headers.get("x-secret") !== config.auth.secret
+    ) {
         return new Response(null, { status: 401 });
     }
 
