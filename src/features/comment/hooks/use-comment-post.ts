@@ -1,5 +1,5 @@
 import useSWRMutation from "swr/mutation";
-import { postComment } from "../infrastractures/supabase";
+import { postComment } from "../infrastructures/supabase";
 
 async function mutator(
     slug: string,

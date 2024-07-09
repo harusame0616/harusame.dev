@@ -1,5 +1,5 @@
 import { getLogger } from "@/lib/logger/get-logger";
-import { fail, succeed, type Result } from "@/lib/result";
+import { fail, type Result, succeed } from "@/lib/result";
 import { Article } from "@features/article/models/article";
 import { type ArticleRepository } from "@features/article/usecases/article-repository";
 import type { createClient } from "@supabase/supabase-js";
@@ -9,12 +9,30 @@ const TABLE_NAME = "article";
 export class SupabaseArticleRepository implements ArticleRepository {
   constructor(private supabase: ReturnType<typeof createClient<Database>>) {}
 
+  async getByArticleId(articleId: string): Promise<Result<Article>> {
+    const result = await this.supabase.from(TABLE_NAME).select(
+      "*",
+    ).eq("id", articleId).single();
+
+    if (result.error) {
+      const logger = getLogger();
+      logger.error(JSON.stringify(result.error));
+
+      return fail("記事の取得に失敗しました");
+    }
+
+    return succeed(Article.fromDto({
+      articleId: result.data.id,
+      slug: result.data.slug,
+    }));
+  }
+
   async saveMany(articles: Article[]): Promise<Result> {
     const result = await this.supabase.from(TABLE_NAME).upsert(
       articles.map((article) => {
-        const {articleId: id, slug} = article.toDto();
-        return { id, slug};
-      })
+        const { articleId: id, slug } = article.toDto();
+        return { id, slug };
+      }),
     );
 
     if (result.error) {
@@ -58,7 +76,7 @@ export class SupabaseArticleRepository implements ArticleRepository {
           articleId: article.id,
           slug: article.slug,
         })
-      )
+      ),
     );
   }
 }
