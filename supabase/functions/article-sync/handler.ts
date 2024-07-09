@@ -12,7 +12,7 @@ export async function handler(req: Request) {
 
     if (
         req.headers.get("Authorization") !== `Bearer ${config.auth.secret}` &&
-        req.headers.get("x-secret") !== config.auth.secret
+        req.headers.get("X-secret") !== config.auth.secret
     ) {
         return new Response(null, { status: 401 });
     }
