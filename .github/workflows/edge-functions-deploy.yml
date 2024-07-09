@@ -4,9 +4,9 @@ on:
   push:
     branches: [main]
     paths:
-      - supabase
-      - src/features
-      - src/lib
+      - supabase/**
+      - src/features/**
+      - src/lib/**
   workflow_dispatch:
 
 concurrency:
