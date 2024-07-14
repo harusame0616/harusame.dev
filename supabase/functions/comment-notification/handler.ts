@@ -5,32 +5,27 @@ import { createClient } from "npm:@supabase/supabase-js@^2.44.1";
 import { getConfig } from "./get-config.ts";
 
 export async function handler(req: Request) {
-    const config = getConfig();
+  const config = getConfig();
 
-    if (req.headers.get("Authorization") !== `Bearer ${config.auth.secret}`) {
-        console.error("headers", req.headers.get("Authorization"));
-        console.error("secret", config.auth.secret);
-        return new Response(null, { status: 401 });
-    }
+  if (req.headers.get("Authorization") !== `Bearer ${config.auth.secret}`) {
+    console.error("headers", req.headers.get("Authorization"));
+    console.error("secret", config.auth.secret);
+    return new Response(null, { status: 401 });
+  }
 
-    const commentNotification = new CommentNotificationUsecase(
-        new SlackNotificationGateway(
-            new URL(config.slack.url),
-        ),
-        new SupabaseArticleRepository(
-            createClient(
-                config.supabase.url,
-                config.supabase.serviceRoleKey,
-            ),
-        ),
-        config.host.articlesUrl,
-    );
+  const commentNotification = new CommentNotificationUsecase(
+    new SlackNotificationGateway(new URL(config.slack.url)),
+    new SupabaseArticleRepository(
+      createClient(config.supabase.url, config.supabase.serviceRoleKey),
+    ),
+    config.host.articlesUrl,
+  );
 
-    const { name, text, article_id: articleId } = (await req.json()).record;
+  const { name, text, article_id: articleId } = (await req.json()).record;
 
-    const result = await commentNotification.execute(articleId, name, text);
+  const result = await commentNotification.execute(articleId, name, text);
 
-    return result.success
-        ? new Response()
-        : Response.json(result, { status: 500 });
+  return result.success
+    ? new Response()
+    : Response.json(result, { status: 500 });
 }

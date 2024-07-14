@@ -16,7 +16,7 @@ test("読込中のときにローディングが表示される", () => {
   const screen = render(
     <SWRConfig value={{ dedupingInterval: 0 }}>
       <CommentListContainer articleSlug="test" />
-    </SWRConfig>
+    </SWRConfig>,
   );
   const loadingItem = screen.getByRole("listitem", { name: "読込中" });
   expect(loadingItem).toBeVisible();

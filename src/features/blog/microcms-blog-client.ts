@@ -49,7 +49,7 @@ type ConstructorProps = {
 
 function toFieldPickedPost<U extends PostField>(
   post: Partial<MicroCMSPost>,
-  fields: PostField[]
+  fields: PostField[],
 ): Pick<Post, U> {
   const translatedPost: Partial<Post> = {};
 

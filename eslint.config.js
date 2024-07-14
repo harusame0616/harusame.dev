@@ -13,14 +13,19 @@ const compat = new FlatCompat();
 
 export default [
   {
-    ignores: ["node_modules/**/*", "dist/**/*", "supabase/functions/**/*", "src/components/ui"],
+    ignores: [
+      "node_modules/**/*",
+      "dist/**/*",
+      "supabase/functions/**/*",
+      "src/components/ui",
+    ],
   },
   ...compat.config({
     extends: ["airbnb", "airbnb-typescript"],
   }),
   ...compat.extends(
     "plugin:eslint-plugin-tailwindcss/recommended",
-    "plugin:eslint-plugin-vitest/recommended"
+    "plugin:eslint-plugin-vitest/recommended",
   ),
   {
     ...playwright.configs["flat/recommended"],
@@ -59,7 +64,17 @@ export default [
           tsx: "never",
         },
       ],
-      "import/no-extraneous-dependencies": ["error", {"devDependencies": ["**/*.test.*", "vitest.config.ts", "vitest/**/*.*", "src/mocks/server.ts"]}],
+      "import/no-extraneous-dependencies": [
+        "error",
+        {
+          devDependencies: [
+            "**/*.test.*",
+            "vitest.config.ts",
+            "vitest/**/*.*",
+            "src/mocks/server.ts",
+          ],
+        },
+      ],
       "import/prefer-default-export": "off",
       "react/require-default-props": "off",
       "react/jsx-props-no-spreading": "off",

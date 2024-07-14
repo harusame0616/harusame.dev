@@ -10,9 +10,11 @@ export class SupabaseArticleRepository implements ArticleRepository {
   constructor(private supabase: ReturnType<typeof createClient<Database>>) {}
 
   async getByArticleId(articleId: string): Promise<Result<Article>> {
-    const result = await this.supabase.from(TABLE_NAME).select(
-      "*",
-    ).eq("id", articleId).single();
+    const result = await this.supabase
+      .from(TABLE_NAME)
+      .select("*")
+      .eq("id", articleId)
+      .single();
 
     if (result.error) {
       const logger = getLogger();
@@ -21,10 +23,12 @@ export class SupabaseArticleRepository implements ArticleRepository {
       return fail("記事の取得に失敗しました");
     }
 
-    return succeed(Article.fromDto({
-      articleId: result.data.id,
-      slug: result.data.slug,
-    }));
+    return succeed(
+      Article.fromDto({
+        articleId: result.data.id,
+        slug: result.data.slug,
+      }),
+    );
   }
 
   async saveMany(articles: Article[]): Promise<Result> {
@@ -75,7 +79,7 @@ export class SupabaseArticleRepository implements ArticleRepository {
         Article.fromDto({
           articleId: article.id,
           slug: article.slug,
-        })
+        }),
       ),
     );
   }

@@ -17,7 +17,7 @@ const test = base.extend<{ user: UserEvent; screen: RenderResult }>({
     const screen = render(
       <SWRConfig value={{ dedupingInterval: 0 }}>
         <CommentForm slug="test" />
-      </SWRConfig>
+      </SWRConfig>,
     );
     use(screen);
   },
@@ -39,7 +39,7 @@ test("名前が20文字を超える場合、エラーメッセージが表示さ
 }) => {
   await user.type(
     screen.getByRole("textbox", { name: "本文" }),
-    "a".repeat(21)
+    "a".repeat(21),
   );
   await user.click(screen.getByRole("button", { name: "コメントを投稿" }));
 
@@ -63,11 +63,11 @@ test("本文が1024文字を超える場合、エラーメッセージが表示�
   await user.type(screen.getByRole("textbox", { name: "名前" }), "name");
   await user.type(
     screen.getByRole("textbox", { name: "本文" }),
-    "a".repeat(1025)
+    "a".repeat(1025),
   );
   await user.click(screen.getByRole("button", { name: "コメントを投稿" }));
 
   expect(
-    screen.getByText("本文は1024文字以内にしてください。")
+    screen.getByText("本文は1024文字以内にしてください。"),
   ).toBeInTheDocument();
 });

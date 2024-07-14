@@ -15,7 +15,7 @@ export const getStaticPaths = (async ({ paginate }) => {
   const taggedPosts = tags.flatMap((tag) => {
     const page = paginate(
       posts.filter((post) =>
-        post.tags.map((postTag) => postTag.id).includes(tag.id)
+        post.tags.map((postTag) => postTag.id).includes(tag.id),
       ),
       {
         params: { tag: tag.id },
@@ -23,7 +23,7 @@ export const getStaticPaths = (async ({ paginate }) => {
         props: {
           tag: tag.name,
         },
-      }
+      },
     );
 
     return page;

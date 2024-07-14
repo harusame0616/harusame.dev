@@ -47,6 +47,6 @@ export interface BlogClient {
   getPost(props: GetPostProps): GetPostResponse;
   getPosts<U extends PostField>(props: GetPostsProps<U>): GetPostsResponse<U>;
   getAllPost<U extends PostField>(
-    props: GetAllPostsProps<U>
+    props: GetAllPostsProps<U>,
   ): GetAllPostResponse<U>;
 }
