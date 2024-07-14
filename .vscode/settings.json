@@ -8,5 +8,9 @@
   "deno.importMap": "./supabase/functions/import_map.json",
   "deno.lint": true,
   "deno.unstable": true,
-  "deno.enable": true
+  "deno.enable": true,
+  "prettier.documentSelectors": ["**/*.astro"],
+  "[astro]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }

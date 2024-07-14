@@ -1,0 +1,4 @@
+src/components/ui
+public
+dist
+pnpm-lock.yaml
