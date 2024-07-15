@@ -1,12 +1,13 @@
 ---
+// eslint-disable-next-line import/no-unresolved
 import { Image } from "astro:assets";
 import { HamburgerMenu } from "./menu/HamburgerMenu.tsx";
-import SPMenu from "./menu/SPMenu.astro";
 import Menu from "./menu/Menu.astro";
+import SPMenu from "./menu/SPMenu.astro";
 import logo from "@/assets/logo.svg";
 
 const pathname = new URL(Astro.request.url).pathname;
-const [_, currentMenu] = pathname.split("/");
+const [, currentMenu] = pathname.split("/");
 class InvalidMenuError extends Error {
   static {
     this.prototype.name = InvalidMenuError.name;
@@ -35,7 +36,7 @@ if (currentMenu !== "blog" && currentMenu !== "profile" && currentMenu !== "") {
       <Menu current={currentMenu || "top"} />
     </div>
     <div class="flex justify-end md:hidden">
-      <HamburgerMenu client:only>
+      <HamburgerMenu client:only="react">
         <SPMenu />
       </HamburgerMenu>
     </div>

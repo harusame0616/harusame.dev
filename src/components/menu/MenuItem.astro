@@ -10,7 +10,7 @@ const { href, active = false } = Astro.props;
 ---
 
 <li aria-current={active}>
-  <a href={href} class=`${menuStyle['menu-item']}` rel="prefetch"
+  <a href={href} class={menuStyle["menu-item"]} rel="prefetch"
     ><div class=`px-4 h-10 flex justify-center items-center`>
       <slot />
     </div>

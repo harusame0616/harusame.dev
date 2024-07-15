@@ -1,5 +1,5 @@
-import type { BlogClient } from "./blog-client";
 import { MicroCMSBlogClient } from "./microcms-blog-client";
+import type { BlogClient } from "./blog-client";
 
 export function createBlogClient(): BlogClient {
   return new MicroCMSBlogClient({

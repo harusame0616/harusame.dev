@@ -11,6 +11,7 @@ export function CommentList({ skeleton, comments }: Props) {
       {skeleton
         ? Array.from({ length: 3 }).map((_, i) => (
             <li
+              key={i}
               className="border-b  pb-4 last:border-b-0"
               aria-busy={skeleton}
               aria-label="読込中"

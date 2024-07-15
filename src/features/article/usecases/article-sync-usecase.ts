@@ -1,8 +1,8 @@
-import { getLogger } from "@/lib/logger/get-logger";
-import { type Result, succeed } from "@/lib/result";
 import { Article } from "@features/article/models/article";
 import { type ArticleGateway } from "@features/article/usecases/article-gateway";
 import { type ArticleRepository } from "@features/article/usecases/article-repository";
+import { type Result, succeed } from "@/lib/result";
+import { getLogger } from "@/lib/logger/get-logger";
 
 export class ArticleSyncUsecase {
   constructor(
@@ -27,11 +27,11 @@ export class ArticleSyncUsecase {
       return articlesResult;
     }
 
-    const articleSlugMap = Object.fromEntries(
+    const articleSlugMap = new Map(
       articlesResult.data.map((article) => [article.getSlug(), article]),
     );
     const newArticles = slugsResult.data
-      .filter((slug) => !articleSlugMap[slug])
+      .filter((slug) => !articleSlugMap.has(slug))
       .map((slug) => Article.create(slug));
 
     const lostArticles = articlesResult.data.filter(

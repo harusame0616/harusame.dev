@@ -113,7 +113,7 @@ export class MicroCMSBlogClient implements BlogClient {
     const posts = await this.client.getAllContents<Pick<MicroCMSPost, U>>({
       endpoint: "blogs",
       queries: {
-        fields: fields?.join(","),
+        fields: fields.join(","),
       },
     });
 
@@ -149,7 +149,7 @@ export class MicroCMSBlogClient implements BlogClient {
     >({
       endpoint: "blogs",
       queries: {
-        fields: fields?.join(","),
+        fields: fields.join(","),
         limit: count,
         offset: count * (page - 1),
       },

@@ -10,7 +10,9 @@ export function HamburgerMenu({ children }: PropsWithChildren) {
       <button
         aria-expanded={open}
         type="button"
-        onClick={() => setOpen((isOpen) => !isOpen)}
+        onClick={() => {
+          setOpen((isOpen) => !isOpen);
+        }}
         className={cn("relative", { "z-50": open })}
       >
         <span className="sr-only">メニュー</span>
