@@ -1,6 +1,6 @@
-import { Skeleton } from "@/components/ui/skeleton";
 import { format } from "date-fns";
 import { type CommentDto } from "../models/comment";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type Props =
   | { comment: CommentDto; skeleton?: false }

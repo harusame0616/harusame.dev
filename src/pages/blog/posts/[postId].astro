@@ -1,13 +1,13 @@
 ---
-import { Separator } from "@/components/ui/separator";
 import type { Post } from "@/features/blog/blog-client";
-import { highLight } from "@/lib/code-highlight";
 import type { GetStaticPaths } from "astro";
-import "highlight.js/styles/atom-one-dark.css";
-import { createBlogClient } from "../../../features/blog/create-blog-client";
-import Layout from "../../../layouts/Layout.astro";
-import { CommentListContainer } from "@/features/comment/components/comment-list-container";
+import { Separator } from "@/components/ui/separator";
+import { createBlogClient } from "@/features/blog/create-blog-client";
 import { CommentForm } from "@/features/comment/components/comment-form";
+import { CommentListContainer } from "@/features/comment/components/comment-list-container";
+import Layout from "@/layouts/Layout.astro";
+import { highLight } from "@/lib/code-highlight";
+import "highlight.js/styles/atom-one-dark.css";
 
 export type Props = {
   post: Post;
@@ -34,13 +34,13 @@ const content = highLight(post.content);
 
 <Layout title={`${post.title} - はるさめ.dev`}>
   <h1 class="mb-1 text-3xl font-bold">{post.title}</h1>
-  <ul aria-label="タグ" class="flex flex-wrap gap-2 mt-2">
+  <ul aria-label="タグ" class="mt-2 flex flex-wrap gap-2">
     {
       post.tags.map((tag) => (
         <li>
           <a
             href={`/blog/tags/${tag.id}/pages/1/`}
-            class="inline-block min-w-[4rem] max-w-[180px] truncate rounded-full border border-secondary px-2 text-center transition-all hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground z-10 relative"
+            class="relative z-10 inline-block min-w-[4rem] max-w-[180px] truncate rounded-full border border-secondary px-2 text-center transition-all hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
             rel="prefetch"
           >
             {tag.name}
@@ -58,9 +58,9 @@ const content = highLight(post.content);
 
   <div class="prose max-w-none" set:html={content} />
   <section slot="append" class="mt-8 rounded-sm border p-4">
-    <h2 class="text-xl mb-4 font-bold">コメント</h2>
-    <CommentListContainer articleSlug={post.id} client:only />
+    <h2 class="mb-4 text-xl font-bold">コメント</h2>
+    <CommentListContainer articleSlug={post.id} client:only="react" />
     <Separator className="my-8" />
-    <CommentForm slug={post.id} client:only />
+    <CommentForm slug={post.id} client:only="react" />
   </section>
 </Layout>

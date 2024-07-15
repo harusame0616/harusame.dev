@@ -1,7 +1,7 @@
+import { createClient } from "microcms-js-sdk";
+import { type ArticleGateway } from "@features/article/usecases/article-gateway";
 import { getLogger } from "@/lib/logger/get-logger";
 import { fail, succeed, type Result } from "@/lib/result";
-import { type ArticleGateway } from "@features/article/usecases/article-gateway";
-import { createClient } from "microcms-js-sdk";
 
 export class MicroCmsArticleGateway implements ArticleGateway {
   constructor(private microcms: ReturnType<typeof createClient>) {}

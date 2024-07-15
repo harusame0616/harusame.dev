@@ -1,6 +1,6 @@
-import { type CommentDto } from "@/features/comment/models/comment";
 import useSWR from "swr";
 import { queryComments } from "../infrastructures/supabase";
+import { type CommentDto } from "@/features/comment/models/comment";
 
 export function useQueryComments(
   articleSlug: string,
@@ -8,7 +8,7 @@ export function useQueryComments(
   | { data: null; success: false; message: string; isLoading: false }
   | { data: CommentDto[]; success: true; isLoading: false }
   | { data: null; isLoading: true } {
-  const result = useSWR(`${articleSlug}`, queryComments);
+  const result = useSWR(articleSlug, queryComments);
 
   if (result.isLoading) {
     return { data: null, isLoading: true };
