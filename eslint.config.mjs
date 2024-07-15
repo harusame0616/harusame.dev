@@ -67,7 +67,8 @@ export default [
           },
         ],
       },
-      settings: { "import/resolver": {
+      settings: {
+        "import/resolver": {
           typescript: {
             project: "./tsconfig.json",
           },
