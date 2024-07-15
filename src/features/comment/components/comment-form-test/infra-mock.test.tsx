@@ -25,7 +25,7 @@ const test = base.extend<{ user: UserEvent; screen: RenderResult }>({
     const screen = render(
       <SWRConfig value={{ dedupingInterval: 0 }}>
         <CommentForm slug="test" />
-      </SWRConfig>
+      </SWRConfig>,
     );
     use(screen);
   },
@@ -42,7 +42,7 @@ test("コメント投稿中は「コメントを投稿中」と表示される",
   await user.click(screen.getByRole("button", { name: "コメントを投稿" }));
 
   expect(
-    screen.getByRole("button", { name: "コメントを投稿中" })
+    screen.getByRole("button", { name: "コメントを投稿中" }),
   ).toBeInTheDocument();
 });
 

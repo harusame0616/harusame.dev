@@ -32,16 +32,16 @@ test("コメントがあればすべてのコメントが表示される", async
   ];
 
   server.use(
-    http.get(endpoint, () => Response.json([{ article_comment: comments }]))
+    http.get(endpoint, () => Response.json([{ article_comment: comments }])),
   );
   const screen = render(
     <SWRConfig value={{ dedupingInterval: 0 }}>
       <CommentListContainer articleSlug="test" />
-    </SWRConfig>
+    </SWRConfig>,
   );
   await waitFor(() => {
     expect(
-      screen.queryByRole("listitem", { name: "読込中" })
+      screen.queryByRole("listitem", { name: "読込中" }),
     ).not.toBeInTheDocument();
   });
   const [comment1, comment2, comment3] = screen.getAllByRole("listitem");
@@ -60,13 +60,13 @@ test("コメントがあればすべてのコメントが表示される", async
 test("コメントがないときに「コメントはありません」と表示される", async () => {
   server.resetHandlers();
   server.use(
-    http.get(endpoint, () => Response.json([{ article_comment: [] }]))
+    http.get(endpoint, () => Response.json([{ article_comment: [] }])),
   );
 
   const screen = render(
     <SWRConfig value={{ dedupingInterval: 0 }}>
       <CommentListContainer articleSlug="test" />
-    </SWRConfig>
+    </SWRConfig>,
   );
 
   await waitFor(() => {
@@ -80,7 +80,7 @@ test("存在しない記事のときに「記事が見つかりません」と�
   const screen = render(
     <SWRConfig value={{ dedupingInterval: 0 }}>
       <CommentListContainer articleSlug="test" />
-    </SWRConfig>
+    </SWRConfig>,
   );
 
   await waitFor(() => {
