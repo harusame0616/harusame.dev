@@ -8,18 +8,18 @@ import { CommentForm } from "../comment-form";
 // eslint-disable-next-line vitest/expect-expect, vitest/valid-title
 const test = base.extend<{ user: UserEvent; screen: RenderResult }>({
   // eslint-disable-next-line no-empty-pattern
-  user: async ({}, use) => {
+  user: ({}, use) => {
     const user = userEvent.setup();
-    use(user);
+    return use(user);
   },
   // eslint-disable-next-line no-empty-pattern
-  screen: async ({}, use) => {
+  screen: ({}, use) => {
     const screen = render(
       <SWRConfig value={{ dedupingInterval: 0 }}>
         <CommentForm slug="test" />
       </SWRConfig>,
     );
-    use(screen);
+    return use(screen);
   },
 });
 

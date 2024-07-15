@@ -9,11 +9,11 @@ async function mutator(
 }
 
 export function useCommentPost(slug: string) {
-  const { trigger, isMutating, error } = useSWRMutation(slug, mutator);
+  const { trigger, isMutating } = useSWRMutation(slug, mutator);
 
   async function post(name: string, text: string) {
     await trigger({ name, text });
   }
 
-  return { post, isMutating, error };
+  return { post, isMutating };
 }

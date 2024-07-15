@@ -1,9 +1,9 @@
-import { getLogger } from "@/lib/logger/get-logger";
-import { fail, type Result, succeed } from "@/lib/result";
-import { Article } from "@features/article/models/article";
-import { type ArticleRepository } from "@features/article/usecases/article-repository";
 import type { createClient } from "@supabase/supabase-js";
 import type { Database } from "types/supabase";
+import { Article } from "@features/article/models/article";
+import { type ArticleRepository } from "@features/article/usecases/article-repository";
+import { fail, type Result, succeed } from "@/lib/result";
+import { getLogger } from "@/lib/logger/get-logger";
 
 const TABLE_NAME = "article";
 export class SupabaseArticleRepository implements ArticleRepository {

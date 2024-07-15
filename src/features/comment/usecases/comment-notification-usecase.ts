@@ -18,7 +18,7 @@ export class CommentNotificationUsecase {
     const notificationMessage = `コメントが投稿されました。\n${name} さんからのコメント：\n${text}\n\n記事はこちら：${new URL(
       articleGetResult.data.getSlug(),
       this.articlesUrl,
-    )}`;
+    ).toString()}`;
     await this.notificationGateway.notify(notificationMessage);
     return { success: true };
   }

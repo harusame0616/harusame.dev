@@ -1,4 +1,11 @@
-import { Button } from "@/components/ui/button";
+import { useForm } from "react-hook-form";
+import z from "zod";
+
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ReloadIcon } from "@radix-ui/react-icons";
+import { useCommentPost } from "../hooks/use-comment-post";
+import { Textarea } from "@/components/ui/textarea";
+import { Input } from "@/components/ui/input";
 import {
   Form,
   FormControl,
@@ -8,14 +15,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { useForm } from "react-hook-form";
-import z from "zod";
-
-import { zodResolver } from "@hookform/resolvers/zod";
-import { ReloadIcon } from "@radix-ui/react-icons";
-import { useCommentPost } from "../hooks/use-comment-post";
+import { Button } from "@/components/ui/button";
 
 const FormSchema = z.object({
   name: z
@@ -51,7 +51,11 @@ export function CommentForm({ slug }: Props) {
     <Form {...form}>
       <form
         onSubmit={
-          commentPost.isMutating ? (e) => e.preventDefault() : handleSubmit
+          commentPost.isMutating
+            ? (e) => {
+                e.preventDefault();
+              }
+            : handleSubmit
         }
         className="space-y-1"
       >

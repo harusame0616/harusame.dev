@@ -2,9 +2,9 @@ import { render, waitFor } from "@testing-library/react";
 import { http } from "msw";
 import { expect, test } from "vitest";
 
-import { server } from "@/mocks/server";
 import { SWRConfig } from "swr";
 import { CommentListContainer } from "../comment-list-container";
+import { server } from "@/mocks/server";
 
 const endpoint = "http://127.0.0.1:24321/rest/v1/article";
 
