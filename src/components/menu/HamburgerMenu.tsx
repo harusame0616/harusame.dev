@@ -1,30 +1,34 @@
-import { Cross1Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { useState, type PropsWithChildren } from "react";
-import { cn } from "@/lib/utils";
+import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import { type PropsWithChildren } from "react";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "../ui/sheet";
+import { Separator } from "../ui/separator";
+import logo from "@/assets/logo.svg";
 
 export function HamburgerMenu({ children }: PropsWithChildren) {
-  const [open, setOpen] = useState(false);
-
   return (
-    <div className="relative" aria-modal={open}>
-      <button
-        aria-expanded={open}
-        type="button"
-        onClick={() => {
-          setOpen((isOpen) => !isOpen);
-        }}
-        className={cn("relative", { "z-50": open })}
-      >
-        <span className="sr-only">メニュー</span>
-        {open ? (
-          <Cross1Icon aria-hidden className="h-10 w-10" />
-        ) : (
-          <HamburgerMenuIcon aria-hidden className="h-10 w-10" />
-        )}
-      </button>
-      <div className={cn({ hidden: !open })} id="menu-content">
-        {children}
-      </div>
-    </div>
+    <Sheet>
+      <SheetTrigger>
+        <HamburgerMenuIcon className="h-10 w-10" aria-label="メニュー" />
+      </SheetTrigger>
+      <SheetContent side="top">
+        <SheetHeader>
+          <img
+            src={logo.src}
+            height={64}
+            alt="はるさめ.dev"
+            className="h-16 object-contain"
+          />
+          <SheetTitle className="sr-only">メニュー</SheetTitle>
+        </SheetHeader>
+        <Separator className="mt-4" />
+        <div>{children}</div>
+      </SheetContent>
+    </Sheet>
   );
 }
