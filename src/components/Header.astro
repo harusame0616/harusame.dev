@@ -1,30 +1,15 @@
 ---
 // eslint-disable-next-line import/no-unresolved
 import { Image } from "astro:assets";
-import { HamburgerMenu } from "./menu/HamburgerMenu.tsx";
-import Menu from "./menu/Menu.astro";
-import SPMenu from "./menu/SPMenu.astro";
+import { HamburgerMenu } from "./menu/HamburgerMenu";
+import { PCMenu } from "./menu/PCMenu";
+import { SPMenu } from "./menu/SPMenu";
+import { parseMenu } from "./menu/menu";
 import logo from "@/assets/logo.svg";
 
 const pathname = new URL(Astro.request.url).pathname;
-const [, currentMenu] = pathname.split("/");
-class InvalidMenuError extends Error {
-  static {
-    this.prototype.name = InvalidMenuError.name;
-  }
-
-  constructor(menu: string) {
-    super("現在のメニューが不正です", {
-      cause: {
-        selectedMenu: menu,
-      },
-    });
-  }
-}
-
-if (currentMenu !== "blog" && currentMenu !== "profile" && currentMenu !== "") {
-  throw new InvalidMenuError(currentMenu);
-}
+const [, menuPath] = pathname.split("/");
+const currentMenu = parseMenu(menuPath || "top");
 ---
 
 <header class="grid h-16 grid-cols-[auto_1fr]">
@@ -33,10 +18,10 @@ if (currentMenu !== "blog" && currentMenu !== "profile" && currentMenu !== "") {
   </a>
   <nav aria-label="メインメニュー" class="grid grid-cols-[1fr_auto]">
     <div class="hidden justify-end md:flex">
-      <Menu current={currentMenu || "top"} />
+      <PCMenu current={currentMenu} />
     </div>
     <div class="flex justify-end md:hidden">
-      <HamburgerMenu client:only="react">
+      <HamburgerMenu client:media="(max-width: 768px)">
         <SPMenu />
       </HamburgerMenu>
     </div>
