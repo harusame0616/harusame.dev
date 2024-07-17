@@ -1,6 +1,7 @@
 ---
 import type { Page } from "astro";
 import type { Post } from "./blog-client";
+import { Tag } from "@/features/blog/components/tag";
 
 interface Props {
   page: Page<
@@ -48,14 +49,8 @@ function format(date: Date) {
           <div class="mt-4">
             <ul aria-label="タグ" class="flex flex-wrap gap-2">
               {post.tags.map((tag) => (
-                <li>
-                  <a
-                    href={`/blog/tags/${tag.id}/pages/1/`}
-                    class="relative z-10 inline-block min-w-[4rem] max-w-[180px] truncate rounded-full border border-secondary px-2 text-center transition-all hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground"
-                    rel="prefetch"
-                  >
-                    {tag.name}
-                  </a>
+                <li class="relative z-10">
+                  <Tag tagId={tag.id}>{tag.name}</Tag>
                 </li>
               ))}
             </ul>
