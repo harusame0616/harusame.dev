@@ -9,6 +9,8 @@ import { CommentListContainer } from "@/features/comment/components/comment-list
 import Layout from "@/layouts/Layout.astro";
 import { highLight } from "@/lib/code-highlight";
 import "highlight.js/styles/atom-one-dark.css";
+import { formatDate } from "@/lib/date";
+import { MuteText } from "@/components/MuteText";
 
 export type Props = {
   post: Post;
@@ -34,19 +36,24 @@ const content = highLight(post.content);
 ---
 
 <Layout title={`${post.title} - はるさめ.dev`}>
-  <h1 class="mb-1 text-3xl font-bold">{post.title}</h1>
-  <ul aria-label="タグ" class="mt-2 flex flex-wrap gap-2">
-    {
-      post.tags.map((tag) => (
-        <li>
-          <Tag tagId={tag.id}>{tag.name}</Tag>
-        </li>
-      ))
-    }
-  </ul>
-  <div class="text-xs text-muted-foreground">
-    投稿日：{post.publishedAt}
+  <h1 class="text-3xl font-bold">{post.title}</h1>
+  <div class="grid grid-cols-[1fr,auto]">
+    <ul aria-label="タグ" class="mt-2 flex flex-wrap gap-2">
+      {
+        post.tags.map((tag) => (
+          <li>
+            <Tag tagId={tag.id}>{tag.name}</Tag>
+          </li>
+        ))
+      }
+    </ul>
   </div>
+  <MuteText>
+    <time>
+      {formatDate(post.publishedAt)}
+    </time>
+    に公開
+  </MuteText>
   <div class="my-4">
     <Separator />
   </div>
@@ -55,7 +62,8 @@ const content = highLight(post.content);
   <section slot="append" class="mt-8 rounded-sm border p-4">
     <h2 class="mb-4 text-xl font-bold">コメント</h2>
     <CommentListContainer articleSlug={post.id} client:only="react" />
-    <Separator className="my-8" />
-    <CommentForm slug={post.id} client:only="react" />
+    <div class="mt-4">
+      <CommentForm slug={post.id} client:only="react" />
+    </div>
   </section>
 </Layout>

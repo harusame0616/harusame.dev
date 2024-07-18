@@ -2,6 +2,8 @@
 import type { Page } from "astro";
 import type { Post } from "./blog-client";
 import { Tag } from "@/features/blog/components/tag";
+import { formatDistanceToNow } from "@/lib/date";
+import { MuteText } from "@/components/MuteText";
 
 interface Props {
   page: Page<
@@ -14,10 +16,6 @@ const { page, title } = Astro.props;
 function stripTag(htmlString: string) {
   return htmlString.replace(/<\/?[^>]+>/gi, "");
 }
-
-function format(date: Date) {
-  return date.toLocaleDateString();
-}
 ---
 
 <div>
@@ -29,10 +27,6 @@ function format(date: Date) {
           class="group relative row-span-5 mb-4 grid grid-rows-[subgrid] border border-solid border-border p-4 shadow-sm transition-all hover:shadow-lg md:mb-10"
           aria-labelledby={`title-${post.id}`}
         >
-          <div class="text-xs text-muted-foreground">
-            <div>投稿日： {format(post.publishedAt)}</div>
-          </div>
-          <div class="text-xs" />
           <h2 class="text-lg font-bold" id={`title-${post.id}`}>
             {post.category.name}：
             <a
@@ -46,7 +40,7 @@ function format(date: Date) {
           <div class="mt-4 line-clamp-3 text-sm tracking-wider text-muted-foreground">
             {stripTag(post.content).slice(0, 120)}
           </div>
-          <div class="mt-4">
+          <div class="mt-4 grid grid-cols-[1fr,auto] items-center">
             <ul aria-label="タグ" class="flex flex-wrap gap-2">
               {post.tags.map((tag) => (
                 <li class="relative z-10">
@@ -54,6 +48,9 @@ function format(date: Date) {
                 </li>
               ))}
             </ul>
+            <MuteText>
+              {formatDistanceToNow(new Date(post.publishedAt))}
+            </MuteText>
           </div>
         </article>
       ))

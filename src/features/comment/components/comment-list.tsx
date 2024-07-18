@@ -6,13 +6,15 @@ type Props =
   | { comments?: undefined; skeleton: true };
 
 export function CommentList({ skeleton, comments }: Props) {
+  const liClass = "border-t py-6 last:border-b";
+
   return (
-    <ul className="flex flex-col gap-8" aria-label="コメント">
+    <ul className="flex flex-col" aria-label="コメント">
       {skeleton
         ? Array.from({ length: 3 }).map((_, i) => (
             <li
               key={i}
-              className="border-b  pb-4 last:border-b-0"
+              className={liClass}
               aria-busy={skeleton}
               aria-label="読込中"
               aria-hidden={i !== 0}
@@ -21,10 +23,7 @@ export function CommentList({ skeleton, comments }: Props) {
             </li>
           ))
         : comments.map((comment) => (
-            <li
-              className="border-b pb-4 last:border-b-0"
-              key={comment.commentId}
-            >
+            <li className={liClass} key={comment.commentId}>
               <CommentListItem comment={comment} />
             </li>
           ))}
