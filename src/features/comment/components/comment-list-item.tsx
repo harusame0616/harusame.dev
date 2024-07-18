@@ -1,6 +1,8 @@
-import { format } from "date-fns";
 import { type CommentDto } from "../models/comment";
+import type { PropsWithChildren } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
+import { formatDistanceToNow } from "@/lib/date";
+import { MuteText } from "@/components/MuteText";
 
 type Props =
   | { comment: CommentDto; skeleton?: false }
@@ -8,33 +10,36 @@ type Props =
 
 export function CommentListItem({ skeleton, comment }: Props) {
   return (
-    <article className="flex flex-col">
-      <div className="flex">
-        <dl className="mb-1 flex gap-8">
-          <div className="flex items-center gap-1">
-            <dt className="text-xs text-muted-foreground">投稿者</dt>
-            <dl>
-              {skeleton ? <Skeleton className="h-6 w-24" /> : comment.name}
-            </dl>
-          </div>
-          <div className="flex items-center gap-1">
-            <dt className="text-xs text-muted-foreground">投稿日</dt>
-            <dl>
-              {skeleton ? (
-                <Skeleton className="h-6 w-24" />
-              ) : (
-                format(comment.commentedAt, "yyyy-MM-dd HH:mm")
-              )}
-            </dl>
-          </div>
-        </dl>
-      </div>
-      <div className="flex flex-col gap-px whitespace-pre-wrap p-4">
+    <article>
+      {skeleton ? (
+        <LineBox>
+          <Skeleton className="h-4 w-20" />
+          <Skeleton className="h-3 w-32" />
+        </LineBox>
+      ) : (
+        <div>
+          <span className="mr-1 text-sm font-bold">{comment.name}</span>
+          <MuteText>
+            さんが
+            <span className="mx-1 font-bold">
+              {formatDistanceToNow(new Date(comment.commentedAt))}
+            </span>
+            にコメント
+          </MuteText>
+        </div>
+      )}
+      <div className="mt-1 whitespace-pre-wrap ">
         {skeleton ? (
           <>
-            <Skeleton className="h-6 w-48" />
-            <Skeleton className="h-6 w-72" />
-            <Skeleton className="h-6 w-52" />
+            <LineBox>
+              <Skeleton className="h-5 w-48" />
+            </LineBox>
+            <LineBox>
+              <Skeleton className="h-5 w-72" />
+            </LineBox>
+            <LineBox>
+              <Skeleton className="h-5 w-52" />
+            </LineBox>
           </>
         ) : (
           comment.text
@@ -42,4 +47,8 @@ export function CommentListItem({ skeleton, comment }: Props) {
       </div>
     </article>
   );
+}
+
+function LineBox({ children }: PropsWithChildren) {
+  return <div className="flex h-6 items-end">{children}</div>;
 }
