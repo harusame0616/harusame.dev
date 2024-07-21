@@ -10,6 +10,7 @@ import type {
   GetPostsResponse,
   Post,
   PostField,
+  TagDto,
 } from "./blog-client";
 
 type MicroCMSCategory = {
@@ -159,5 +160,16 @@ export class MicroCMSBlogClient implements BlogClient {
       posts: contents.map((post) => toFieldPickedPost(post, fields)),
       totalCount,
     };
+  }
+
+  async getAllTags(): Promise<TagDto[]> {
+    const tags = await this.client.getAllContents<MicroCMSTag>({
+      endpoint: "tags",
+    });
+
+    return tags.map((tag) => ({
+      id: tag.id,
+      name: tag.name,
+    }));
   }
 }

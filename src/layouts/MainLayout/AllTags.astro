@@ -1,0 +1,14 @@
+---
+import { Separator } from "@/components/ui/separator";
+import { TagList } from "@/features/blog/components/TagList";
+import { createBlogClient } from "@/features/blog/create-blog-client";
+
+const blogClient = createBlogClient();
+const tags = await blogClient.getAllTags();
+---
+
+<section class="space-y-2 rounded-sm border p-4">
+  <h2 class="text-xs">タグ</h2>
+  <Separator />
+  <TagList tags={tags} />
+</section>
