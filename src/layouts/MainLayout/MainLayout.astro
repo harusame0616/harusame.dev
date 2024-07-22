@@ -1,7 +1,9 @@
 ---
-import "../assets/global.css";
+import "@/assets/global.css";
+import Header from "../../components/Header.astro";
+import MiniProfile from "./MiniProfile.astro";
 
-import Header from "../components/Header.astro";
+import AllTags from "./AllTags.astro";
 interface Props {
   title?: string;
 }
@@ -41,12 +43,22 @@ const titleInHead = title ? `${title} - ${TITLE}` : TITLE;
     <title>{titleInHead}</title>
   </head>
   <body class="flex flex-col items-center">
-    <div class="w-full max-w-5xl p-2 md:p-4">
-      <Header />
-      <main class="mt-2 rounded-sm border p-4">
-        <slot />
-      </main>
-      <slot name="append" />
+    <div
+      class="grid w-full max-w-5xl grid-cols-1 gap-4 p-2 md:grid-cols-4 md:p-4"
+    >
+      <div class="md:col-span-4">
+        <Header class="col-span-4" />
+      </div>
+      <div class="md:col-span-3">
+        <main class="rounded-sm border p-4">
+          <slot />
+        </main>
+        <slot name="append" />
+      </div>
+      <aside class="space-y-4">
+        <MiniProfile />
+        <AllTags />
+      </aside>
     </div>
   </body>
 </html>

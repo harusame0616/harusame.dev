@@ -3,7 +3,7 @@ export type Category = {
   name: string;
 };
 
-export type Tag = {
+export type TagDto = {
   id: string;
   name: string;
 };
@@ -14,7 +14,7 @@ export type Post = {
   title: string;
   content: string;
   category: Category;
-  tags: Tag[];
+  tags: TagDto[];
 };
 
 export type PostField = keyof Post;
@@ -49,4 +49,5 @@ export interface BlogClient {
   getAllPost<U extends PostField>(
     props: GetAllPostsProps<U>,
   ): GetAllPostResponse<U>;
+  getAllTags(): Promise<TagDto[]>;
 }

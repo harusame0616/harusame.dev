@@ -26,6 +26,9 @@ dependencies:
   '@hookform/resolvers':
     specifier: ^3.7.0
     version: 3.7.0(react-hook-form@7.52.1)
+  '@icons-pack/react-simple-icons':
+    specifier: ^9.6.0
+    version: 9.6.0(react@18.2.0)
   '@radix-ui/react-dialog':
     specifier: ^1.1.1
     version: 1.1.1(@types/react-dom@18.2.17)(@types/react@18.2.41)(react-dom@18.2.0)(react@18.2.0)
@@ -1121,6 +1124,14 @@ packages:
     resolution: {integrity: sha512-93zYdMES/c1D69yZiKDBj0V24vqNzB/koF26KPaagAfd3P/4gUlh3Dys5ogAK+Exi9QyzlD8x/08Zt7wIKcDcA==}
     deprecated: Use @eslint/object-schema instead
     dev: true
+
+  /@icons-pack/react-simple-icons@9.6.0(react@18.2.0):
+    resolution: {integrity: sha512-8lDLssg+2aJutepQV/P4zlGm0fgujSeIItCYaLKo+25NtwepozWxZJOnc5WGHSi3HjiLcGmxI6dA2eiD5w3i+w==}
+    peerDependencies:
+      react: ^16.13 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /@inquirer/confirm@3.1.11:
     resolution: {integrity: sha512-3wWw10VPxQP279FO4bzWsf8YjIAq7NdwATJ4xS2h1uwsXZu/RmtOVV95rZ7yllS1h/dzu+uLewjMAzNDEj8h2w==}
