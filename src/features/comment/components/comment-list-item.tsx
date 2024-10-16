@@ -1,8 +1,8 @@
 import { type CommentDto } from "../models/comment";
 import type { PropsWithChildren } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
-import { formatDistanceToNow } from "@/lib/date";
 import { MuteText } from "@/components/MuteText";
+import { DateDistance } from "@/components/DateDistance";
 
 type Props =
   | { comment: CommentDto; skeleton?: false }
@@ -22,7 +22,7 @@ export function CommentListItem({ skeleton, comment }: Props) {
           <MuteText>
             さんが
             <span className="mx-1 font-bold">
-              {formatDistanceToNow(new Date(comment.commentedAt))}
+              <DateDistance date={comment.commentedAt} /> ago
             </span>
             にコメント
           </MuteText>

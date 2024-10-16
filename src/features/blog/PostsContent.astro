@@ -2,7 +2,7 @@
 import type { Page } from "astro";
 import type { Post } from "./blog-client";
 import { Tag } from "@/features/blog/components/tag";
-import { formatDistanceToNow } from "@/lib/date";
+import { DateDistance } from "@/components/DateDistance";
 import { MuteText } from "@/components/MuteText";
 
 interface Props {
@@ -49,7 +49,7 @@ function stripTag(htmlString: string) {
               ))}
             </ul>
             <MuteText>
-              {formatDistanceToNow(new Date(post.publishedAt))}
+              <DateDistance date={post.publishedAt} client:only="react" /> ago
             </MuteText>
           </div>
         </article>
