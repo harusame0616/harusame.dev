@@ -22,7 +22,7 @@ export function CommentListItem({ skeleton, comment }: Props) {
           <MuteText>
             さんが
             <span className="mx-1 font-bold">
-              <DateDistance date={comment.commentedAt} />
+              <DateDistance date={comment.commentedAt} /> ago
             </span>
             にコメント
           </MuteText>
