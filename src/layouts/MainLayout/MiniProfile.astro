@@ -1,14 +1,14 @@
 ---
 // eslint-disable-next-line import/no-unresolved
-import { Image } from "astro:assets";
-import Me from "@/assets/me.jpeg";
+import { Picture } from "astro:assets";
+import Me from "@/assets/me.webp";
 import SNSList from "@/layouts/MainLayout/SNSList.astro";
 ---
 
 <div class="space-y-2 rounded-sm border p-4">
   <div class="flex items-center gap-4">
     <div class="h-16 w-16 rounded-full">
-      <Image src={Me} alt="" />
+      <Picture src={Me} alt="" formats={["webp"]} />
     </div>
     <div>
       <div class="mb-1 font-bold">はる</div>
