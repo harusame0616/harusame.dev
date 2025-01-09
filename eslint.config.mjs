@@ -63,11 +63,12 @@ export default [
   ...eslintPluginAstro.configs["flat/jsx-a11y-recommended"],
   {
     files: ["**/*.astro"],
-    rules:{
+    rules: {
       "react/jsx-key": "off",
-  }},
+    },
+  },
   {
-    name: 'typescript project setting',
+    name: "typescript project setting",
     files: ["**/*.{ts,tsx,astro}"],
     languageOptions: {
       parserOptions: {
@@ -82,15 +83,12 @@ export default [
       },
     },
   },
-  // tailwind
   ...tailwind.configs["flat/recommended"],
-  // playwright
   {
     name: "playwright",
     files: ["e2e/**/*.test.{ts,tsx}"],
     ...playwright.configs["flat/recommended"],
   },
-  // vitest
   {
     name: "vitest",
     files: ["src/**/*.test.{ts,tsx}"],
@@ -99,5 +97,10 @@ export default [
   {
     name: "prettier",
     ...prettier,
+  },
+  {
+    rules: {
+      "react/self-closing-comp": ["off"],
+    },
   },
 ];
