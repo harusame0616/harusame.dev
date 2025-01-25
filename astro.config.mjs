@@ -1,5 +1,5 @@
 import path from "node:path";
-import { fileURLToPath } from "nde:url";
+import { fileURLToPath } from "node:url";
 import prefetch from "@astrojs/prefetch";
 import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
