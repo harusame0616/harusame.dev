@@ -9,6 +9,10 @@ importers:
   .: {}
 
   packages/article-post:
+    dependencies:
+      '@biomejs/biome':
+        specifier: 1.9.4
+        version: 1.9.4
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: ^0.6.4
