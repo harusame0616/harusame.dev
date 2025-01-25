@@ -30,6 +30,31 @@ importers:
         specifier: ^3.105.1
         version: 3.105.1(@cloudflare/workers-types@4.20250124.3)
 
+  packages/comment-post:
+    dependencies:
+      '@biomejs/biome':
+        specifier: 1.9.4
+        version: 1.9.4
+      valibot:
+        specifier: 1.0.0-beta.14
+        version: 1.0.0-beta.14(typescript@5.7.3)
+    devDependencies:
+      '@cloudflare/vitest-pool-workers':
+        specifier: ^0.6.4
+        version: 0.6.7(@cloudflare/workers-types@4.20250124.3)(@vitest/runner@2.1.8)(@vitest/snapshot@2.1.8)(vitest@2.1.8(@types/node@20.14.9)(jsdom@24.1.0))
+      '@cloudflare/workers-types':
+        specifier: ^4.20250124.3
+        version: 4.20250124.3
+      typescript:
+        specifier: ^5.5.2
+        version: 5.7.3
+      vitest:
+        specifier: 2.1.8
+        version: 2.1.8(@types/node@20.14.9)(jsdom@24.1.0)
+      wrangler:
+        specifier: ^3.105.1
+        version: 3.105.1(@cloudflare/workers-types@4.20250124.3)
+
   packages/web:
     dependencies:
       '@astrojs/check':
@@ -3879,6 +3904,14 @@ packages:
     resolution: {integrity: sha512-+g8ENReyr8YsOc6fv/NVJs2vFdHBnBNdfE49rshrTzDWOlUx4Gq7KOS2GD8eqhy2j+Ejq29+SbKH8yjkAqXqoA==}
     engines: {node: '>=8'}
     hasBin: true
+
+  valibot@1.0.0-beta.14:
+    resolution: {integrity: sha512-tLyV2rE5QL6U29MFy3xt4AqMrn+/HErcp2ZThASnQvPMwfSozjV1uBGKIGiegtZIGjinJqn0SlBdannf18wENA==}
+    peerDependencies:
+      typescript: '>=5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
 
   vfile-location@4.1.0:
     resolution: {integrity: sha512-YF23YMyASIIJXpktBa4vIGLJ5Gs88UB/XePgqPmTa7cDA+JeO3yclbpheQYCHjVHBn/yePzrXuygIL+xbvRYHw==}
@@ -8282,6 +8315,10 @@ snapshots:
       diff: 5.1.0
       kleur: 4.1.5
       sade: 1.8.1
+
+  valibot@1.0.0-beta.14(typescript@5.7.3):
+    optionalDependencies:
+      typescript: 5.7.3
 
   vfile-location@4.1.0:
     dependencies:

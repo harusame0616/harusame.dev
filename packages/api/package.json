@@ -1,5 +1,5 @@
 {
-	"name": "article-post",
+	"name": "api",
 	"version": "0.0.0",
 	"private": true,
 	"scripts": {
@@ -23,6 +23,7 @@
 		"wrangler": "^3.105.1"
 	},
 	"dependencies": {
-		"@biomejs/biome": "1.9.4"
+		"@biomejs/biome": "1.9.4",
+		"valibot": "1.0.0-beta.14"
 	}
 }

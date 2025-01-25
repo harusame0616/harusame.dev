@@ -4,12 +4,12 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "article-post",
+	"name": "api",
 	"main": "src/index.ts",
 	"compatibility_date": "2025-01-24",
 	"observability": {
 		"enabled": true
-	}
+	},
 	/**
 	 * Smart Placement
 	 * Docs: https://developers.cloudflare.com/workers/configuration/smart-placement/#smart-placement
@@ -22,6 +22,13 @@
 	 * databases, object storage, AI inference, real-time communication and more.
 	 * https://developers.cloudflare.com/workers/runtime-apis/bindings/
 	 */
+	"d1_databases": [
+		{
+			"binding": "DATABASE",
+			"database_name": "harusame-dev",
+			"database_id": "ef731e17-82d4-46fc-98e8-d7e12aa656a9"
+		}
+	]
 
 	/**
 	 * Environment Variables
