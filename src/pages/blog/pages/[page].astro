@@ -1,15 +1,15 @@
 ---
-import Layout from "../../../layouts/MainLayout/MainLayout.astro";
-import { createBlogClient } from "../../../features/blog/create-blog-client";
-import type { GetStaticPaths } from "astro";
 import PostsContent from "@/features/blog/PostsContent.astro";
+import type { GetStaticPaths } from "astro";
+import { createBlogClient } from "../../../features/blog/create-blog-client";
+import Layout from "../../../layouts/MainLayout/MainLayout.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const blog = createBlogClient();
-  const { posts } = await blog.getAllPost({
-    fields: ["tags", "category", "id", "publishedAt", "title", "content"],
-  });
-  return paginate(posts, { pageSize: 6 });
+	const blog = createBlogClient();
+	const { posts } = await blog.getAllPost({
+		fields: ["tags", "category", "id", "publishedAt", "title", "content"],
+	});
+	return paginate(posts, { pageSize: 6 });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;

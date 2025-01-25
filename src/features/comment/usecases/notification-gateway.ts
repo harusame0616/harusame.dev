@@ -1,3 +1,3 @@
 export interface NotificationGateway {
-  notify(text: string): Promise<void>;
+	notify(text: string): Promise<void>;
 }

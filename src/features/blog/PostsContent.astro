@@ -1,20 +1,20 @@
 ---
-import type { Page } from "astro";
-import type { Post } from "./blog-client";
-import { Tag } from "@/features/blog/components/tag";
 import { DateDistance } from "@/components/DateDistance";
 import { MuteText } from "@/components/MuteText";
+import { Tag } from "@/features/blog/components/tag";
+import type { Page } from "astro";
+import type { Post } from "./blog-client";
 
 interface Props {
-  page: Page<
-    Pick<Post, "tags" | "id" | "publishedAt" | "title" | "content" | "category">
-  >;
-  title: string;
+	page: Page<
+		Pick<Post, "tags" | "id" | "publishedAt" | "title" | "content" | "category">
+	>;
+	title: string;
 }
 const { page, title } = Astro.props;
 
 function stripTag(htmlString: string) {
-  return htmlString.replace(/<\/?[^>]+>/gi, "");
+	return htmlString.replace(/<\/?[^>]+>/gi, "");
 }
 ---
 

@@ -1,9 +1,9 @@
 import { formatDistanceToNow } from "date-fns";
 
 type Props = {
-  date: string | Date;
+	date: string | Date;
 };
 
 export function DateDistance({ date }: Props) {
-  return <span>{formatDistanceToNow(new Date(date))}</span>;
+	return <span>{formatDistanceToNow(new Date(date))}</span>;
 }

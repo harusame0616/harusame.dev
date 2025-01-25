@@ -1,11 +1,11 @@
 ---
 // eslint-disable-next-line import/no-unresolved
 import { Image } from "astro:assets";
+import logo from "@/assets/logo.svg";
 import { HamburgerMenu } from "./menu/HamburgerMenu";
 import { PCMenu } from "./menu/PCMenu";
 import { SPMenu } from "./menu/SPMenu";
 import { parseMenu } from "./menu/menu";
-import logo from "@/assets/logo.svg";
 
 const pathname = new URL(Astro.request.url).pathname;
 const [, menuPath] = pathname.split("/");
