@@ -1,4 +1,4 @@
-import { fail, succeed, type Result } from "@/lib/result";
+import { type Result, fail, succeed } from "@/lib/result";
 import type { CommentPostParams, CommentsResponse } from "api";
 import type { CommentDto } from "../models/comment";
 
