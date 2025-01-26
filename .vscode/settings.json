@@ -2,7 +2,7 @@
 	"cSpell.words": ["MICROCMS"],
 	"eslint.experimental.useFlatConfig": true,
 	"[typescript]": {
-		"editor.defaultFormatter": "denoland.vscode-deno"
+		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"deno.enablePaths": ["supabase/functions"],
 	"deno.importMap": "./supabase/functions/import_map.json",
