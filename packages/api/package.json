@@ -5,6 +5,7 @@
 	"main": "./src/index.ts",
 	"scripts": {
 		"deploy": "wrangler deploy",
+		"deploy:production": "wrangler deploy --env production",
 		"dev": "wrangler dev",
 		"start": "wrangler dev",
 		"test": "vitest",
