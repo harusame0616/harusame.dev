@@ -6,7 +6,7 @@ export default defineConfig({
 	test: {
 		globals: true,
 		environment: "jsdom",
-		setupFiles: ["./vitest/jest-dom.setup.ts", "./vitest/mock-server.setup.ts"],
+		setupFiles: ["./vitest/mock-server.setup.ts"],
 		env: {
 			PUBLIC_SUPABASE_URL: "http://127.0.0.1:24321/",
 			PUBLIC_SUPABASE_ANON_KEY:

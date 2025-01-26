@@ -1,3 +1,4 @@
+import "@testing-library/jest-dom/vitest";
 import { render } from "@testing-library/react";
 import { expect, test, vi } from "vitest";
 
