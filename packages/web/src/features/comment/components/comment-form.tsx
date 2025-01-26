@@ -1,3 +1,4 @@
+import Turnstile, { useTurnstile } from "react-turnstile";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
@@ -26,6 +27,7 @@ const FormSchema = z.object({
 		.string()
 		.min(1, "本文は必須です。")
 		.max(1024, "本文は1024文字以内にしてください。"),
+	token: z.string().min(1, "検証を行ってください。"),
 });
 type FormSchema = z.infer<typeof FormSchema>;
 
@@ -39,6 +41,7 @@ export function CommentForm({ slug }: Props) {
 		defaultValues: {
 			name: "",
 			text: "",
+			token: "",
 		},
 	});
 
@@ -94,6 +97,12 @@ export function CommentForm({ slug }: Props) {
 							<FormMessage />
 						</FormItem>
 					)}
+				/>
+				<Turnstile
+					sitekey="0x4AAAAAAA6YNSB-ZSIK1MLX"
+					refreshExpired="auto"
+					fixedSize
+					onVerify={(token) => form.setValue("token", token)}
 				/>
 				<Button
 					type="submit"

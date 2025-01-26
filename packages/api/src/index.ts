@@ -16,11 +16,15 @@ const commentPostParamsSchema = v.object({
 	articleId: v.string(),
 	name: v.string(),
 	text: v.string(),
+	token: v.string(),
 });
 export type CommentPostParams = v.InferInput<typeof commentPostParamsSchema>;
 
 export default {
-	async fetch(request, { DATABASE, WEB_ORIGIN }): Promise<Response> {
+	async fetch(
+		request,
+		{ DATABASE, WEB_ORIGIN, TURNSTILE_SECRET },
+	): Promise<Response> {
 		const url = new URL(request.url);
 
 		const headers = new Headers();
@@ -62,16 +66,27 @@ export default {
 
 		if (request.method === "POST") {
 			const paramsResult = v.safeParse(
-				v.object({
-					articleId: v.string(),
-					name: v.string(),
-					text: v.string(),
-				}),
+				commentPostParamsSchema,
 				await request.json(),
 			);
 
 			if (!paramsResult.success) {
 				return new Response("bad request", { status: 400 });
+			}
+
+			const formData = new FormData();
+			formData.append("secret", TURNSTILE_SECRET);
+			formData.append("response", paramsResult.output.token);
+			// biome-ignore lint/style/noNonNullAssertion: <explanation>
+			formData.append("remoteip", request.headers.get("CF-Connecting-IP")!);
+
+			const url = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+			const turnstileResult = await fetch(url, {
+				body: formData,
+				method: "POST",
+			});
+			if (!((await turnstileResult.json()) as { success: boolean }).success) {
+				return new Response("Forbidden", { status: 403 });
 			}
 
 			const stmt = DATABASE.prepare(
