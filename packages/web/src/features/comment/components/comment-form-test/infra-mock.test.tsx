@@ -1,3 +1,4 @@
+import "@testing-library/jest-dom/vitest";
 import { type RenderResult, render } from "@testing-library/react";
 import { test as base, expect, vi } from "vitest";
 

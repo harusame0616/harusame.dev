@@ -1,13 +1,35 @@
 import * as v from "valibot";
 
+export type Comment = {
+	articleId: string;
+	commentId: string;
+	name: string;
+	text: string;
+	commentedAt: string;
+};
+
+export type CommentsResponse = {
+	comments: Comment[];
+};
+
+const commentPostParamsSchema = v.object({
+	articleId: v.string(),
+	name: v.string(),
+	text: v.string(),
+});
+export type CommentPostParams = v.InferInput<typeof commentPostParamsSchema>;
+
 export default {
-	async fetch(request, { DATABASE }): Promise<Response> {
+	async fetch(request, { DATABASE, WEB_ORIGIN }): Promise<Response> {
 		const url = new URL(request.url);
 
+		const headers = new Headers();
+		headers.set("Access-Control-Allow-Origin", `${WEB_ORIGIN}`);
+		headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
+		headers.set("Access-Control-Allow-Headers", "Content-Type");
+
 		const [, articleId] =
-			/\/articles\/([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})\/comments/.exec(
-				url.pathname.toLowerCase(),
-			) || [];
+			/\/articles\/(.*!?)\/comments/.exec(url.pathname.toLowerCase()) || [];
 
 		if (!articleId) {
 			return new Response("bad request", { status: 400 });
@@ -21,15 +43,20 @@ export default {
 			if (!queryCommentsResult.success) {
 				return new Response("server error", { status: 500 });
 			}
+			const comments = queryCommentsResult.results.map(
+				// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+				(comment: any) =>
+					({
+						articleId: comment.article_id,
+						commentId: comment.comment_id,
+						name: comment.name,
+						text: comment.text,
+						commentedAt: comment.commented_at,
+					}) satisfies Comment,
+			);
 
-			return Response.json({
-				comments: queryCommentsResult.results.map((comment) => ({
-					articleId: comment.article_id,
-					commentId: comment.comment_id,
-					name: comment.name,
-					text: comment.text,
-					commentedAt: comment.commented_at,
-				})),
+			return Response.json({ comments } satisfies CommentsResponse, {
+				headers,
 			});
 		}
 
@@ -60,9 +87,20 @@ export default {
 				)
 				.run();
 
-			return new Response("ok", { status: 200 });
+			return new Response("Ok", { status: 200, headers });
 		}
 
-		return new Response("method not allowed", { status: 405 });
+		if (request.method === "OPTIONS") {
+			if (request.headers.get("origin") !== WEB_ORIGIN) {
+				return new Response("Forbidden", { status: 403 });
+			}
+			if (request.headers.get("access-control-request-method") !== "POST") {
+				return new Response("Method Not Allowed", { status: 405, headers });
+			}
+
+			return new Response("Ok", { status: 200, headers });
+		}
+
+		return new Response("Method Not Allowed", { status: 405 });
 	},
 } satisfies ExportedHandler<Env>;

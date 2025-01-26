@@ -5,9 +5,10 @@
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "astro check && astro build",
+		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
+		"type:check": "astro check",
 		"lint:check": "biome lint .",
 		"lint:write": "biome format --write .",
 		"format:check": "biome format .",
@@ -16,6 +17,7 @@
 		"lint-format:write": "biome check --write ."
 	},
 	"dependencies": {
+		"api": "workspace:*",
 		"@astrojs/check": "^0.3.1",
 		"@astrojs/partytown": "^2.0.2",
 		"@astrojs/prefetch": "^0.4.1",
