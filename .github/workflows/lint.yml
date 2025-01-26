@@ -25,3 +25,7 @@ jobs:
           cache: "pnpm"
       - name: Lint & フォーマットチェック
         run: pnpm --filter "*" lint-format:check
+      - name: type チェック
+        run: pnpm --filter "*" type:check
+      - name: ビルド
+        run: pnpm --filter "*" build
