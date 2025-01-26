@@ -1,0 +1,29 @@
+{
+	"name": "api",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"deploy": "wrangler deploy",
+		"dev": "wrangler dev",
+		"start": "wrangler dev",
+		"test": "vitest",
+		"cf-typegen": "wrangler types",
+		"lint:check": "biome lint .",
+		"lint:write": "biome format --write .",
+		"format:check": "biome format .",
+		"format:write": "biome format --write .",
+		"lint-format:check": "biome check .",
+		"lint-format:write": "biome check --write ."
+	},
+	"devDependencies": {
+		"@cloudflare/vitest-pool-workers": "^0.6.4",
+		"@cloudflare/workers-types": "^4.20250124.3",
+		"typescript": "^5.5.2",
+		"vitest": "2.1.8",
+		"wrangler": "^3.105.1"
+	},
+	"dependencies": {
+		"@biomejs/biome": "1.9.4",
+		"valibot": "1.0.0-beta.14"
+	}
+}
