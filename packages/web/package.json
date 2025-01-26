@@ -17,7 +17,6 @@
 		"lint-format:write": "biome check --write ."
 	},
 	"dependencies": {
-		"api": "workspace:*",
 		"@astrojs/check": "^0.3.1",
 		"@astrojs/partytown": "^2.0.2",
 		"@astrojs/prefetch": "^0.4.1",
@@ -35,6 +34,7 @@
 		"@tailwindcss/typography": "^0.5.10",
 		"@types/react": "^18.0.21",
 		"@types/react-dom": "^18.0.6",
+		"api": "workspace:*",
 		"astro": "^3.6.0",
 		"cheerio": "1.0.0-rc.12",
 		"class-variance-authority": "^0.7.0",
@@ -45,6 +45,7 @@
 		"react": "^18.0.0",
 		"react-dom": "^18.0.0",
 		"react-hook-form": "^7.52.1",
+		"react-turnstile": "^1.1.4",
 		"sharp": "^0.32.0",
 		"swr": "^2.2.5",
 		"tailwind-merge": "^2.1.0",

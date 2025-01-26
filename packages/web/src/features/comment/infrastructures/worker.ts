@@ -26,7 +26,12 @@ export async function queryComments(
 	}
 }
 
-export async function postComment(slug: string, name: string, text: string) {
+export async function postComment(
+	slug: string,
+	name: string,
+	text: string,
+	token: string,
+) {
 	const commentPostApi = new URL(
 		`/articles/${slug}/comments`,
 		import.meta.env.PUBLIC_API_URL,
@@ -40,6 +45,7 @@ export async function postComment(slug: string, name: string, text: string) {
 				articleId: slug,
 				name,
 				text,
+				token,
 			} satisfies CommentPostParams),
 		});
 	} catch (e) {
