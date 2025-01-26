@@ -5,9 +5,10 @@
 	"scripts": {
 		"dev": "astro dev",
 		"start": "astro dev",
-		"build": "astro check && astro build",
+		"build": "astro build",
 		"preview": "astro preview",
 		"astro": "astro",
+		"type:check": "astro check",
 		"lint:check": "biome lint .",
 		"lint:write": "biome format --write .",
 		"format:check": "biome format .",
