@@ -102,7 +102,10 @@ export function CommentForm({ slug }: Props) {
 					sitekey="0x4AAAAAAA6YNSB-ZSIK1MLX"
 					refreshExpired="auto"
 					fixedSize
-					onVerify={(token) => form.setValue("token", token)}
+					onVerify={(token) => {
+						console.log("verify", token);
+						form.setValue("token", token);
+					}}
 				/>
 				<Button
 					type="submit"
