@@ -46,7 +46,7 @@ export function CommentForm({ slug }: Props) {
 	});
 
 	const handleSubmit = form.handleSubmit(async (data) => {
-		await commentPost.post(data.name, data.text);
+		await commentPost.post(data.name, data.text, data.token);
 		form.reset();
 	});
 
@@ -102,7 +102,9 @@ export function CommentForm({ slug }: Props) {
 					sitekey="0x4AAAAAAA6YNSB-ZSIK1MLX"
 					refreshExpired="auto"
 					fixedSize
-					onVerify={(token) => form.setValue("token", token)}
+					onVerify={(token) => {
+						form.setValue("token", token);
+					}}
 				/>
 				<Button
 					type="submit"
