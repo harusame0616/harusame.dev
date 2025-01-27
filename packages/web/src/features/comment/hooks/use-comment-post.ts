@@ -5,7 +5,7 @@ async function mutator(
 	slug: string,
 	{
 		arg: { name, text, token },
-	}: { arg: { name: string; text: string; token: strng } },
+	}: { arg: { name: string; text: string; token: string } },
 ) {
 	await postComment(slug, name, text, token);
 }
