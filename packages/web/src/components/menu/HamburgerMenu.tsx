@@ -23,6 +23,7 @@ export function HamburgerMenu({ children }: PropsWithChildren) {
 						height={64}
 						alt="はるさめ.dev"
 						className="h-16 object-contain"
+						loading="eager"
 					/>
 					<SheetTitle className="sr-only">メニュー</SheetTitle>
 				</SheetHeader>
