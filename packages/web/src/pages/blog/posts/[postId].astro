@@ -37,7 +37,7 @@ const content = highLight(post.content);
 
 <Layout title={`${post.title} - はるさめ.dev`}>
   <h1 class="text-3xl font-bold">{post.title}</h1>
-  <div class="grid grid-cols-[1fr,auto]">
+  <div class="grid grid-cols-[1fr_auto]">
     <ul aria-label="タグ" class="mt-2 flex flex-wrap gap-2">
       {
         post.tags.map((tag) => (

@@ -24,7 +24,7 @@ function stripTag(htmlString: string) {
     {
       page.data.map((post) => (
         <article
-          class="group relative row-span-5 mb-4 grid grid-rows-[subgrid] border border-solid border-border p-4 shadow-sm transition-all hover:shadow-lg md:mb-10"
+          class="group relative row-span-5 mb-4 grid grid-rows-subgrid border border-solid border-border p-4 shadow-xs transition-all hover:shadow-lg md:mb-10"
           aria-labelledby={`title-${post.id}`}
         >
           <h2 class="text-lg font-bold" id={`title-${post.id}`}>
@@ -40,7 +40,7 @@ function stripTag(htmlString: string) {
           <div class="mt-4 line-clamp-3 text-sm tracking-wider text-muted-foreground">
             {stripTag(post.content).slice(0, 120)}
           </div>
-          <div class="mt-4 grid grid-cols-[1fr,auto] items-center">
+          <div class="mt-4 grid grid-cols-[1fr_auto] items-center">
             <ul aria-label="タグ" class="flex flex-wrap gap-2">
               {post.tags.map((tag) => (
                 <li class="relative z-10">
