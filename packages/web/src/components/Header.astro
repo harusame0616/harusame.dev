@@ -1,5 +1,4 @@
 ---
-// eslint-disable-next-line import/no-unresolved
 import { Image } from "astro:assets";
 import logo from "@/assets/logo.svg";
 import { HamburgerMenu } from "./menu/HamburgerMenu";
@@ -14,7 +13,7 @@ const currentMenu = parseMenu(menuPath || "top");
 
 <header class="grid h-16 grid-cols-[auto_1fr]">
   <a href="/" rel="prefetch">
-    <Image src={logo} height={64} alt="はるさめ.dev" />
+    <Image src={logo} height={64} alt="はるさめ.dev" loading="eager" decoding="sync"/>
   </a>
   <nav aria-label="メインメニュー" class="grid grid-cols-[1fr_auto]">
     <div class="hidden justify-end md:flex">

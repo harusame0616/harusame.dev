@@ -1,3 +1,4 @@
+import { Image } from "astro:assets";
 import logo from "@/assets/logo.svg";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import type { PropsWithChildren } from "react";
@@ -24,6 +25,7 @@ export function HamburgerMenu({ children }: PropsWithChildren) {
 						alt="はるさめ.dev"
 						className="h-16 object-contain"
 						loading="eager"
+						decoding="sync"
 					/>
 					<SheetTitle className="sr-only">メニュー</SheetTitle>
 				</SheetHeader>
