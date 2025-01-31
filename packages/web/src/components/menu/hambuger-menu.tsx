@@ -1,4 +1,3 @@
-import { Image } from "astro:assets";
 import logo from "@/assets/logo.svg";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import type { PropsWithChildren } from "react";
