@@ -1,7 +1,7 @@
 ---
 import { Separator } from "@/components/ui/separator";
 import type { Post } from "@/features/blog/blog-client";
-import { Tag } from "@/features/blog/components/tag";
+import TagList from "@/features/blog/components/tag-list.astro";
 import { createBlogClient } from "@/features/blog/create-blog-client";
 import { CommentForm } from "@/features/comment/components/comment-form";
 import { CommentListContainer } from "@/features/comment/components/comment-list-container";
@@ -37,17 +37,7 @@ const content = highLight(post.content);
 
 <Layout title={`${post.title} - はるさめ.dev`}>
   <h1 class="text-3xl font-bold">{post.title}</h1>
-  <div class="grid grid-cols-[1fr_auto]">
-    <ul aria-label="タグ" class="mt-2 flex flex-wrap gap-2">
-      {
-        post.tags.map((tag) => (
-          <li>
-            <Tag tagId={tag.id}>{tag.name}</Tag>
-          </li>
-        ))
-      }
-    </ul>
-  </div>
+    <TagList tags={post.tags} />
   <MuteText>
     <time>
       {formatDate(post.publishedAt)}

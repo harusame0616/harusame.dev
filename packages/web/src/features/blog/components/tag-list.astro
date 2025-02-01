@@ -1,0 +1,16 @@
+---
+import type { TagDto } from "../blog-client";
+import Tag from "./tag.astro";
+
+interface Props {
+	tags: TagDto[];
+};
+const {tags} = Astro.props;
+---
+<ul class="flex flex-wrap gap-1">
+	{tags.map((tag) => (
+		<li>
+			<Tag tagId={tag.id} tagName={tag.name} />
+		</li>
+	))}
+</ul>

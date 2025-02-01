@@ -1,7 +1,7 @@
 ---
 import { DateDistance } from "@/components/DateDistance";
 import { MuteText } from "@/components/mute-text";
-import { Tag } from "@/features/blog/components/tag";
+import TagList from "@/features/blog/components/tag-list.astro";
 import type { Page } from "astro";
 import type { Post } from "./blog-client";
 
@@ -40,18 +40,16 @@ function stripTag(htmlString: string) {
           <div class="mt-4 line-clamp-3 text-sm tracking-wider text-muted-foreground">
             {stripTag(post.content).slice(0, 120)}
           </div>
-          <div class="mt-4 grid grid-cols-[1fr_auto] items-center">
-            <ul aria-label="タグ" class="flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <li class="relative z-10">
-                  <Tag tagId={tag.id}>{tag.name}</Tag>
-                </li>
-              ))}
-            </ul>
-            <MuteText>
-              <DateDistance date={post.publishedAt} client:only="react" /> ago
-            </MuteText>
-          </div>
+          <div class="mt-4 flex flex-wrap justify-end">
+            <div class="flex-grow">
+              <TagList tags={post.tags} />
+            </div>
+            <div class="flex flex-end">
+              <MuteText>
+                <DateDistance date={post.publishedAt} client:only="react" /> ago
+              </MuteText>
+            </div>
+          </>
         </article>
       ))
     }
