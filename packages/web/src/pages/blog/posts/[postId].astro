@@ -35,7 +35,7 @@ const { post } = Astro.props;
 const content = highLight(post.content);
 ---
 
-<Layout title={`${post.title} - はるさめ.dev`}>
+<Layout title={post.title}>
   <h1 class="text-3xl font-bold">{post.title}</h1>
     <TagList tags={post.tags} />
   <MuteText>
