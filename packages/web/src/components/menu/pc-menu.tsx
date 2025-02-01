@@ -1,7 +1,7 @@
-import { BlogSearchForm } from "./BlogSearchForm";
-import { MenuItem } from "./MenuItem";
+import { BlogSearchForm } from "./blog-search-form";
 import { menus } from "./menu";
 import type { Menu } from "./menu";
+import { MenuItem } from "./menu-item";
 
 type Props = {
 	current: Menu;

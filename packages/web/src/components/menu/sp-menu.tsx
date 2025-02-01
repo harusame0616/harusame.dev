@@ -1,6 +1,6 @@
-import { BlogSearchForm } from "./BlogSearchForm";
-import { MenuItem } from "./MenuItem";
+import { BlogSearchForm } from "./blog-search-form";
 import { menus } from "./menu";
+import { MenuItem } from "./menu-item";
 
 export function SPMenu() {
 	return (

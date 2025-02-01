@@ -1,10 +1,10 @@
 ---
 import { Image } from "astro:assets";
 import logo from "@/assets/logo.svg";
-import { HamburgerMenu } from "./menu/HamburgerMenu";
-import { PCMenu } from "./menu/PCMenu";
-import { SPMenu } from "./menu/SPMenu";
+import { HamburgerMenu } from "./menu/hamburger-menu";
 import { parseMenu } from "./menu/menu";
+import { PCMenu } from "./menu/pc-menu";
+import { SPMenu } from "./menu/sp-menu";
 
 const pathname = new URL(Astro.request.url).pathname;
 const [, menuPath] = pathname.split("/");
