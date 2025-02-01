@@ -5,7 +5,7 @@ import MiniProfile from "./mini-profile.astro";
 
 import AllTags from "./all-tags.astro";
 interface Props {
-	title?: string;
+  title?: string;
 }
 
 const TITLE = "はるさめ.dev";
@@ -20,8 +20,9 @@ const titleInHead = title ? `${title} - ${TITLE}` : TITLE;
     <script
       async
       src="https://www.googletagmanager.com/gtag/js?id=G-DV9Z5XM82F"
-      type="text/partytown"></script>
-    <script type="text/partytown">
+      type="text/partytown"
+      is:inline></script>
+    <script type="text/partytown" is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -30,7 +31,11 @@ const titleInHead = title ? `${title} - ${TITLE}` : TITLE;
 
       gtag("config", "G-DV9Z5XM82F");
     </script>
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js"
+      async
+      defer
+      is:inline></script>
     <!-- Google tag (gtag.js) -->
     <meta charset="UTF-8" />
     <meta
@@ -40,15 +45,14 @@ const titleInHead = title ? `${title} - ${TITLE}` : TITLE;
     <meta name="viewport" content="width=device-width" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
     <title>{titleInHead}</title>
   </head>
-  <body class="flex flex-col items-center ">
+  <body class="flex flex-col items-center">
     <div
       class="grid w-full max-w-5xl grid-cols-1 gap-4 p-2 md:grid-cols-4 md:p-4"
     >
       <div class="md:col-span-4">
-        <Header class="col-span-4" />
+        <Header />
       </div>
       <div class="md:col-span-3">
         <main class="rounded-sm border p-4">
