@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import Turnstile, { useTurnstile } from "react-turnstile";
+import Turnstile from "react-turnstile";
 import z from "zod";
 
 import { Button } from "@/components/ui/button";

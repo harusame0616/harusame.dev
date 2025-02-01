@@ -1,5 +1,5 @@
 import { DateDistance } from "@/components/DateDistance";
-import { MuteText } from "@/components/MuteText";
+import { MuteText } from "@/components/mute-text";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { PropsWithChildren } from "react";
 import type { CommentDto } from "../models/comment";

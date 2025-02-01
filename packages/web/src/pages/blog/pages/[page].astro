@@ -1,8 +1,8 @@
 ---
-import PostsContent from "@/features/blog/PostsContent.astro";
+import PostsContent from "@/features/blog/posts-content.astro";
 import type { GetStaticPaths } from "astro";
 import { createBlogClient } from "../../../features/blog/create-blog-client";
-import Layout from "../../../layouts/MainLayout/MainLayout.astro";
+import Layout from "../../../layouts/main-layout/main-layout.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const blog = createBlogClient();
