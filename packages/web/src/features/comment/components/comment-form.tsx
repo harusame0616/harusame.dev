@@ -60,7 +60,7 @@ export function CommentForm({ slug }: Props) {
 							}
 						: handleSubmit
 				}
-				className="space-y-1"
+				className="space-y-4"
 			>
 				<FormField
 					control={form.control}
