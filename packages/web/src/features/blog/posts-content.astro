@@ -1,7 +1,7 @@
 ---
-import { DateDistance } from "@/components/DateDistance";
+import { DateDistance } from "@/components/date-distance";
 import { MuteText } from "@/components/mute-text";
-import { Tag } from "@/features/blog/components/tag";
+import TagList from "@/features/blog/components/tag-list.astro";
 import type { Page } from "astro";
 import type { Post } from "./blog-client";
 
@@ -9,9 +9,8 @@ interface Props {
 	page: Page<
 		Pick<Post, "tags" | "id" | "publishedAt" | "title" | "content" | "category">
 	>;
-	title: string;
 }
-const { page, title } = Astro.props;
+const { page } = Astro.props;
 
 function stripTag(htmlString: string) {
 	return htmlString.replace(/<\/?[^>]+>/gi, "");
@@ -19,47 +18,42 @@ function stripTag(htmlString: string) {
 ---
 
 <div>
-  <h1 class="mb-8 text-xl font-bold">{title}</h1>
-  <div class="grid grid-cols-1 gap-x-10 md:grid-cols-[repeat(2,1fr)]">
+  <div class="grid grid-cols-1 gap-x-10 gap-y-4">
     {
       page.data.map((post) => (
-        <article
-          class="group relative row-span-5 mb-4 grid grid-rows-subgrid border border-solid border-border p-4 shadow-xs transition-all hover:shadow-lg md:mb-10"
+        <div
+          class="relative border p-4 shadow-xs transition-all hover:shadow-lg rounded-sm grid gap-y-4"
           aria-labelledby={`title-${post.id}`}
         >
           <h2 class="text-lg font-bold" id={`title-${post.id}`}>
-            {post.category.name}：
             <a
               href={`/blog/posts/${post.id}/`}
-              rel="prefetch"
-              class="before:absolute before:inset-0"
+              class="before:absolute before:inset-0 underline"
             >
               {post.title}
             </a>
           </h2>
-          <div class="mt-4 line-clamp-3 text-sm tracking-wider text-muted-foreground">
+          <div class="line-clamp-3 text-sm tracking-wider text-muted-foreground">
             {stripTag(post.content).slice(0, 120)}
           </div>
-          <div class="mt-4 grid grid-cols-[1fr_auto] items-center">
-            <ul aria-label="タグ" class="flex flex-wrap gap-2">
-              {post.tags.map((tag) => (
-                <li class="relative z-10">
-                  <Tag tagId={tag.id}>{tag.name}</Tag>
-                </li>
-              ))}
-            </ul>
-            <MuteText>
-              <DateDistance date={post.publishedAt} client:only="react" /> ago
-            </MuteText>
+          <div class="flex flex-wrap justify-end">
+            <div class="flex-grow">
+              <TagList tags={post.tags} />
+            </div>
+            <div class="flex flex-end">
+              <MuteText>
+                <DateDistance date={post.publishedAt} client:only="react" /> ago
+              </MuteText>
+            </div>
           </div>
-        </article>
+        </div>
       ))
     }
   </div>
   <nav class="text-center">
     {
       page.currentPage !== 1 && (
-        <a href={`/blog/pages/${page.currentPage - 1}/`} rel="prefetch">
+        <a href={`/blog/pages/${page.currentPage - 1}/`} class="underline">
           戻る
         </a>
       )
@@ -71,7 +65,7 @@ function stripTag(htmlString: string) {
     }
     {
       page.currentPage !== page.lastPage && (
-        <a href={`/blog/pages/${page.currentPage + 1}/`} rel="prefetch">
+        <a href={`/blog/pages/${page.currentPage + 1}/`} class="underline">
           進む
         </a>
       )

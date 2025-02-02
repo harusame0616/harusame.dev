@@ -1,4 +1,4 @@
-import { DateDistance } from "@/components/DateDistance";
+import { DateDistance } from "@/components/date-distance";
 import { MuteText } from "@/components/mute-text";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { PropsWithChildren } from "react";

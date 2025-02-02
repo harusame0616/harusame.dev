@@ -1,14 +1,14 @@
 import logo from "@/assets/logo.svg";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import type { PropsWithChildren } from "react";
-import { Separator } from "../ui/separator";
+import { Separator } from "../../../components/ui/separator";
 import {
 	Sheet,
 	SheetContent,
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger,
-} from "../ui/sheet";
+} from "../../../components/ui/sheet";
 
 export function HamburgerMenu({ children }: PropsWithChildren) {
 	return (
