@@ -37,7 +37,7 @@ function stripTag(htmlString: string) {
             {stripTag(post.content).slice(0, 120)}
           </div>
           <div class="flex flex-wrap justify-end">
-            <div class="flex-grow">
+            <div class="flex-grow z-50">
               <TagList tags={post.tags} />
             </div>
             <div class="flex flex-end">
