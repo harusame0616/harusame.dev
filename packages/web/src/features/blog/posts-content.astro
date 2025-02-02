@@ -6,14 +6,14 @@ import type { Page } from "astro";
 import type { Post } from "./blog-client";
 
 interface Props {
-  page: Page<
-    Pick<Post, "tags" | "id" | "publishedAt" | "title" | "content" | "category">
-  >;
+	page: Page<
+		Pick<Post, "tags" | "id" | "publishedAt" | "title" | "content" | "category">
+	>;
 }
 const { page } = Astro.props;
 
 function stripTag(htmlString: string) {
-  return htmlString.replace(/<\/?[^>]+>/gi, "");
+	return htmlString.replace(/<\/?[^>]+>/gi, "");
 }
 ---
 
