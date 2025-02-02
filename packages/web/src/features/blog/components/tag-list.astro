@@ -4,8 +4,8 @@ import Tag from "./tag.astro";
 
 interface Props {
 	tags: TagDto[];
-};
-const {tags} = Astro.props;
+}
+const { tags } = Astro.props;
 ---
 <ul class="flex flex-wrap gap-1">
 	{tags.map((tag) => (

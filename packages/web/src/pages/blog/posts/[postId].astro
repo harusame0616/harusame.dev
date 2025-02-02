@@ -13,22 +13,22 @@ import { MuteText } from "@/components/mute-text";
 import { formatDate } from "@/lib/date";
 
 export type Props = {
-  post: Post;
+	post: Post;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const blog = createBlogClient();
-  const { posts } = await blog.getAllPost({
-    fields: ["tags", "category", "id", "publishedAt", "title", "content"],
-  });
-  return posts.map((post) => ({
-    params: {
-      postId: post.id,
-    },
-    props: {
-      post,
-    },
-  }));
+	const blog = createBlogClient();
+	const { posts } = await blog.getAllPost({
+		fields: ["tags", "category", "id", "publishedAt", "title", "content"],
+	});
+	return posts.map((post) => ({
+		params: {
+			postId: post.id,
+		},
+		props: {
+			post,
+		},
+	}));
 };
 
 const { post } = Astro.props;

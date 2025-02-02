@@ -5,30 +5,30 @@ import { createBlogClient } from "../../../../../features/blog/create-blog-clien
 import Layout from "../../../../../layouts/main-layout/main-layout.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const blog = createBlogClient();
-  const { posts } = await blog.getAllPost({
-    fields: ["tags", "category", "id", "publishedAt", "title", "content"],
-  });
+	const blog = createBlogClient();
+	const { posts } = await blog.getAllPost({
+		fields: ["tags", "category", "id", "publishedAt", "title", "content"],
+	});
 
-  const tags = Array.from(new Set(posts.flatMap((post) => post.tags)));
+	const tags = Array.from(new Set(posts.flatMap((post) => post.tags)));
 
-  const taggedPosts = tags.flatMap((tag) => {
-    const page = paginate(
-      posts.filter((post) =>
-        post.tags.map((postTag) => postTag.id).includes(tag.id)
-      ),
-      {
-        params: { tag: tag.id },
-        pageSize: 6,
-        props: {
-          tag: tag.name,
-        },
-      }
-    );
+	const taggedPosts = tags.flatMap((tag) => {
+		const page = paginate(
+			posts.filter((post) =>
+				post.tags.map((postTag) => postTag.id).includes(tag.id),
+			),
+			{
+				params: { tag: tag.id },
+				pageSize: 6,
+				props: {
+					tag: tag.name,
+				},
+			},
+		);
 
-    return page;
-  });
-  return taggedPosts;
+		return page;
+	});
+	return taggedPosts;
 }) satisfies GetStaticPaths;
 
 const { page, tag } = Astro.props;
