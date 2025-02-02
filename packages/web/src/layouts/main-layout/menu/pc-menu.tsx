@@ -4,7 +4,7 @@ import type { Menu } from "./menu";
 import { MenuItem } from "./menu-item";
 
 type Props = {
-	current: Menu;
+	current: Menu | undefined;
 };
 
 export function PCMenu({ current }: Props) {
