@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import Turnstile from "react-turnstile";
-import z from "zod";
+import * as v from "valibot";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -14,22 +14,24 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { valibotResolver as resolver } from "@hookform/resolvers/valibot";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useCommentPost } from "../hooks/use-comment-post";
 
-const FormSchema = z.object({
-	name: z
-		.string()
-		.min(1, "名前は必須です。")
-		.max(20, "名前は20文字以内にしてください。"),
-	text: z
-		.string()
-		.min(1, "本文は必須です。")
-		.max(1024, "本文は1024文字以内にしてください。"),
-	token: z.string().min(1, "検証を行ってください。"),
+const formSchema = v.object({
+	name: v.pipe(
+		v.string(),
+		v.minLength(1, "名前は必須です。"),
+		v.maxLength(20, "名前は20文字以内にしてください。"),
+	),
+	text: v.pipe(
+		v.string(),
+		v.minLength(1, "本文は必須です。"),
+		v.maxLength(1024, "本文は1024文字以内にしてください。"),
+	),
+	token: v.pipe(v.string(), v.minLength(1, "検証を行ってください。")),
 });
-type FormSchema = z.infer<typeof FormSchema>;
+type FormSchema = v.InferOutput<typeof formSchema>;
 
 type Props = {
 	slug: string;
@@ -37,7 +39,7 @@ type Props = {
 export function CommentForm({ slug }: Props) {
 	const commentPost = useCommentPost(slug);
 	const form = useForm<FormSchema>({
-		resolver: zodResolver(FormSchema),
+		resolver: resolver(formSchema),
 		defaultValues: {
 			name: "",
 			text: "",
