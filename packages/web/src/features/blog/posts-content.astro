@@ -55,7 +55,7 @@ function stripTag(htmlString: string) {
   <nav class="text-center">
     {
       page.currentPage !== 1 && (
-        <a href={`/blog/pages/${page.currentPage - 1}/`} rel="prefetch">
+        <a href={`/blog/pages/${page.currentPage - 1}/`} class="underline">
           戻る
         </a>
       )
@@ -67,7 +67,7 @@ function stripTag(htmlString: string) {
     }
     {
       page.currentPage !== page.lastPage && (
-        <a href={`/blog/pages/${page.currentPage + 1}/`} rel="prefetch">
+        <a href={`/blog/pages/${page.currentPage + 1}/`} class="underline">
           進む
         </a>
       )
