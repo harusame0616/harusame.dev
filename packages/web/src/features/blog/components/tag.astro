@@ -1,17 +1,22 @@
 ---
 import { Badge } from "@/components/ui/badge";
 interface Props {
-	tagId: string;
-	tagName: string;
+  tagId: string;
+  tagName: string;
 }
 
 const { tagId, tagName } = Astro.props;
 ---
-<a href={`/blog/tags/${tagId}/pages/1/`} class="group/tag">
-	<Badge
-		variant="outline"
-		className="block min-w-[4rem] max-w-[180px] truncate rounded-full px-2 text-center transition-all group-hover/tag:bg-primary group-hover/tag:text-primary-foreground group-focus/tag:bg-primary group-focus/tag:text-primary-foreground group-active/tag:bg-primary group-active/edit:text-primary-foreground bg-background"
-	>
-		{tagName}
-	</Badge>
+
+<a
+  href={`/blog/tags/${tagId}/pages/1/`}
+  class="group/tag"
+  data-astro-prefetch="hover"
+>
+  <Badge
+    variant="outline"
+    className="block min-w-[4rem] max-w-[180px] truncate rounded-full px-2 text-center transition-all group-hover/tag:bg-primary group-hover/tag:text-primary-foreground group-focus/tag:bg-primary group-focus/tag:text-primary-foreground group-active/tag:bg-primary group-active/edit:text-primary-foreground bg-background"
+  >
+    {tagName}
+  </Badge>
 </a>
