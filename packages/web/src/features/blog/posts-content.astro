@@ -29,6 +29,7 @@ function stripTag(htmlString: string) {
             <a
               href={`/blog/posts/${post.id}/`}
               class="before:absolute before:inset-0 underline"
+              data-astro-prefetch="viewport"
             >
               {post.title}
             </a>
@@ -53,7 +54,11 @@ function stripTag(htmlString: string) {
   <nav class="text-center">
     {
       page.currentPage !== 1 && (
-        <a href={`/blog/pages/${page.currentPage - 1}/`} class="underline">
+        <a
+          href={`/blog/pages/${page.currentPage - 1}/`}
+          class="underline"
+          data-astro-prefetch="viewport"
+        >
           戻る
         </a>
       )
@@ -65,7 +70,11 @@ function stripTag(htmlString: string) {
     }
     {
       page.currentPage !== page.lastPage && (
-        <a href={`/blog/pages/${page.currentPage + 1}/`} class="underline">
+        <a
+          href={`/blog/pages/${page.currentPage + 1}/`}
+          class="underline"
+          data-astro-prefetch="viewport"
+        >
           進む
         </a>
       )

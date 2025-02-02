@@ -12,8 +12,14 @@ const currentMenu = parseMenu(menuPath || "top");
 ---
 
 <header class="grid h-16 grid-cols-[auto_1fr]">
-  <a href="/">
-    <Image src={logo} height={64} alt="はるさめ.dev" loading="eager" decoding="sync"/>
+  <a href="/" data-astro-prefetch>
+    <Image
+      src={logo}
+      height={64}
+      alt="はるさめ.dev"
+      loading="eager"
+      decoding="sync"
+    />
   </a>
   <nav aria-label="メインメニュー" class="grid grid-cols-[1fr_auto]">
     <div class="hidden justify-end md:flex">
