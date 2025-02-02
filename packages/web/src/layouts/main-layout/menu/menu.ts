@@ -11,5 +11,7 @@ export const menus = [
 ] as const satisfies Array<{ href: string; label: string; id: Menu }>;
 
 export function parseMenu(value: unknown): Menu | undefined {
-	return v.parse(v.picklist(menuIds), value);
+	const parseResult = v.safeParse(v.picklist(menuIds), value);
+
+	return parseResult.success ? parseResult.output : undefined;
 }
