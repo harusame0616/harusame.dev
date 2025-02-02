@@ -6,20 +6,18 @@ import type { Page } from "astro";
 import type { Post } from "./blog-client";
 
 interface Props {
-	page: Page<
-		Pick<Post, "tags" | "id" | "publishedAt" | "title" | "content" | "category">
-	>;
-	title: string;
+  page: Page<
+    Pick<Post, "tags" | "id" | "publishedAt" | "title" | "content" | "category">
+  >;
 }
-const { page, title } = Astro.props;
+const { page } = Astro.props;
 
 function stripTag(htmlString: string) {
-	return htmlString.replace(/<\/?[^>]+>/gi, "");
+  return htmlString.replace(/<\/?[^>]+>/gi, "");
 }
 ---
 
 <div>
-  <h1 class="mb-8 text-xl font-bold">{title}</h1>
   <div class="grid grid-cols-1 gap-x-10 md:grid-cols-[repeat(2,1fr)]">
     {
       page.data.map((post) => (
@@ -49,7 +47,7 @@ function stripTag(htmlString: string) {
                 <DateDistance date={post.publishedAt} client:only="react" /> ago
               </MuteText>
             </div>
-          </>
+          </div>
         </article>
       ))
     }

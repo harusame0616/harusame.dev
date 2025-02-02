@@ -5,11 +5,11 @@ import { createBlogClient } from "../../../features/blog/create-blog-client";
 import Layout from "../../../layouts/main-layout/main-layout.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
-	const blog = createBlogClient();
-	const { posts } = await blog.getAllPost({
-		fields: ["tags", "category", "id", "publishedAt", "title", "content"],
-	});
-	return paginate(posts, { pageSize: 6 });
+  const blog = createBlogClient();
+  const { posts } = await blog.getAllPost({
+    fields: ["tags", "category", "id", "publishedAt", "title", "content"],
+  });
+  return paginate(posts, { pageSize: 6 });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
@@ -17,5 +17,5 @@ const title = `記事一覧 ${page.currentPage} ページ`;
 ---
 
 <Layout title={title}>
-  <PostsContent page={page} title={title} />
+  <PostsContent page={page} />
 </Layout>

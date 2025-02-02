@@ -13,22 +13,22 @@ import { MuteText } from "@/components/mute-text";
 import { formatDate } from "@/lib/date";
 
 export type Props = {
-	post: Post;
+  post: Post;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const blog = createBlogClient();
-	const { posts } = await blog.getAllPost({
-		fields: ["tags", "category", "id", "publishedAt", "title", "content"],
-	});
-	return posts.map((post) => ({
-		params: {
-			postId: post.id,
-		},
-		props: {
-			post,
-		},
-	}));
+  const blog = createBlogClient();
+  const { posts } = await blog.getAllPost({
+    fields: ["tags", "category", "id", "publishedAt", "title", "content"],
+  });
+  return posts.map((post) => ({
+    params: {
+      postId: post.id,
+    },
+    props: {
+      post,
+    },
+  }));
 };
 
 const { post } = Astro.props;
@@ -36,8 +36,7 @@ const content = highLight(post.content);
 ---
 
 <Layout title={post.title}>
-  <h1 class="text-3xl font-bold">{post.title}</h1>
-    <TagList tags={post.tags} />
+  <TagList tags={post.tags} />
   <MuteText>
     <time>
       {formatDate(post.publishedAt)}
