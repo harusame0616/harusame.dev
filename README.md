@@ -1,54 +1,48 @@
-# Astro Starter Kit: Basics
+<img src=".//packages/web/src/assets/logo.svg" />
 
-```sh
-npm create astro@latest -- --template basics
-```
+# [はるさめ.dev](http://harusame.dev)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🌐 概要
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+自分の学びや開発したものをアウトプットする場として活用している、 個人サイトです。
 
-## 🚀 Project Structure
+## 📌 主なコンテンツ
 
-Inside of your Astro project, you'll see the following folders and files:
+- **📝 ブログ**: IT エンジニアリングに関する技術記事や学びを記録
+- **🛠 プロダクト**: 自作した Web アプリやツールの紹介
+- **👤 プロフィール**: 経歴などの自己紹介
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 🏗 技術スタック
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+### フロントエンド
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| カテゴリ                 | 技術               |
+| ------------------------ | ------------------ |
+| SSG フレームワーク       | Astro              |
+| UI フレームワーク        | React              |
+| 言語                     | TypeScript / HTML  |
+| CSS                      | Tailwind CSS       |
+| コンポーネントライブラリ | shadcn/ui          |
+| バリデーション           | valibot            |
+| Lint                     | Biome              |
+| Formatter                | Biome              |
+| ホスティング             | Cloudflare Workers |
+| CMS                      | microCMS           |
+| E2E テスト               | Playwright         |
+| UI テスト                | Testing Library    |
 
-Any static assets, like images, can be placed in the `public/` directory.
 
-## 🧞 Commands
+### バックエンド
 
-All commands are run from the root of the project, from a terminal:
+| カテゴリ       | 技術               |
+| -------------- | ------------------ |
+| 言語           | TypeScript         |
+| バリデーション | valibot            |
+| Lint           | Biome              |
+| Formatter      | Biome              |
+| ホスティング   | Cloudflare Workers |
+| DB             | Cloudflare D1      |
+| テスト         | Vitest             |
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
