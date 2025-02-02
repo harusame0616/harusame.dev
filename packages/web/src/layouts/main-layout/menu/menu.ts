@@ -10,6 +10,6 @@ export const menus = [
 	{ href: "/profile/", label: "プロフィール", id: "profile" },
 ] as const satisfies Array<{ href: string; label: string; id: Menu }>;
 
-export function parseMenu(value: unknown): Menu | undefined{
+export function parseMenu(value: unknown): Menu | undefined {
 	return v.parse(v.picklist(menuIds), value);
 }
