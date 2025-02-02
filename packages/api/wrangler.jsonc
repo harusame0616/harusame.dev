@@ -28,13 +28,13 @@
 			"database_name": "harusame-dev",
 			"database_id": "ef731e17-82d4-46fc-98e8-d7e12aa656a9"
 		}
-	]
+	],
 
 	/**
 	 * Environment Variables
 	 * https://developers.cloudflare.com/workers/wrangler/configuration/#environment-variables
 	 */
-	// "vars": { "MY_VARIABLE": "production_value" },
+	"vars": { "WEB_ORIGIN": "https://harusame.dev" }
 	/**
 	 * Note: Use secrets to store sensitive data.
 	 * https://developers.cloudflare.com/workers/configuration/secrets/
