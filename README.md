@@ -1,6 +1,4 @@
-<img src=".//packages/web/src/assets/logo.svg" />
-
-# [はるさめ.dev](http://harusame.dev)
+# [<img src=".//packages/web/src/assets/logo.svg" alt="はるさめ.dev"/>](http://harusame.dev)
 
 
 ## 🌐 概要
