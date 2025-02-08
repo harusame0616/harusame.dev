@@ -7,7 +7,16 @@ import SNSList from "./sns-list.astro";
 
 <div class="space-y-2 rounded-sm border p-4">
   <div class="flex items-center gap-4">
-    <Image src={Me} alt="" loading="eager" decoding="sync"  class="size-16 rounded-full object-cover"/>
+    <Image
+      src={Me}
+      alt=""
+      loading="eager"
+      decoding="sync"
+      class="size-16 rounded-full object-cover"
+      width="64"
+      height="64"
+      densities={[1, 2, 3, 4]}
+    />
     <div class="font-bold">はる</div>
   </div>
   <div class="text-sm">
