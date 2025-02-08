@@ -1,6 +1,6 @@
-import * as v from "valibot";
 import { Hono } from "hono";
 import { cors } from "hono/cors";
+import * as v from "valibot";
 
 export type Comment = {
 	articleId: string;
