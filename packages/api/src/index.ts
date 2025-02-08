@@ -1,4 +1,6 @@
 import * as v from "valibot";
+import { Hono } from "hono";
+import { cors } from "hono/cors";
 
 export type Comment = {
 	articleId: string;
@@ -20,102 +22,94 @@ const commentPostParamsSchema = v.object({
 });
 export type CommentPostParams = v.InferInput<typeof commentPostParamsSchema>;
 
-export default {
-	async fetch(
-		request,
-		{ DATABASE, WEB_ORIGIN, TURNSTILE_SECRET },
-	): Promise<Response> {
-		const url = new URL(request.url);
+const app = new Hono<{ Bindings: Env }>();
 
-		const headers = new Headers();
-		headers.set("Access-Control-Allow-Origin", `${WEB_ORIGIN}`);
-		headers.set("Access-Control-Allow-Methods", "POST, OPTIONS");
-		headers.set("Access-Control-Allow-Headers", "Content-Type");
+app.use("*", cors({ origin: (_, { env: { WEB_ORIGIN } }) => WEB_ORIGIN }));
 
-		const [, articleId] =
-			/\/articles\/(.*!?)\/comments/.exec(url.pathname.toLowerCase()) || [];
+app.get(
+	"/articles/:articleId/comments",
+	async ({ req: request, env: { DATABASE } }) => {
+		const articleId = request.param("articleId");
 
-		if (!articleId) {
+		const stmt = DATABASE.prepare("SELECT * FROM comment WHERE article_id = ?");
+		const queryCommentsResult = await stmt.bind(articleId).run();
+		if (!queryCommentsResult.success) {
+			return new Response("server error", { status: 500 });
+		}
+		const comments = queryCommentsResult.results.map(
+			// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+			(comment: any) =>
+				({
+					articleId: comment.article_id,
+					commentId: comment.comment_id,
+					name: comment.name,
+					text: comment.text,
+					commentedAt: comment.commented_at,
+				}) satisfies Comment,
+		);
+
+		return Response.json({ comments } satisfies CommentsResponse);
+	},
+);
+
+app.use(
+	"/articles/:articleId/comments",
+	async ({ req: request, env: { TURNSTILE_SECRET } }, next) => {
+		const paramsResult = v.safeParse(
+			v.object({ token: v.string() }),
+			await request.json(),
+		);
+
+		if (!paramsResult.success) {
 			return new Response("bad request", { status: 400 });
 		}
 
-		if (request.method === "GET") {
-			const stmt = DATABASE.prepare(
-				"SELECT * FROM comment WHERE article_id = ?",
-			);
-			const queryCommentsResult = await stmt.bind(articleId).run();
-			if (!queryCommentsResult.success) {
-				return new Response("server error", { status: 500 });
-			}
-			const comments = queryCommentsResult.results.map(
-				// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-				(comment: any) =>
-					({
-						articleId: comment.article_id,
-						commentId: comment.comment_id,
-						name: comment.name,
-						text: comment.text,
-						commentedAt: comment.commented_at,
-					}) satisfies Comment,
-			);
+		const formData = new FormData();
+		formData.append("secret", TURNSTILE_SECRET);
+		formData.append("response", paramsResult.output.token);
+		// biome-ignore lint/style/noNonNullAssertion: <explanation>
+		formData.append("remoteip", request.header("CF-Connecting-IP")!);
+		const url = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
+		const turnstileResult = await fetch(url, {
+			body: formData,
+			method: "POST",
+		});
 
-			return Response.json({ comments } satisfies CommentsResponse, {
-				headers,
-			});
+		if (!((await turnstileResult.json()) as { success: boolean }).success) {
+			return new Response("Forbidden", { status: 403 });
 		}
 
-		if (request.method === "POST") {
-			const paramsResult = v.safeParse(
-				commentPostParamsSchema,
-				await request.json(),
-			);
-
-			if (!paramsResult.success) {
-				return new Response("bad request", { status: 400 });
-			}
-
-			const formData = new FormData();
-			formData.append("secret", TURNSTILE_SECRET);
-			formData.append("response", paramsResult.output.token);
-			// biome-ignore lint/style/noNonNullAssertion: <explanation>
-			formData.append("remoteip", request.headers.get("CF-Connecting-IP")!);
-
-			const url = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
-			const turnstileResult = await fetch(url, {
-				body: formData,
-				method: "POST",
-			});
-			if (!((await turnstileResult.json()) as { success: boolean }).success) {
-				return new Response("Forbidden", { status: 403 });
-			}
-
-			const stmt = DATABASE.prepare(
-				"INSERT INTO comment (comment_id, article_id, name, text, commented_at) VALUES (?, ?, ?, ?, ?)",
-			);
-			const result = await stmt
-				.bind(
-					crypto.randomUUID(),
-					paramsResult.output.articleId,
-					paramsResult.output.name,
-					paramsResult.output.text,
-					new Date().toISOString(),
-				)
-				.run();
-
-			return new Response("Ok", { status: 200, headers });
-		}
-
-		if (request.method === "OPTIONS") {
-			if (request.headers.get("origin") !== WEB_ORIGIN) {
-				return new Response("Forbidden", { status: 403 });
-			}
-			if (request.headers.get("access-control-request-method") !== "POST") {
-				return new Response("Method Not Allowed", { status: 405, headers });
-			}
-
-			return new Response("Ok", { status: 200, headers });
-		}
-
-		return new Response("Method Not Allowed", { status: 405 });
+		await next();
 	},
-} satisfies ExportedHandler<Env>;
+);
+
+app.post(
+	"/articles/:articleId/comments",
+	async ({ req: request, env: { DATABASE } }) => {
+		const paramsResult = v.safeParse(
+			commentPostParamsSchema,
+			await request.json(),
+		);
+
+		if (!paramsResult.success) {
+			return new Response("bad request", { status: 400 });
+		}
+
+		const stmt = DATABASE.prepare(
+			"INSERT INTO comment (comment_id, article_id, name, text, commented_at) VALUES (?, ?, ?, ?, ?)",
+		);
+		await stmt
+			.bind(
+				crypto.randomUUID(),
+				paramsResult.output.articleId,
+				paramsResult.output.name,
+				paramsResult.output.text,
+				new Date().toISOString(),
+			)
+			.run();
+
+		return new Response("Ok", { status: 200 });
+	},
+);
+
+export default app;
