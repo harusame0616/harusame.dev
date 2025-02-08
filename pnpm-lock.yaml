@@ -13,6 +13,9 @@ importers:
       '@biomejs/biome':
         specifier: 1.9.4
         version: 1.9.4
+      hono:
+        specifier: 4.7.0
+        version: 4.7.0
       valibot:
         specifier: 1.0.0-beta.14
         version: 1.0.0-beta.14(typescript@5.5.2)
@@ -2455,6 +2458,10 @@ packages:
   highlight.js@11.9.0:
     resolution: {integrity: sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==}
     engines: {node: '>=12.0.0'}
+
+  hono@4.7.0:
+    resolution: {integrity: sha512-hV97aIR4WYbG30k234sD9B3VNr1ZWdQRmrVF76LKFlmI7O9Yo70mG9+mFwyQ6Sjrz4wH71GfnBxv6CPjcx3QNw==}
+    engines: {node: '>=16.9.0'}
 
   html-encoding-sniffer@4.0.0:
     resolution: {integrity: sha512-Y22oTqIU4uuPgEemfz7NDJz6OeKf12Lsu+QC+s3BVpda64lTiMYCyGwg5ki4vFxkMwQdeZDl2adZoqUgdFuTgQ==}
@@ -6375,6 +6382,8 @@ snapshots:
   headers-polyfill@4.0.3: {}
 
   highlight.js@11.9.0: {}
+
+  hono@4.7.0: {}
 
   html-encoding-sniffer@4.0.0:
     dependencies:
