@@ -16,6 +16,7 @@ defaults:
 
 jobs:
   lint:
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
       - name: チェックアウト
