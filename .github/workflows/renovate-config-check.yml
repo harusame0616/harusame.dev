@@ -35,4 +35,4 @@ jobs:
         run: pnpm install
 
       - name: renovate の設定ファイルの検証
-        run: pnpm exec renovate-config-validator ./github/renovate.json5
+        run: pnpm exec renovate-config-validator .github/renovate.json5
