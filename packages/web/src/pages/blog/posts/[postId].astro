@@ -18,16 +18,10 @@ export type Props = {
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	const blog = createBlogClient();
-	const { posts } = await blog.getAllPost({
-		fields: ["tags", "category", "id", "publishedAt", "title", "content"],
-	});
+	const posts = await blog.getAllPost();
 	return posts.map((post) => ({
-		params: {
-			postId: post.id,
-		},
-		props: {
-			post,
-		},
+		params: { postId: post.id },
+		props: { post },
 	}));
 };
 

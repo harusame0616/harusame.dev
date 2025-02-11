@@ -1,14 +1,12 @@
 ---
 import PostsContent from "@/features/blog/posts-content.astro";
+import Layout from "@/layouts/main-layout/main-layout.astro";
 import type { GetStaticPaths } from "astro";
 import { createBlogClient } from "../../../features/blog/create-blog-client";
-import Layout from "../../../layouts/main-layout/main-layout.astro";
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const blog = createBlogClient();
-	const { posts } = await blog.getAllPost({
-		fields: ["tags", "category", "id", "publishedAt", "title", "content"],
-	});
+	const posts = await blog.getAllPost();
 	return paginate(posts, { pageSize: 6 });
 }) satisfies GetStaticPaths;
 
