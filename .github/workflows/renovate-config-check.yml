@@ -1,0 +1,38 @@
+name: Renovate 設定検証
+
+on:
+  push:
+    paths:
+      - ".github/renovate.json5"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  validate-config:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: チェックアウト
+        uses: actions/checkout@v4
+      - name: pnpm のセットアップ
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Node.js のセットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version: "./.node-version"
+          cache: pnpm
+
+      - name: パッケージインストール
+        run: pnpm install
+
+      - name: renovate の設定ファイルの検証
+        run: pnpm exec renovate-config-validator .github/renovate.json5

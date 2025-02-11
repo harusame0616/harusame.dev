@@ -9,5 +9,8 @@
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC"
+	"license": "ISC",
+	"devDependencies": {
+		"renovate": "39.165.1"
+	}
 }
