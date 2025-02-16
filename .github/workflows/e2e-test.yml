@@ -1,0 +1,45 @@
+name: e2e テスト
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  e2e-test:
+    timeout-minutes: 5
+    # playwright の vrt で環境が異なると差分が出る可能性が高いため、ローカルと同じ macOS で実行する
+    runs-on: macos-15
+    steps:
+      - name: チェックアウト
+        uses: actions/checkout@v4
+
+      - name: pnpm のセットアップ
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Node.js セットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: "./.node-version"
+          cache: "pnpm"
+      - name: パッケージインストール
+        run: pnpm install
+      - name: Playwright ブラウザインストール
+        run: pnpm dlx playwright install --with-deps
+
+      - name: Web ビルド
+        run: MOCK_BLOG_CLIENT=true pnpm --filter web run build
+      - name: e2e テスト
+        run: pnpm --filter e2e run test
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: packages/e2e/playwright-report/
+          retention-days: 1

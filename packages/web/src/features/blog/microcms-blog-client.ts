@@ -66,22 +66,6 @@ export class MicroCMSBlogClient implements BlogClient {
 		}));
 	}
 
-	async getPost(postId: string): Promise<Post> {
-		const response = await this.client.get<MicroCMSPost>({
-			endpoint: "blogs",
-			contentId: postId,
-		});
-
-		return {
-			title: response.title,
-			content: response.content,
-			id: response.id,
-			publishedAt: new Date(response.publishedAt),
-			category: response.category,
-			tags: response.tags,
-		};
-	}
-
 	async getAllTags(): Promise<Tag[]> {
 		const tags = await this.client.getAllContents<MicroCMSTag>({
 			endpoint: "tags",
