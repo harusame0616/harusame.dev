@@ -32,7 +32,7 @@ jobs:
         run: pnpm dlx playwright install --with-deps
 
       - name: Web ビルド
-        run: pnpm --filter web run build
+        run: MOCK_BLOG_CLIENT=true pnpm --filter web run build
       - name: e2e テスト
         run: pnpm --filter e2e run test
 
