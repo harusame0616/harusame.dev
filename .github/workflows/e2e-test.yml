@@ -28,7 +28,7 @@ jobs:
           cache: "pnpm"
 
       - name: Playwright ブラウザインストール
-        run: pnpm --filter e2e exec playwright install --with-deps
+        run: pnpm dlx playwright install --with-deps
 
       - name: Web ビルド
         run: pnpm --filter web run build
