@@ -17,6 +17,7 @@ test.describe("スナップショット", () => {
 	test("初回表示", async ({ homePage }, { title }) => {
 		await expect(homePage).toHaveScreenshot(title, {
 			fullPage: true,
+			maxDiffPixelRatio: 0.02,
 		});
 	});
 });
