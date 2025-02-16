@@ -12,6 +12,7 @@ concurrency:
 jobs:
   e2e-test:
     timeout-minutes: 5
+    # playwright の vrt で環境が異なると差分が出る可能性が高いため、ローカルと同じ macOS で実行する
     runs-on: macos-15
     steps:
       - name: チェックアウト
