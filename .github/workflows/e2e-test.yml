@@ -12,7 +12,7 @@ concurrency:
 jobs:
   e2e-test:
     timeout-minutes: 5
-    runs-on: ubuntu-latest
+    runs-on: macos-15
     steps:
       - name: チェックアウト
         uses: actions/checkout@v4
