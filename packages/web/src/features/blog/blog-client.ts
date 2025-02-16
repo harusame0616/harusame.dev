@@ -18,7 +18,6 @@ export type Post = {
 };
 
 export interface BlogClient {
-	getPost(id: string): Promise<Post>;
 	getAllPost(): Promise<Post[]>;
 	getAllTags(): Promise<Tag[]>;
 }

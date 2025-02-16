@@ -1,0 +1,43 @@
+name: e2e テスト
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  e2e-test:
+    timeout-minutes: 5
+    runs-on: ubuntu-latest
+    steps:
+      - name: チェックアウト
+        uses: actions/checkout@v4
+
+      - name: pnpm のセットアップ
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Node.js セットアップ
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: "./.node-version"
+          cache: "pnpm"
+
+      - name: Playwright ブラウザインストール
+        run: pnpm exec playwright install --with-deps
+
+      - name: Web ビルド
+        run: pnpm --filter web run build
+      - name: e2e テスト
+        run: pnpm --filter e2e run test
+
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 1
