@@ -28,7 +28,7 @@ jobs:
       - name: Node.js のセットアップ
         uses: actions/setup-node@v4
         with:
-          node-version: "./.node-version"
+          node-version-file: "./.node-version"
           cache: pnpm
 
       - name: パッケージインストール
