@@ -1,5 +1,0 @@
-{
-  extends: ["config:best-practices"],
-  schedule: ["at 09:00 on Saturday"],
-  timezone: "Asia/Tokyo",
-}
