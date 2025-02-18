@@ -3,5 +3,6 @@
 	"extends": ["config:js-app", "schedule:daily", ":disableRateLimiting"],
 	"timezone": "Asia/Tokyo",
 	"labels": ["renovate"],
+	"schedule": ["after 9am before 1pm"],
 	"updateNotScheduled": false
 }
