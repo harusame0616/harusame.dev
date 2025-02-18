@@ -3,9 +3,9 @@
 	"extends": [
 		"config:best-practices",
 		"schedule:daily",
-		":disableRateLimiting",
-		":updateNotScheduled"
+		":disableRateLimiting"
 	],
 	"timezone": "Asia/Tokyo",
-	"labels": ["renovate"]
+	"labels": ["renovate"],
+	"updateNotScheduled": false
 }
