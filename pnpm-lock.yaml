@@ -70,8 +70,8 @@ importers:
         specifier: 3.7.0
         version: 3.7.0(react-hook-form@7.52.1(react@18.0.0))
       '@icons-pack/react-simple-icons':
-        specifier: 9.6.0
-        version: 9.6.0(react@18.0.0)
+        specifier: 12.0.0
+        version: 12.0.0(react@18.0.0)
       '@radix-ui/react-dialog':
         specifier: 1.1.1
         version: 1.1.1(@types/react-dom@18.0.6)(@types/react@18.0.21)(react-dom@18.0.0(react@18.0.0))(react@18.0.0)
@@ -1151,10 +1151,10 @@ packages:
     peerDependencies:
       react-hook-form: ^7.0.0
 
-  '@icons-pack/react-simple-icons@9.6.0':
-    resolution: {integrity: sha512-8lDLssg+2aJutepQV/P4zlGm0fgujSeIItCYaLKo+25NtwepozWxZJOnc5WGHSi3HjiLcGmxI6dA2eiD5w3i+w==}
+  '@icons-pack/react-simple-icons@12.0.0':
+    resolution: {integrity: sha512-7MqCY27RLQqzGAGYAcmsIIy/CU64TaFeTIFaFwEMkyeA6FWptg5AXWFm6UV9kvrCDwXYbzcWLz/cbhutLfcUUg==}
     peerDependencies:
-      react: ^16.13 || ^17 || ^18
+      react: ^16.13 || ^17 || ^18 || ^19
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -8016,7 +8016,7 @@ snapshots:
     dependencies:
       react-hook-form: 7.52.1(react@18.0.0)
 
-  '@icons-pack/react-simple-icons@9.6.0(react@18.0.0)':
+  '@icons-pack/react-simple-icons@12.0.0(react@18.0.0)':
     dependencies:
       react: 18.0.0
 
