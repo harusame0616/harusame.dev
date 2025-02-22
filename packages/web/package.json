@@ -22,7 +22,7 @@
 		"@astrojs/react": "4.2.0",
 		"@astrojs/sitemap": "3.2.1",
 		"@hookform/resolvers": "3.7.0",
-		"@icons-pack/react-simple-icons": "9.6.0",
+		"@icons-pack/react-simple-icons": "9.7.0",
 		"@radix-ui/react-dialog": "1.1.1",
 		"@radix-ui/react-icons": "1.3.0",
 		"@radix-ui/react-label": "2.1.0",
