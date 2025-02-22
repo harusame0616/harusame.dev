@@ -67,8 +67,8 @@ importers:
         specifier: 3.2.1
         version: 3.2.1
       '@hookform/resolvers':
-        specifier: 3.7.0
-        version: 3.7.0(react-hook-form@7.52.1(react@18.0.0))
+        specifier: 3.10.0
+        version: 3.10.0(react-hook-form@7.52.1(react@18.0.0))
       '@icons-pack/react-simple-icons':
         specifier: 9.6.0
         version: 9.6.0(react@18.0.0)
@@ -1146,8 +1146,8 @@ packages:
     resolution: {integrity: sha512-7bQW+gkKa2kKZPeJf6+c6gFK9ARxQfn+FKy9ScTBppyKRWH2KzsmweXUoklqeEiHiNVWaeP5csIdsNq6w7QhzA==}
     engines: {node: '>=12.20'}
 
-  '@hookform/resolvers@3.7.0':
-    resolution: {integrity: sha512-42p5X18noBV3xqOpTlf2V5qJZwzNgO4eLzHzmKGh/w7z4+4XqRw5AsESVkqE+qwAuRRlg2QG12EVEjPkrRIbeg==}
+  '@hookform/resolvers@3.10.0':
+    resolution: {integrity: sha512-79Dv+3mDF7i+2ajj7SkypSKHhl1cbln1OGavqrsF7p6mbUv11xpqpacPsGDCTRvCSjEEIez2ef1NveSVL3b0Ag==}
     peerDependencies:
       react-hook-form: ^7.0.0
 
@@ -7902,7 +7902,7 @@ snapshots:
 
   '@gwhitney/detect-indent@7.0.1': {}
 
-  '@hookform/resolvers@3.7.0(react-hook-form@7.52.1(react@18.0.0))':
+  '@hookform/resolvers@3.10.0(react-hook-form@7.52.1(react@18.0.0))':
     dependencies:
       react-hook-form: 7.52.1(react@18.0.0)
 
