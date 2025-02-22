@@ -67,8 +67,8 @@ importers:
         specifier: 3.2.1
         version: 3.2.1
       '@hookform/resolvers':
-        specifier: 3.10.0
-        version: 3.10.0(react-hook-form@7.52.1(react@18.0.0))
+        specifier: 4.1.0
+        version: 4.1.0(react-hook-form@7.52.1(react@18.0.0))
       '@icons-pack/react-simple-icons':
         specifier: 12.0.0
         version: 12.0.0(react@18.0.0)
@@ -1146,8 +1146,8 @@ packages:
     resolution: {integrity: sha512-7bQW+gkKa2kKZPeJf6+c6gFK9ARxQfn+FKy9ScTBppyKRWH2KzsmweXUoklqeEiHiNVWaeP5csIdsNq6w7QhzA==}
     engines: {node: '>=12.20'}
 
-  '@hookform/resolvers@3.10.0':
-    resolution: {integrity: sha512-79Dv+3mDF7i+2ajj7SkypSKHhl1cbln1OGavqrsF7p6mbUv11xpqpacPsGDCTRvCSjEEIez2ef1NveSVL3b0Ag==}
+  '@hookform/resolvers@4.1.0':
+    resolution: {integrity: sha512-fX/uHKb+OOCpACLc6enuTQsf0ZpRrKbeBBPETg5PCPLCIYV6osP2Bw6ezuclM61lH+wBF9eXcuC0+BFh9XOEnQ==}
     peerDependencies:
       react-hook-form: ^7.0.0
 
@@ -2909,6 +2909,9 @@ packages:
 
   caniuse-lite@1.0.30001696:
     resolution: {integrity: sha512-pDCPkvzfa39ehJtJ+OwGT/2yvT2SbjfHhiIW2LWOAcMQ7BzwxT/XuyUp4OTOd0XFWA6BKw0JalnBHgSi5DGJBQ==}
+
+  caniuse-lite@1.0.30001700:
+    resolution: {integrity: sha512-2S6XIXwaE7K7erT8dY+kLQcpa5ms63XlRkMkReXjle+kf6c5g38vyMl+Z5y8dSxOFDhcFe+nxnn261PLxBSQsQ==}
 
   capnp-ts@0.7.0:
     resolution: {integrity: sha512-XKxXAC3HVPv7r674zP0VC3RTXz+/JKhfyw94ljvF80yynK6VkTnqE3jMuN8b3dUVmmc43TjyxjW4KTsmB3c86g==}
@@ -7902,8 +7905,9 @@ snapshots:
 
   '@gwhitney/detect-indent@7.0.1': {}
 
-  '@hookform/resolvers@3.10.0(react-hook-form@7.52.1(react@18.0.0))':
+  '@hookform/resolvers@4.1.0(react-hook-form@7.52.1(react@18.0.0))':
     dependencies:
+      caniuse-lite: 1.0.30001700
       react-hook-form: 7.52.1(react@18.0.0)
 
   '@icons-pack/react-simple-icons@12.0.0(react@18.0.0)':
@@ -9962,6 +9966,8 @@ snapshots:
   camelcase@8.0.0: {}
 
   caniuse-lite@1.0.30001696: {}
+
+  caniuse-lite@1.0.30001700: {}
 
   capnp-ts@0.7.0:
     dependencies:
