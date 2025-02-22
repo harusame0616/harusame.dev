@@ -18,8 +18,8 @@ importers:
         specifier: 1.9.4
         version: 1.9.4
       hono:
-        specifier: 4.7.0
-        version: 4.7.0
+        specifier: 4.7.2
+        version: 4.7.2
       valibot:
         specifier: 1.0.0-beta.14
         version: 1.0.0-beta.14(typescript@5.5.2)
@@ -3895,8 +3895,8 @@ packages:
     resolution: {integrity: sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==}
     engines: {node: '>=12.0.0'}
 
-  hono@4.7.0:
-    resolution: {integrity: sha512-hV97aIR4WYbG30k234sD9B3VNr1ZWdQRmrVF76LKFlmI7O9Yo70mG9+mFwyQ6Sjrz4wH71GfnBxv6CPjcx3QNw==}
+  hono@4.7.2:
+    resolution: {integrity: sha512-8V5XxoOF6SI12jkHkzX/6aLBMU5GEF5g387EjVSQipS0DlxWgWGSMeEayY3CRBjtTUQYwLHx9JYouWqKzy2Vng==}
     engines: {node: '>=16.9.0'}
 
   hosted-git-info@2.8.9:
@@ -11154,7 +11154,7 @@ snapshots:
 
   highlight.js@11.9.0: {}
 
-  hono@4.7.0: {}
+  hono@4.7.2: {}
 
   hosted-git-info@2.8.9: {}
 
