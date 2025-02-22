@@ -145,8 +145,8 @@ importers:
         specifier: 1.0.7
         version: 1.0.7(tailwindcss@4.0.0)
       uuid:
-        specifier: 10.0.0
-        version: 10.0.0
+        specifier: 11.1.0
+        version: 11.1.0
       valibot:
         specifier: 1.0.0-rc.1
         version: 1.0.0-rc.1(typescript@5.5.2)
@@ -6024,8 +6024,8 @@ packages:
   util@0.12.5:
     resolution: {integrity: sha512-kZf/K6hEIrWHI6XqOFUiiMa+79wE/D8Q+NCNAWclkyg3b4d2k7s0QGepNjiABc+aR3N1PAyHL7p6UcLY6LmrnA==}
 
-  uuid@10.0.0:
-    resolution: {integrity: sha512-8XkAphELsDnEGrDxUOHB3RGvXz6TeuYSGEZBOjtTtPm2lwhGBjLgOzLHB63IUWfBpNucQjND6d3AOudO+H3RWQ==}
+  uuid@11.1.0:
+    resolution: {integrity: sha512-0/A9rDy9P7cJ+8w1c9WD9V//9Wj15Ce2MPz8Ri6032usz+NfePxx5AcN3bN+r6ZL6jEo066/yNYB3tn4pQEx+A==}
     hasBin: true
 
   uuid@9.0.1:
@@ -13661,7 +13661,7 @@ snapshots:
       is-typed-array: 1.1.15
       which-typed-array: 1.1.18
 
-  uuid@10.0.0: {}
+  uuid@11.1.0: {}
 
   uuid@9.0.1: {}
 
