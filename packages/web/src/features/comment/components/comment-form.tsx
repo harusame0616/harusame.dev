@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { valibotResolver as resolver } from "@hookform/resolvers/valibot";
+import { standardSchemaResolver } from "@hookform/resolvers/standard-schema";
 import { ReloadIcon } from "@radix-ui/react-icons";
 import { useCommentPost } from "../hooks/use-comment-post";
 
@@ -39,7 +39,7 @@ type Props = {
 export function CommentForm({ slug }: Props) {
 	const commentPost = useCommentPost(slug);
 	const form = useForm<FormSchema>({
-		resolver: resolver(formSchema),
+		resolver: standardSchemaResolver(formSchema),
 		defaultValues: {
 			name: "",
 			text: "",
