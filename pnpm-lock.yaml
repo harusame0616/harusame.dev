@@ -115,8 +115,8 @@ importers:
         specifier: 4.1.0
         version: 4.1.0
       highlight.js:
-        specifier: 11.9.0
-        version: 11.9.0
+        specifier: 11.11.1
+        version: 11.11.1
       microcms-js-sdk:
         specifier: 3.1.2
         version: 3.1.2
@@ -3707,8 +3707,8 @@ packages:
   headers-polyfill@4.0.3:
     resolution: {integrity: sha512-IScLbePpkvO846sIwOtOTDjutRMWdXdJmXdMvk6gCBHxFO8d+QKOQedyZSxFTTFYRSmlgSTDtXqqq4pcenBXLQ==}
 
-  highlight.js@11.9.0:
-    resolution: {integrity: sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==}
+  highlight.js@11.11.1:
+    resolution: {integrity: sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==}
     engines: {node: '>=12.0.0'}
 
   hono@4.7.2:
@@ -10761,7 +10761,7 @@ snapshots:
 
   headers-polyfill@4.0.3: {}
 
-  highlight.js@11.9.0: {}
+  highlight.js@11.11.1: {}
 
   hono@4.7.2: {}
 
