@@ -68,7 +68,7 @@ importers:
         version: 3.2.1
       '@hookform/resolvers':
         specifier: 4.1.0
-        version: 4.1.0(react-hook-form@7.52.1(react@18.3.1))
+        version: 4.1.0(react-hook-form@7.54.2(react@18.3.1))
       '@icons-pack/react-simple-icons':
         specifier: 12.0.0
         version: 12.0.0(react@18.3.1)
@@ -127,8 +127,8 @@ importers:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
       react-hook-form:
-        specifier: 7.52.1
-        version: 7.52.1(react@18.3.1)
+        specifier: 7.54.2
+        version: 7.54.2(react@18.3.1)
       react-turnstile:
         specifier: 1.1.4
         version: 1.1.4(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -4944,9 +4944,9 @@ packages:
     peerDependencies:
       react: ^18.3.1
 
-  react-hook-form@7.52.1:
-    resolution: {integrity: sha512-uNKIhaoICJ5KQALYZ4TOaOLElyM+xipord+Ha3crEFhTntdLvWZqVY49Wqd/0GiVCA/f9NjemLeiNPjG7Hpurg==}
-    engines: {node: '>=12.22.0'}
+  react-hook-form@7.54.2:
+    resolution: {integrity: sha512-eHpAUgUjWbZocoQYUHposymRb4ZP6d0uwUnooL2uOybA9/3tPUvoAKqEWK1WaSiTxxOfTpffNZP7QwlnM3/gEg==}
+    engines: {node: '>=18.0.0'}
     peerDependencies:
       react: ^16.8.0 || ^17 || ^18 || ^19
 
@@ -7749,10 +7749,10 @@ snapshots:
 
   '@gwhitney/detect-indent@7.0.1': {}
 
-  '@hookform/resolvers@4.1.0(react-hook-form@7.52.1(react@18.3.1))':
+  '@hookform/resolvers@4.1.0(react-hook-form@7.54.2(react@18.3.1))':
     dependencies:
       caniuse-lite: 1.0.30001700
-      react-hook-form: 7.52.1(react@18.3.1)
+      react-hook-form: 7.54.2(react@18.3.1)
 
   '@icons-pack/react-simple-icons@12.0.0(react@18.3.1)':
     dependencies:
@@ -12175,7 +12175,7 @@ snapshots:
       react: 18.3.1
       scheduler: 0.23.2
 
-  react-hook-form@7.52.1(react@18.3.1):
+  react-hook-form@7.54.2(react@18.3.1):
     dependencies:
       react: 18.3.1
 

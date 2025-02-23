@@ -41,7 +41,7 @@
 		"microcms-js-sdk": "3.1.2",
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
-		"react-hook-form": "7.52.1",
+		"react-hook-form": "7.54.2",
 		"react-turnstile": "1.1.4",
 		"sharp": "0.33.5",
 		"swr": "2.3.2",
