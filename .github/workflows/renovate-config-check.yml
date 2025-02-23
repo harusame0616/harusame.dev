@@ -3,7 +3,7 @@ name: Renovate 設定検証
 on:
   pull_request:
     paths:
-      - ".github/renovate.json5"
+      - ".github/renovate.json"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
