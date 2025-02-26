@@ -45,7 +45,7 @@
 		"react-turnstile": "1.1.4",
 		"sharp": "0.33.5",
 		"swr": "2.3.2",
-		"tailwind-merge": "3.0.1",
+		"tailwind-merge": "3.0.2",
 		"tailwindcss-animate": "1.0.7",
 		"uuid": "11.1.0",
 		"valibot": "1.0.0-rc.1"
