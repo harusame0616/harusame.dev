@@ -21,8 +21,8 @@ importers:
         specifier: 4.7.2
         version: 4.7.2
       valibot:
-        specifier: 1.0.0-rc.2
-        version: 1.0.0-rc.2(typescript@5.7.3)
+        specifier: 1.0.0-rc.3
+        version: 1.0.0-rc.3(typescript@5.7.3)
     devDependencies:
       '@cloudflare/vitest-pool-workers':
         specifier: 0.7.3
@@ -148,8 +148,8 @@ importers:
         specifier: 11.1.0
         version: 11.1.0
       valibot:
-        specifier: 1.0.0-rc.2
-        version: 1.0.0-rc.2(typescript@5.7.3)
+        specifier: 1.0.0-rc.3
+        version: 1.0.0-rc.3(typescript@5.7.3)
     devDependencies:
       '@biomejs/biome':
         specifier: 1.9.4
@@ -5860,8 +5860,8 @@ packages:
     resolution: {integrity: sha512-b+1eJOlsR9K8HJpow9Ok3fiWOWSIcIzXodvv0rQjVoOVNpWMpxf1wZNpt4y9h10odCNrqnYp1OBzRktckBe3sA==}
     hasBin: true
 
-  valibot@1.0.0-rc.2:
-    resolution: {integrity: sha512-Tnnp7dydpihvoUbJiaxuYfsCAgAFKuFMex7PTaI25XSjRWkU70DmJPlAO1W6sF1/WUx4RNWyM2hdmBSMIUSZFA==}
+  valibot@1.0.0-rc.3:
+    resolution: {integrity: sha512-LT0REa7Iqx4QGcaHLiTiTkcmJqJ9QdpOy89HALFFBJgejTS64GQFRIbDF7e4f6pauQbo/myfKGmWXCLhMeM6+g==}
     peerDependencies:
       typescript: '>=5'
     peerDependenciesMeta:
@@ -13270,7 +13270,7 @@ snapshots:
 
   uuid@9.0.1: {}
 
-  valibot@1.0.0-rc.2(typescript@5.7.3):
+  valibot@1.0.0-rc.3(typescript@5.7.3):
     optionalDependencies:
       typescript: 5.7.3
 
