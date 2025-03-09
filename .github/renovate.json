@@ -4,5 +4,11 @@
 	"timezone": "Asia/Tokyo",
 	"labels": ["renovate"],
 	"schedule": ["after 9am before 1pm"],
-	"updateNotScheduled": false
+	"updateNotScheduled": false,
+	"packageRules": [
+		{
+			"matchUpdateTypes": ["minor", "patch", "pin"],
+			"automerge": true
+		}
+	]
 }
