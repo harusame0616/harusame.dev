@@ -30,7 +30,7 @@ jobs:
       - name: パッケージインストール
         run: pnpm install
       - name: Playwright ブラウザインストール
-        run: pnpm dlx playwright install --with-deps
+        run: pnpm --filter e2e exec playwright install --with-deps
 
       - name: Web ビルド
         run: MOCK_BLOG_CLIENT=true pnpm --filter web run build
