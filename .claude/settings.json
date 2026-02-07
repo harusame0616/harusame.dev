@@ -8,6 +8,13 @@
     ]
   },
   "sandbox": {
-    "enabled": true
+    "enabled": true,
+    "autoAllowBashIfSandboxed": true,
+    "excludedCommands": ["git:*", "pnpm:*", "docker:*"],
+    "allowUnsandboxedCommands": false,
+    "network": {
+      "allowedDomains": [],
+      "allowLocalBinding": false
+    }
   }
 }
