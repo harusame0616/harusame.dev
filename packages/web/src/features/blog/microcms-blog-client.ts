@@ -30,7 +30,7 @@ type MicroCMSPost = {
 	content: string;
 	category: MicroCMSCategory;
 	tags: MicroCMSTag[];
-	ai?: boolean;
+	ai: boolean;
 };
 
 export class MicroCMSBlogClient implements BlogClient {
