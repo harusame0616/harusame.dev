@@ -4,7 +4,8 @@
       "Bash(gh pr *)",
       "Bash(gh issue *)",
       "Bash(gh run *)",
-      "Bash(gh workflow *)"
+      "Bash(gh workflow *)",
+      "Bash(pnpm install)"
     ]
   },
   "sandbox": {
