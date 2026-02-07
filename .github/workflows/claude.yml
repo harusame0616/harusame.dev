@@ -30,6 +30,15 @@ jobs:
         with:
           fetch-depth: 1
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: "./.node-version"
+          cache: "pnpm"
+
       - name: Run Claude Code
         id: claude
         uses: anthropics/claude-code-action@v1
