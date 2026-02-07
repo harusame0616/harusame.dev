@@ -45,6 +45,7 @@ const posts = [
 				name: "Svelte",
 			},
 		],
+		ai: false,
 	},
 	{
 		id: "2g3h4i5j-6k7l-8m9n-0o1p-2q3r4s5t6u7v",
@@ -70,6 +71,7 @@ const posts = [
 				name: "コスト削減",
 			},
 		],
+		ai: false,
 	},
 	{
 		id: "3i4j5k6l-7m8n-9o0p-1q2r-3s4t5u6v7w8x",
@@ -95,6 +97,7 @@ const posts = [
 				name: "Pandas",
 			},
 		],
+		ai: false,
 	},
 	{
 		id: "4k5l6m7n-8o9p-0q1r-2s3t-4u5v6w7x8y9z",
@@ -120,6 +123,7 @@ const posts = [
 				name: "応用例",
 			},
 		],
+		ai: false,
 	},
 	{
 		id: "5m6n7o8p-9q0r-1s2t-3u4v-5w6x7y8z9a0b",
@@ -145,6 +149,7 @@ const posts = [
 				name: "成功事例",
 			},
 		],
+		ai: false,
 	},
 	{
 		id: "6o7p8q9r-0s1t-2u3v-4w5x-6y7z8a9b0c1d",
@@ -170,6 +175,7 @@ const posts = [
 				name: "スケーラビリティ",
 			},
 		],
+		ai: false,
 	},
 	{
 		id: "7p8q9r0s-1t2u-3v4w-5x6y-7z8a9b0c1d2e",
@@ -195,6 +201,7 @@ const posts = [
 				name: "深層学習",
 			},
 		],
+		ai: false,
 	},
 	{
 		id: "0p8q9r0s-1t2u-3v4w-5x6y-7z8a9b0c1d20",
@@ -206,6 +213,7 @@ const posts = [
 		},
 		publishedAt: new Date("2000-01-08T00:00:00.000Z"),
 		tags: [{ id: "p9q0r1s2-t3u4-v5w6-x7y8-z9a0b1c2d3s4", name: "ARTICLE" }],
+		ai: false,
 	},
 	{
 		id: "0p8q9r0s-1t2u-3v4w-5x6y-7z8a9b0c1d21",
@@ -217,6 +225,7 @@ const posts = [
 		},
 		publishedAt: new Date("2000-01-08T00:00:00.000Z"),
 		tags: [{ id: "p9q0r1s2-t3u4-v5w6-x7y8-z9a0b1c2d3s4", name: "ARTICLE" }],
+		ai: false,
 	},
 	{
 		id: "0p8q9r0s-1t2u-3v4w-5x6y-7z8a9b0c1d22",
@@ -228,6 +237,7 @@ const posts = [
 		},
 		publishedAt: new Date("2000-01-08T00:00:00.000Z"),
 		tags: [{ id: "p9q0r1s2-t3u4-v5w6-x7y8-z9a0b1c2d3s4", name: "ARTICLE" }],
+		ai: false,
 	},
 	{
 		id: "0p8q9r0s-1t2u-3v4w-5x6y-7z8a9b0c1d23",
@@ -239,6 +249,7 @@ const posts = [
 		},
 		publishedAt: new Date("2000-01-08T00:00:00.000Z"),
 		tags: [{ id: "p9q0r1s2-t3u4-v5w6-x7y8-z9a0b1c2d3s4", name: "ARTICLE" }],
+		ai: false,
 	},
 	{
 		id: "0p8q9r0s-1t2u-3v4w-5x6y-7z8a9b0c1d24",
@@ -250,6 +261,7 @@ const posts = [
 		},
 		publishedAt: new Date("2000-01-08T00:00:00.000Z"),
 		tags: [{ id: "p9q0r1s2-t3u4-v5w6-x7y8-z9a0b1c2d3s4", name: "ARTICLE" }],
+		ai: false,
 	},
 	{
 		id: "0p8q9r0s-1t2u-3v4w-5x6y-7z8a9b0c1d25",
@@ -261,6 +273,7 @@ const posts = [
 		},
 		publishedAt: new Date("2000-01-08T00:00:00.000Z"),
 		tags: [{ id: "p9q0r1s2-t3u4-v5w6-x7y8-z9a0b1c2d3s4", name: "ARTICLE" }],
+		ai: false,
 	},
 ];
 

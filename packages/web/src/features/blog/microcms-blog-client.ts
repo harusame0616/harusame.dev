@@ -30,6 +30,7 @@ type MicroCMSPost = {
 	content: string;
 	category: MicroCMSCategory;
 	tags: MicroCMSTag[];
+	ai: boolean;
 };
 
 export class MicroCMSBlogClient implements BlogClient {
@@ -46,11 +47,11 @@ export class MicroCMSBlogClient implements BlogClient {
 		const posts = await this.client.getAllContents<
 			Pick<
 				MicroCMSPost,
-				"category" | "content" | "tags" | "title" | "id" | "publishedAt"
+				"category" | "content" | "tags" | "title" | "id" | "publishedAt" | "ai"
 			>
 		>({
 			endpoint: "blogs",
-			queries: { fields: "category,content,tags,title,id,publishedAt" },
+			queries: { fields: "category,content,tags,title,id,publishedAt,ai" },
 		});
 
 		return posts.map((post) => ({
@@ -63,6 +64,7 @@ export class MicroCMSBlogClient implements BlogClient {
 				id: tag.id,
 				name: tag.name,
 			})),
+			ai: post.ai,
 		}));
 	}
 

@@ -15,6 +15,7 @@ export type Post = {
 	content: string;
 	category: Category;
 	tags: Tag[];
+	ai: boolean;
 };
 
 export interface BlogClient {

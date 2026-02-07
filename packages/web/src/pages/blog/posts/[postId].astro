@@ -40,7 +40,11 @@ const content = highLight(post.content);
   <div class="my-4">
     <Separator />
   </div>
-
+  {post.ai && (
+    <p class="text-sm italic text-muted-foreground mb-4">
+      ※ 本記事の執筆、修正、校閲に AI を使用しています。
+    </p>
+  )}
   <div class="prose max-w-none" set:html={content} />
   <section slot="append" class="mt-8 rounded-sm border p-4">
     <h2 class="mb-4 text-xl font-bold">コメント</h2>
