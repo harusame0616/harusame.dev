@@ -10,7 +10,7 @@
   "sandbox": {
     "enabled": true,
     "autoAllowBashIfSandboxed": true,
-    "excludedCommands": ["git:*", "pnpm:*", "docker:*"],
+    "excludedCommands": ["git:*", "pnpm:*", "docker:*", "gh:*"],
     "allowUnsandboxedCommands": false,
     "network": {
       "allowedDomains": [],
