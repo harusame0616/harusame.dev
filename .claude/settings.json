@@ -6,5 +6,8 @@
       "Bash(gh run *)",
       "Bash(gh workflow *)"
     ]
+  },
+  "sandbox": {
+    "enabled": true
   }
 }
