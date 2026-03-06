@@ -42,7 +42,7 @@
 		"react": "19.0.0",
 		"react-dom": "19.0.0",
 		"react-hook-form": "7.71.1",
-		"react-turnstile": "1.1.4",
+		"react-turnstile": "1.1.5",
 		"sharp": "0.33.5",
 		"swr": "2.4.0",
 		"tailwind-merge": "3.0.2",
