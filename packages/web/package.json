@@ -57,7 +57,7 @@
 		"@testing-library/jest-dom": "6.6.3",
 		"@testing-library/react": "16.2.0",
 		"@testing-library/user-event": "14.6.1",
-		"@types/uuid": "10.0.0",
+		"@types/uuid": "11.0.0",
 		"jsdom": "26.0.0",
 		"msw": "2.7.3",
 		"tailwindcss": "4.1.18",
