@@ -18,9 +18,20 @@ minimumReleaseAgeExclude:
 # pnpm add 時に ^ や ~ を付けず exact version で package.json に記録する
 savePrefix: ""
 
-# 依存パッケージのビルドスクリプト (preinstall / postinstall 等) の実行を明示的に禁止する
-# (サプライチェーン攻撃の主要経路の遮断。必要になったら onlyBuiltDependencies で個別許可する)
-allowBuilds: false
+# 依存パッケージのビルドスクリプト (preinstall / postinstall 等) はデフォルト実行禁止。
+# ビルドスクリプトを持つパッケージはレビューのうえ false (禁止) / true (許可) を明示的に列挙する
+# (サプライチェーン攻撃の主要経路の遮断。pnpm 11 では未列挙のままだとインストールがエラーになる)
+allowBuilds:
+  '@biomejs/biome': false
+  better-sqlite3: false
+  core-js-pure: false
+  dtrace-provider: false
+  esbuild: false
+  msw: false
+  protobufjs: false
+  re2: false
+  sharp: false
+  workerd: false
 
 # すべての依存のバージョンを catalog で一元管理する
 # (pnpm add 時はカタログへ自動登録され、カタログ外バージョンの追加はエラーになる)
