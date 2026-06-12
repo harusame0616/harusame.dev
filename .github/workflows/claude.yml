@@ -10,6 +10,16 @@ on:
   pull_request_review:
     types: [submitted]
 
+# トップレベルの permissions はワークフロー内の全ジョブのデフォルト権限。
+# ジョブレベルで permissions を明示した場合はマージされず「完全に上書き」されるため、
+# claude ジョブには job レベルの権限がそのまま適用される。
+# ここでは将来ジョブが追加された場合に備えたデフォルトとして最小権限を設定する。
+permissions:
+  contents: read
+
+# concurrency は設定しない:
+# コメント・Issue ごとに独立した依頼として並行実行されるべきであり、
+# 後続のトリガーで実行中の処理をキャンセルすると対応中の依頼が中断されてしまうため
 jobs:
   claude:
     if: |
@@ -18,6 +28,7 @@ jobs:
       (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
       (github.event_name == 'issues' && (contains(github.event.issue.body, '@claude') || contains(github.event.issue.title, '@claude')))
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     permissions:
       contents: write
       pull-requests: write
@@ -25,23 +36,23 @@ jobs:
       id-token: write
       actions: read # Required for Claude to read CI results on PRs
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: リポジトリのチェックアウト
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4.3.1
         with:
           fetch-depth: 1
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
+      - name: pnpm のセットアップ
+        uses: pnpm/action-setup@b906affcce14559ad1aafd4ab0e942779e9f58b1 # v4.3.0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: Node.js のセットアップ
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version-file: "./.node-version"
           cache: "pnpm"
 
-      - name: Run Claude Code
+      - name: Claude Code の実行
         id: claude
-        uses: anthropics/claude-code-action@v1
+        uses: anthropics/claude-code-action@0cb4f3e5e764d2e00407d29b6bf0aa9df0976d88 # v1.0.146
         with:
           settings: .claude/settings.json
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
