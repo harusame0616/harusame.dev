@@ -10,8 +10,8 @@
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"@biomejs/biome": "1.9.4",
-		"@playwright/test": "1.50.1",
-		"@types/node": "22.19.21"
+		"@biomejs/biome": "catalog:",
+		"@playwright/test": "catalog:",
+		"@types/node": "catalog:"
 	}
 }
