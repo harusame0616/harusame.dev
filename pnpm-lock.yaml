@@ -130,8 +130,8 @@ importers:
         specifier: 7.71.1
         version: 7.71.1(react@19.0.0)
       react-turnstile:
-        specifier: 1.1.4
-        version: 1.1.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: 1.1.5
+        version: 1.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       sharp:
         specifier: 0.33.5
         version: 0.33.5
@@ -5313,8 +5313,8 @@ packages:
       '@types/react':
         optional: true
 
-  react-turnstile@1.1.4:
-    resolution: {integrity: sha512-oluyRWADdsufCt5eMqacW4gfw8/csr6Tk+fmuaMx0PWMKP1SX1iCviLvD2D5w92eAzIYDHi/krUWGHhlfzxTpQ==}
+  react-turnstile@1.1.5:
+    resolution: {integrity: sha512-VTL5OeHAatzCEVQxAZox70/TPmhKxEbNgtr++dg+8zm9QrWKuoU9E0+7gqmycOSCDZuJFzvMMLKQb5PVUPLV6w==}
     peerDependencies:
       react: '>= 16.13.1'
       react-dom: '>= 16.13.1'
@@ -12835,7 +12835,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.0.10
 
-  react-turnstile@1.1.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+  react-turnstile@1.1.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
     dependencies:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
