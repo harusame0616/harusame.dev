@@ -1,0 +1,65 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+
+  extends: [
+    // JS アプリ向け推奨設定 (config:recommended + peerDependencies 以外の exact version ピン留め)
+    "config:js-app",
+    // 毎日実行
+    "schedule:daily",
+    // GitHub Actions のバージョン指定をコミット SHA にピン留め (タグ書き換え攻撃への防衛)
+    "helpers:pinGitHubActionDigests",
+  ],
+
+  timezone: "Asia/Tokyo",
+  labels: ["renovate"],
+
+  // 毎日 9 時から 13 時 (JST) の間に実行する
+  schedule: ["after 9am before 1pm"],
+  updateNotScheduled: false,
+
+  // 公開から 14 日経過していないバージョンは PR を作らない
+  // (悪意あるパッケージがレジストリから取り下げられるまでの猶予)
+  minimumReleaseAge: "14 days",
+
+  reviewers: ["harusame0616"],
+
+  // direct deps を pin しているため間接依存 (transitive deps) は lockfile に固定されたまま古くなる。
+  // lockfile だけリフレッシュする PR を作って間接依存の鮮度を保つ。
+  lockFileMaintenance: {
+    enabled: true,
+  },
+
+  packageRules: [
+    // ----- automerge 戦略 -----
+    // devDependencies (本番に影響しない開発用依存) は major も含めて全自動マージ
+    {
+      description: "devDependencies は全自動マージ",
+      matchDepTypes: ["devDependencies"],
+      automerge: true,
+      automergeType: "pr",
+    },
+    // minor / patch / pin は SemVer 上後方互換のため自動マージ
+    {
+      description: "minor / patch / pin は自動マージ",
+      matchUpdateTypes: ["minor", "patch", "pin"],
+      automerge: true,
+      automergeType: "pr",
+    },
+    // dependencies (本番依存) の major は破壊的変更を含むため手動マージ
+    {
+      description: "dependencies の major は手動マージ",
+      matchDepTypes: ["dependencies"],
+      matchUpdateTypes: ["major"],
+      automerge: false,
+      addLabels: ["major-update"],
+    },
+  ],
+
+  // GitHub の Dependabot vulnerability alerts と連動した緊急 PR の挙動
+  vulnerabilityAlerts: {
+    enabled: true,
+    labels: ["security"],
+    // 脆弱性修正は 14 日待たず即時 PR を作る (待機コストの方が高い)
+    minimumReleaseAge: null,
+  },
+}

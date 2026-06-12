@@ -3,7 +3,7 @@ name: Renovate 設定検証
 on:
   pull_request:
     paths:
-      - ".github/renovate.json"
+      - ".github/renovate.json5"
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -33,4 +33,4 @@ jobs:
         run: pnpm install
 
       - name: renovate の設定ファイルの検証
-        run: pnpm exec renovate-config-validator .github/renovate.json
+        run: pnpm exec renovate-config-validator .github/renovate.json5

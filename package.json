@@ -12,6 +12,6 @@
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"renovate": "39.264.1"
+		"renovate": "catalog:"
 	}
 }

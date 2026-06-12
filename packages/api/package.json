@@ -18,15 +18,19 @@
 		"lint-format:write": "biome check --write ."
 	},
 	"devDependencies": {
-		"@cloudflare/vitest-pool-workers": "0.16.15",
-		"@cloudflare/workers-types": "4.20260612.1",
-		"typescript": "5.9.3",
-		"vitest": "4.1.8",
-		"wrangler": "3.111.0"
+		"@cloudflare/vitest-pool-workers": "catalog:",
+		"@cloudflare/workers-types": "catalog:",
+		"@types/node": "catalog:",
+		"@vitest/runner": "catalog:",
+		"@vitest/snapshot": "catalog:",
+		"typescript": "catalog:",
+		"vite": "catalog:",
+		"vitest": "catalog:",
+		"wrangler": "catalog:"
 	},
 	"dependencies": {
-		"@biomejs/biome": "1.9.4",
-		"hono": "4.12.25",
-		"valibot": "1.0.0-rc.3"
+		"@biomejs/biome": "catalog:",
+		"hono": "catalog:",
+		"valibot": "catalog:"
 	}
 }

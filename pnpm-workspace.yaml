@@ -1,2 +1,85 @@
 packages:
   - 'packages/*'
+
+# 公開から 14 日 (20160 分) 経過していないバージョンはインストールしない
+# (悪意あるパッケージがレジストリから取り下げられるまでの猶予)
+minimumReleaseAge: 20160
+
+# プラットフォーム別バイナリは親パッケージと同一バージョン・同時公開で exact pin されるため、
+# 親パッケージ側の 14 日制限で担保されるものとして除外する
+minimumReleaseAgeExclude:
+  - '@rollup/rollup-*'
+  - '@esbuild/*'
+  - '@cloudflare/workerd-*'
+  - '@img/sharp-*'
+  - '@tailwindcss/oxide-*'
+  - '@biomejs/cli-*'
+
+# pnpm add 時に ^ や ~ を付けず exact version で package.json に記録する
+savePrefix: ""
+
+# 依存パッケージのビルドスクリプト (preinstall / postinstall 等) の実行を明示的に禁止する
+# (サプライチェーン攻撃の主要経路の遮断。必要になったら onlyBuiltDependencies で個別許可する)
+allowBuilds: false
+
+# すべての依存のバージョンを catalog で一元管理する
+# (pnpm add 時はカタログへ自動登録され、カタログ外バージョンの追加はエラーになる)
+catalogMode: strict
+
+catalog:
+  '@astrojs/check': 0.9.9
+  '@astrojs/partytown': 2.1.7
+  '@astrojs/react': 4.4.2
+  '@astrojs/sitemap': 3.7.3
+  '@biomejs/biome': 1.9.4
+  '@cloudflare/vitest-pool-workers': 0.16.10
+  '@cloudflare/workers-types': 4.20260529.1
+  '@hookform/resolvers': 4.1.3
+  '@icons-pack/react-simple-icons': 12.9.0
+  '@playwright/test': 1.50.1
+  '@radix-ui/react-dialog': 1.1.15
+  '@radix-ui/react-icons': 1.3.2
+  '@radix-ui/react-label': 2.1.8
+  '@radix-ui/react-separator': 1.1.8
+  '@radix-ui/react-slot': 1.2.4
+  '@tailwindcss/typography': 0.5.19
+  '@tailwindcss/vite': 4.1.18
+  '@testing-library/dom': 10.4.1
+  '@testing-library/jest-dom': 6.9.1
+  '@testing-library/react': 16.3.2
+  '@testing-library/user-event': 14.6.1
+  '@types/node': 22.19.19
+  '@types/react': 19.0.10
+  '@types/react-dom': 19.0.4
+  '@types/uuid': 11.0.0
+  '@vitest/runner': 4.1.7
+  '@vitest/snapshot': 4.1.7
+  astro: 5.18.2
+  cheerio: 1.0.0
+  class-variance-authority: 0.7.1
+  clsx: 2.1.1
+  date-fns: 4.1.0
+  'highlight.js': 11.11.1
+  hono: 4.12.23
+  jsdom: 26.0.0
+  microcms-js-sdk: 3.1.2
+  msw: 2.7.3
+  react: 19.0.0
+  react-dom: 19.0.0
+  react-hook-form: 7.71.1
+  react-turnstile: 1.1.5
+  renovate: 39.264.1
+  rollup: 4.60.4
+  sharp: 0.33.5
+  swr: 2.4.0
+  tailwind-merge: 3.0.2
+  tailwindcss: 4.1.18
+  tailwindcss-animate: 1.0.7
+  typescript: 5.9.3
+  uuid: 11.1.1
+  valibot: 1.0.0-rc.3
+  vite: 6.2.0
+  vite-tsconfig-paths: 5.1.4
+  # 4.1.8 は公開から 14 日未経過のため一つ前を指定 (成熟後に Renovate が更新する)
+  vitest: 4.1.7
+  wrangler: 3.111.0
